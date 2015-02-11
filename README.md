@@ -78,6 +78,7 @@ $ npm install -g ungit
 ```
 
 * Aller dans le dossier contenant le projet et taper 
+
 ```sh
 $ ungit
 ```
