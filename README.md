@@ -7,7 +7,7 @@ Quelques Commandes de base pour l'utilisation de Git.
 * Cloner un depot sur la forge
 
   ```sh
-  $ git clone https://login@forge.clermont-universite.fr/git/nom-projet
+  $ git clone lien_du_depot
   ```
   
 * Ajouter un depot distant
