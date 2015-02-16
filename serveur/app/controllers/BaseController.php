@@ -1,7 +1,9 @@
 <?php
 
 class BaseController extends Controller {
-
+	
+	protected $validation;
+	
 	/**
 	 * Setup the layout used by the controller.
 	 *

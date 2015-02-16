@@ -15,3 +15,10 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('/users', 'UserController@index');
+Route::put('/user/update/{id}', 'UserController@update'); // METHOD PUT/PATCH 
+Route::post('/user/new', 'UserController@store');
+Route::get('/user/show/{id}', 'UserController@show');
+Route::get('/user/delete/{id}','UserController@destroy');
+
