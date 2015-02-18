@@ -64,6 +64,7 @@ Quelques Commandes de base pour l'utilisation de Git.
   $ git push origin nom_de_la_branche 
   ```
 
+## Ungit
 
 Installer Ungit (pour avoir un visuel sur les branches)
 
