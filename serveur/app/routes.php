@@ -21,4 +21,5 @@ Route::put('/user/update/{id}', 'UserController@update'); // METHOD PUT/PATCH
 Route::post('/user/new', 'UserController@store');
 Route::get('/user/show/{id}', 'UserController@show');
 Route::get('/user/delete/{id}','UserController@destroy');
+Route::get('/user/login', 'UserController@login');
 
