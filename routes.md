@@ -18,7 +18,7 @@
 |    /user/login    |  POST  |    *username, password*   | Vérifie la présence de l'utilisateur dans la BDD  |
 
 
-2. Routes pour la gestion des posts.
+3. Routes pour la gestion des posts. (en gras les parametres obligatoires)
  
 |         URL        | METHOD |                                 ARGUMENTS                                 |                UTILITY                |
 |:------------------:|:------:|:-------------------------------------------------------------------------:|:-------------------------------------:|
