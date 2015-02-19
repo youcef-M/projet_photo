@@ -16,10 +16,27 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/users', 'UserController@index');
-Route::put('/user/update/{id}', 'UserController@update'); // METHOD PUT/PATCH 
-Route::post('/user/new', 'UserController@store');
-Route::get('/user/show/{id}', 'UserController@show');
-Route::get('/user/delete/{id}','UserController@destroy');
-Route::get('/user/login', 'UserController@login');
 
+/**
+ * USERS
+ **/
+Route::get('/users','UserController@index');
+Route::post('/user/new','UserController@store');
+Route::get('/user/show/{id}','UserController@show');
+Route::put('/user/update/{id}','UserController@update'); // METHOD PUT/PATCH 
+Route::get('/user/delete/{id}','UserController@destroy');
+Route::post('/user/login','UserController@login');
+
+/**
+ * POSTS
+ **/
+Route::get('/posts/{id}','PostController@index');
+Route::post('/post/new','PostController@store');
+Route::get('/post/show/{id}','PostController@show');
+Route::put('/post/update/{id}','PostController@update');
+Route::get('/post/delete/{id}','PostController@destroy');
+Route::post('/post/privacy/{id}','PostController@privacy');
+
+/**
+ * COMMENTS
+ **/

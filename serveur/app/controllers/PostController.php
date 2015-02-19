@@ -1,34 +1,36 @@
 <?php
 
-use Lib\Validation\User\UserUpdateValidator as UserUpdateValidator;
-use Lib\Validation\User\UserCreateValidator as UserCreateValidator;
-use Lib\Validation\User\UserLoginValidator  as UserLoginValidator;
-use Lib\Gestion\User\UserGestion as UserGestion;
+use Lib\Validation\Post\PostUpdateValidator 	as PostUpdateValidator;
+use Lib\Validation\Post\PostCreateValidator 	as PostCreateValidator;
+use Lib\Validation\Post\PostPrivacyValidator 	as PostPrivacyValidator;
+use Lib\Gestion\Post\PostGestion as PostGestion;
 
-class UserController extends \BaseController 
-{
+class PostController extends \BaseController {
+
+
 	public function __construct(
-		UserUpdateValidator $update_validation,
-		UserCreateValidator $create_validation,
-		UserLoginValidator	$login_validation,
-		UserGestion $user_gestion
+		PostUpdateValidator $update_validation,
+		PostCreateValidator $create_validation,
+		PostPrivacyValidator $privacy_validation,
+		PostGestion $post_gestion
 	){
 		$this->update_validation = $update_validation;
 		$this->create_validation = $create_validation;
-		$this->login_validation  = $login_validation;
-		$this->user_gestion = $user_gestion;
+		$this->privacy_validation = $privacy_validation;
+		$this->post_gestion = $post_gestion;
 	}
-
+	
+	
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($id)
 	{
-		return User::all();
+		return Post::where('user_id',$id);
 	}
-	
+
 
 	/**
 	 * Store a newly created resource in storage.
@@ -37,11 +39,11 @@ class UserController extends \BaseController
 	 */
 	public function store()
 	{
-		if ($this->create_validation->fails()) {
+		 if ($this->create_validation->fails()) {
 			$statusCode = 404;
 			$message = $this->create_validation->errors();
 		}else{
-			$this->user_gestion->store();
+			$this->post_gestion->store();
 			$statusCode = 200;
 			$message = "ok";
 		}
@@ -57,19 +59,19 @@ class UserController extends \BaseController
 	 */
 	public function show($id)
 	{
-		$user = $this->user_gestion->show($id);
-		if(is_null($user))
+		$post = $this->post_gestion->show($id);
+		if(is_null($post))
 		{
 			$statusCode = 404;
 			$message = "not found";
 		}else{
 			$statusCode = 200;
-			$message = $user->toArray();
+			$message = $post->toArray();
 		}
 		
 		return Response::json($message, $statusCode);
-		
 	}
+
 
 
 	/**
@@ -84,11 +86,11 @@ class UserController extends \BaseController
 			$statusCode = 404;
 			$message = $this->update_validation->errors();
 		}else{
-			if(is_null($this->user_gestion->show($id))){
+			if(is_null($this->post_gestion->show($id))){
 				$statusCode = 404;
 				$message = "not found";
 			}else{
-				$this->user_gestion->update($id);
+				$this->post_gestion->update($id);
 				$statusCode = 200;
 				$message = "ok";
 			}
@@ -106,39 +108,40 @@ class UserController extends \BaseController
 	 */
 	public function destroy($id)
 	{
-		if(is_null($this->user_gestion->show($id))){
+		if(is_null($this->post_gestion->show($id))){
 			$statusCode = 404;
 			$message = "not found";
 		}else{
-			$this->user_gestion->delete($id);
+			$this->post_gestion->delete($id);
 			$statusCode = 200;
 			$message = "ok";
 		}
+		return Response::json($message, $statusCode);
 	}
-
+	
+	
 	/**
-	 * Check if the user exist and has the right password.
+	 * Update the privacy for a specified resource in storage.
 	 *
+	 * @param  int  $id
 	 * @return Response
 	 */
-	public function login()
+	public function privacy($id)
 	{
-		if($this->login_validation->fails())
-		{
+		if ($this->privacy_validation->fails($id) ) {
 			$statusCode = 404;
-			$message = $this->login_validation->errors();
-		}else
-		{
-			$user = $this->user_gestion->login();
-			if(is_null($user) || !Hash::check(Request::get('password'), $user->password) )
-			{
+			$message = $this->privacy_validation->errors();
+		}else{
+			if(is_null($this->post_gestion->show($id))){
 				$statusCode = 404;
 				$message = "not found";
 			}else{
+				$this->post_gestion->privacy($id);
 				$statusCode = 200;
-				$message = $user->toArray();
+				$message = "ok";
 			}
 		}
 		return Response::json($message, $statusCode);
 	}
+	
 }
