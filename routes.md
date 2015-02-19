@@ -2,12 +2,12 @@
 
 ## API
 
-1. Url de base (peut changer): 
+### Url de base (peut changer): 
         https://api-rest-youcef-m.c9.io/
 
    > Les paramètres vont surement changer pour l'ajout de la sécurité.
    
-2. Routes pour la gestion des utilisateurs.
+### Routes pour la gestion des utilisateurs.
  
 |        URL        | METHOD |         ARGUMENTS         |                      Utilité                      |
 |:-----------------:|:------:|:-------------------------:|:-------------------------------------------------:|
@@ -19,7 +19,7 @@
 |    /user/login    |  POST  |    *username, password*   | Vérifie la présence de l'utilisateur dans la BDD  |
 
 
-3. Routes pour la gestion des posts. (en gras les parametres obligatoires)
+### Routes pour la gestion des posts. (en gras les parametres obligatoires)
  
 |         URL        | METHOD |                                 ARGUMENTS                                 |                UTILITY                |
 |:------------------:|:------:|:-------------------------------------------------------------------------:|:-------------------------------------:|
