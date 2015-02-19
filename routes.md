@@ -16,3 +16,15 @@
 | /user/update/{id} |   PUT  | *username,email,password* |            MAJ de l'utilisateur n° {id}           |
 | /user/delete/{id} |   GET  |            none           |        Suppression de l'utilisateur n° {id}       |
 |    /user/login    |  POST  |    *username, password*   | Vérifie la présence de l'utilisateur dans la BDD  |
+
+
+2. Routes pour la gestion des posts.
+ 
+|         URL        | METHOD |                                 ARGUMENTS                                 |                UTILITY                |
+|:------------------:|:------:|:-------------------------------------------------------------------------:|:-------------------------------------:|
+|     /posts/{id}    |   GET  |                                    none                                   |            Liste des posts            |
+|      /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)** |              Nouveau post             |
+|   /post/show/{id}  |   GET  |                                    none                                   |          Info du post n° {id}         |
+|  /post/update/{id} |   PUT  |                   **titre**, *description*, **privacy**                   |          MAJ du post n° {id}          |
+|  /post/delete/{id} |   GET  |                                    none                                   |      Suppression du post n° {id}      |
+| /post/privacy/{id} |  POST  |                                 *privacy*                                 | Change la visibilité du post n° {id}  |
