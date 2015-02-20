@@ -33,7 +33,7 @@
 EDIT: le lien pour supprimer est désactivé pour le moment.
 
 
-### Routes pour la gestion des posts.
+### Routes pour la gestion des commentaires.
 
 |          URL          | METHOD |               ARGUMENTS               |                 UTILITY                 |
 |:---------------------:|:------:|:-------------------------------------:|:---------------------------------------:|
