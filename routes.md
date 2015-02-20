@@ -29,3 +29,5 @@
 |  /post/update/{id} |   PUT  |                   **titre**, *description*, **privacy**                   |          MAJ du post n° {id}          |
 |  /post/delete/{id} |   GET  |                                    none                                   |      Suppression du post n° {id}      |
 | /post/privacy/{id} |  POST  |                                 *privacy*                                 | Change la visibilité du post n° {id}  |
+
+EDIT: le lien pour supprimer est désactivé pour le moment.
