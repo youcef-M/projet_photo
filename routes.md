@@ -31,3 +31,15 @@
 | /post/privacy/{id} |  POST  |                                 *privacy*                                 | Change la visibilité du post n° {id}  |
 
 EDIT: le lien pour supprimer est désactivé pour le moment.
+
+
+### Routes pour la gestion des posts.
+
+|          URL          | METHOD |               ARGUMENTS               |                 UTILITY                 |
+|:---------------------:|:------:|:-------------------------------------:|:---------------------------------------:|
+| /comments/bypost/{id} |   GET  |                  none                 |   Liste des commentaires pour un post   |
+| /comments/byuser/{id} |   GET  |                  none                 | Liste des commentaires d'un utilisateur |
+|      /comment/new     |  POST  |  **content**,**user_id**,**post_id**  |           Nouveau commentaire           |
+|   /comment/show/{id}  |   GET  |                  none                 |       Info du commentaire n° {id}       |
+|  /comment/update/{id} |   PUT  | **titre**, *description*, **privacy** |        MAJ du commentaire n° {id}       |
+|  /comment/delete/{id} |   GET  |                  none                 |       Suppression du post n° {id}       |
