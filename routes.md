@@ -20,16 +20,17 @@
 | /user/activate    |  POST  |    	   **token**		 | 	 Active un utilisateur identifié par son token   |
 
 ### Routes pour la gestion des posts. (en gras les parametres obligatoires)
+      
+|         URL        | METHOD |                                 ARGUMENTS                                 |                     UTILITY                     |
+|:------------------:|:------:|:-------------------------------------------------------------------------:|:-----------------------------------------------:|
+|     /posts/{id}    |   GET  |                                    none                                   |                 Liste des posts                 |
+|      /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)** |                   Nouveau post                  |
+|   /post/show/{id}  |   GET  |                                    none                                   |               Info du post n° {id}              |
+|  /post/update/{id} |   PUT  |                   **titre**, *description*, **privacy**                   |               MAJ du post n° {id}               |
+|  /post/delete/{id} |   GET  |                                    none                                   |           Suppression du post n° {id}           |
+| /post/privacy/{id} |  POST  |                                 *privacy*                                 |      Change la visibilité du post n° {id}       |
+|   /post/feed/{id}  |   GET  |                                    none                                   |   Liste des posts des follow du user n° {id}    |
  
-|         URL        | METHOD |                                 ARGUMENTS                                 |                UTILITY                |
-|:------------------:|:------:|:-------------------------------------------------------------------------:|:-------------------------------------:|
-|     /posts/{id}    |   GET  |                                    none                                   |            Liste des posts            |
-|      /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)** |              Nouveau post             |
-|   /post/show/{id}  |   GET  |                                    none                                   |          Info du post n° {id}         |
-|  /post/update/{id} |   PUT  |                   **titre**, *description*, **privacy**                   |          MAJ du post n° {id}          |
-|  /post/delete/{id} |   GET  |                                    none                                   |      Suppression du post n° {id}      |
-| /post/privacy/{id} |  POST  |                                 *privacy*                                 | Change la visibilité du post n° {id}  |
-
 EDIT: le lien pour supprimer est désactivé pour le moment.
 
 
@@ -43,3 +44,13 @@ EDIT: le lien pour supprimer est désactivé pour le moment.
 |   /comment/show/{id}  |   GET  |                  none                 |       Info du commentaire n° {id}       |
 |  /comment/update/{id} |   PUT  | **titre**, *description*, **privacy** |        MAJ du commentaire n° {id}       |
 |  /comment/delete/{id} |   GET  |                  none                 |       Suppression du post n° {id}       |
+
+
+### Routes pour la gestion des commentaires
+
+|         URL        | METHOD | ARGUMENTS |                 UTILITY                 |
+|:------------------:|:------:|:---------:|:---------------------------------------:|
+|   /followers/{id}  |   GET  |    none   | Liste de nos followers (liste de users) |
+| /followers/id/{id} |   GET  |    none   |      Liste des id de nos followers      |
+|   /following/{id}  |   GET  |    none   |  Liste de nos follows (liste de users)  |
+| /following/id/{id} |   GET  |    none   |       Liste des id de nos follows       |
