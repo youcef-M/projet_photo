@@ -47,7 +47,7 @@ EDIT: le lien pour supprimer est désactivé pour le moment.
 
 
 ### Routes pour la gestion des follows
-        ** Les routes sont désactivées pour le moment**
+**Les routes sont désactivées pour le moment**
 
 |         URL        | METHOD | ARGUMENTS |                 UTILITY                 |
 |:------------------:|:------:|:---------:|:---------------------------------------:|
