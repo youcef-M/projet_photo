@@ -46,7 +46,8 @@ EDIT: le lien pour supprimer est désactivé pour le moment.
 |  /comment/delete/{id} |   GET  |                  none                 |       Suppression du post n° {id}       |
 
 
-### Routes pour la gestion des commentaires
+### Routes pour la gestion des follows
+        ** Les routes sont désactivées pour le moment**
 
 |         URL        | METHOD | ARGUMENTS |                 UTILITY                 |
 |:------------------:|:------:|:---------:|:---------------------------------------:|
