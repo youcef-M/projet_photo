@@ -47,11 +47,12 @@ EDIT: le lien pour supprimer est désactivé pour le moment.
 
 
 ### Routes pour la gestion des follows
-**Les routes sont désactivées pour le moment**
 
-|         URL        | METHOD | ARGUMENTS |                 UTILITY                 |
-|:------------------:|:------:|:---------:|:---------------------------------------:|
-|   /followers/{id}  |   GET  |    none   | Liste de nos followers (liste de users) |
-| /followers/id/{id} |   GET  |    none   |      Liste des id de nos followers      |
-|   /following/{id}  |   GET  |    none   |  Liste de nos follows (liste de users)  |
-| /following/id/{id} |   GET  |    none   |       Liste des id de nos follows       |
+|         URL        | METHOD |             ARGUMENTS             |                   UTILITY                  |
+|:------------------:|:------:|:---------------------------------:|:------------------------------------------:|
+|     /follow/new    |  POST  | **follower_id**, **following_id** | follower_id suit les posts de following_id |
+|   /follow/delete   |   GET  | **follower_id**, **following_id** |                                            |
+|   /followers/{id}  |   GET  |                none               |   Liste de nos followers (liste de users)  |
+| /followers/id/{id} |   GET  |                none               |       Liste des id de nos followers        |
+|   /following/{id}  |   GET  |                none               |    Liste de nos follows (liste de users)   |
+| /following/id/{id} |   GET  |                none               |         Liste des id de nos follows        |
