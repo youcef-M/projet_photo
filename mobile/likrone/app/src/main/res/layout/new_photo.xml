@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/newphoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Nouvelle Photo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Importer"
+        android:id="@+id/importer"
+        android:layout_marginTop="133dp"
+        android:layout_below="@+id/newphoto"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="175dp"
+        android:layout_marginEnd="175dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:id="@+id/save"
+        android:layout_marginTop="67dp"
+        android:layout_below="@+id/importer"
+        android:layout_alignLeft="@+id/importer"
+        android:layout_alignStart="@+id/importer" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Annuler"
+        android:id="@+id/cancel"
+        android:layout_below="@+id/save"
+        android:layout_alignLeft="@+id/save"
+        android:layout_alignStart="@+id/save"
+        android:layout_marginTop="70dp" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/photo"
+        android:layout_alignTop="@+id/importer"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/titre"
+        android:layout_toLeftOf="@+id/photo"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:hint="Titre de la photo"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:id="@+id/description"
+        android:layout_below="@+id/titre"
+        android:layout_toLeftOf="@+id/photo"
+        android:layout_centerHorizontal="true"
+        android:hint="Description de la photo"/>
+
+
+</RelativeLayout>

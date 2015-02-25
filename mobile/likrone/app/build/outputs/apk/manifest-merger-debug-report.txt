@@ -39,12 +39,18 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:16:17
 	android:name
 		ADDED from AndroidManifest.xml:16:27
-activity#com.example.julien.likrone.MainActivity
+activity#com.example.julien.likrone.InscriptionActivity
 ADDED from AndroidManifest.xml:20:9
 	android:label
-		ADDED from AndroidManifest.xml:20:48
+		ADDED from AndroidManifest.xml:20:55
 	android:name
 		ADDED from AndroidManifest.xml:20:19
+activity#com.example.julien.likrone.ExampleActivity
+ADDED from AndroidManifest.xml:21:9
+	android:label
+		ADDED from AndroidManifest.xml:21:51
+	android:name
+		ADDED from AndroidManifest.xml:21:19
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 	android:targetSdkVersion

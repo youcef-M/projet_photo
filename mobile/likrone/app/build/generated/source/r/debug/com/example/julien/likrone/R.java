@@ -27,30 +27,40 @@ public final class R {
         public static final int likorne=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000e;
-        public static final int compte=0x7f090010;
-        public static final int confirm=0x7f09000a;
-        public static final int connect=0x7f09000c;
-        public static final int creation=0x7f09000d;
-        public static final int deconnexion=0x7f090012;
-        public static final int email=0x7f090004;
-        public static final int imageView=0x7f09000b;
-        public static final int mp=0x7f090006;
-        public static final int mp2=0x7f090008;
-        public static final int pseudo=0x7f090002;
-        public static final int publier=0x7f090011;
-        public static final int raz=0x7f090009;
-        public static final int refresh=0x7f09000f;
-        public static final int viewEmail=0x7f090003;
-        public static final int viewInsc=0x7f090000;
-        public static final int viewMp=0x7f090005;
-        public static final int viewMp2=0x7f090007;
-        public static final int viewPseudo=0x7f090001;
+        public static final int action_settings=0x7f090016;
+        public static final int cancel=0x7f090012;
+        public static final int compte=0x7f090018;
+        public static final int confirm=0x7f09000b;
+        public static final int connect=0x7f09000d;
+        public static final int creation=0x7f09000e;
+        public static final int deconnexion=0x7f09001a;
+        public static final int description=0x7f090015;
+        public static final int email=0x7f090005;
+        public static final int imageView=0x7f09000c;
+        public static final int importer=0x7f090010;
+        public static final int login_display=0x7f090000;
+        public static final int mp=0x7f090007;
+        public static final int mp2=0x7f090009;
+        public static final int newphoto=0x7f09000f;
+        public static final int photo=0x7f090013;
+        public static final int pseudo=0x7f090003;
+        public static final int publier=0x7f090019;
+        public static final int raz=0x7f09000a;
+        public static final int refresh=0x7f090017;
+        public static final int save=0x7f090011;
+        public static final int titre=0x7f090014;
+        public static final int viewEmail=0x7f090004;
+        public static final int viewInsc=0x7f090001;
+        public static final int viewMp=0x7f090006;
+        public static final int viewMp2=0x7f090008;
+        public static final int viewPseudo=0x7f090002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int inscription=0x7f030001;
-        public static final int login=0x7f030002;
+        public static final int example=0x7f030001;
+        public static final int inscription=0x7f030002;
+        public static final int login=0x7f030003;
+        public static final int new_photo=0x7f030004;
     }
     public static final class menu {
         public static final int menu_main=0x7f080000;

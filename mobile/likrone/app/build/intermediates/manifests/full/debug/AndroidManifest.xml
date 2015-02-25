@@ -23,8 +23,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.julien.likrone.MainActivity"
-            android:label="login" />
+            android:name="com.example.julien.likrone.InscriptionActivity"
+            android:label="Inscription" />
+        <activity
+            android:name="com.example.julien.likrone.ExampleActivity"
+            android:label="example" />
     </application>
 
 </manifest>
