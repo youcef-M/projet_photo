@@ -8,5 +8,5 @@ interface PostGestionInterface {
     public function update($id);
     public function destroy($id);
     public function privacy($id);
-    
+    public function getFeed($id);
 }

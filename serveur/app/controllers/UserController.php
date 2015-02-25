@@ -3,6 +3,7 @@
 use Lib\Validation\User\UserUpdateValidator as UserUpdateValidator;
 use Lib\Validation\User\UserCreateValidator as UserCreateValidator;
 use Lib\Validation\User\UserLoginValidator  as UserLoginValidator;
+use Lib\Validation\User\UserActivateValidator as UserActivateValidator;
 use Lib\Gestion\User\UserGestion as UserGestion;
 
 class UserController extends \BaseController 
@@ -11,11 +12,13 @@ class UserController extends \BaseController
 		UserUpdateValidator $update_validation,
 		UserCreateValidator $create_validation,
 		UserLoginValidator	$login_validation,
+		UserActivateValidator $activate_validation,
 		UserGestion $user_gestion
 	){
 		$this->update_validation = $update_validation;
 		$this->create_validation = $create_validation;
 		$this->login_validation  = $login_validation;
+		$this->activate_validation = $activate_validation;
 		$this->user_gestion = $user_gestion;
 	}
 
@@ -43,7 +46,7 @@ class UserController extends \BaseController
 		}else{
 			$this->user_gestion->store();
 			$statusCode = 200;
-			$message = "ok";
+			$message = HTTP_OK;
 		}
     	return Response::json($message, $statusCode);
 	}
@@ -61,7 +64,7 @@ class UserController extends \BaseController
 		if(is_null($user))
 		{
 			$statusCode = 404;
-			$message = "not found";
+			$message = HTTP_NOT_FOUND;
 		}else{
 			$statusCode = 200;
 			$message = $user->toArray();
@@ -86,11 +89,11 @@ class UserController extends \BaseController
 		}else{
 			if(is_null($this->user_gestion->show($id))){
 				$statusCode = 404;
-				$message = "not found";
+				$message = HTTP_NOT_FOUND;
 			}else{
 				$this->user_gestion->update($id);
 				$statusCode = 200;
-				$message = "ok";
+				$message = HTTP_OK;
 			}
 			
 		}
@@ -108,11 +111,11 @@ class UserController extends \BaseController
 	{
 		if(is_null($this->user_gestion->show($id))){
 			$statusCode = 404;
-			$message = "not found";
+			$message = HTTP_NOT_FOUND;
 		}else{
 			$this->user_gestion->delete($id);
 			$statusCode = 200;
-			$message = "ok";
+			$message = HTTP_OK;
 		}
 	}
 
@@ -133,7 +136,7 @@ class UserController extends \BaseController
 			if(is_null($user) || !Hash::check(Request::get('password'), $user->password) )
 			{
 				$statusCode = 404;
-				$message = "not found";
+				$message = HTTP_NOT_FOUND;
 			}else{
 				$statusCode = 200;
 				$message = $user->toArray();
@@ -141,4 +144,29 @@ class UserController extends \BaseController
 		}
 		return Response::json($message, $statusCode);
 	}
+
+	/**
+	 * Activate a specified user.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function activate()
+	{
+		if ($this->activate_validation->fails()) {
+			$statusCode = 404;
+			$message = $this->activate_validation->errors();
+		}else{
+			if($this->user_gestion->activate()){
+				$statusCode = 404;
+				$message = HTTP_NOT_FOUND;
+			}else{
+				$statusCode = 200;
+				$message = HTTP_OK;
+			}
+			
+		}
+    	return Response::json($message, $statusCode);
+	}
+	
 }

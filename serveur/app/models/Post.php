@@ -1,13 +1,19 @@
 <?php
 	
 	class Post extends Eloquent{
-        
-        protected $table = 'posts';
-        
+	
+	protected $table = 'posts';
+	
 		public $timestamps = true;
-
-		public function user(){
+	
+		public function user()
+		{
 			return $this->belongsTo('User');
 		}
-
+		
+		public function comments() 
+		{
+			return $this->hasMany('Comment');
+		}
+	
 	}

@@ -1,0 +1,39 @@
+USER
+    
+    CRUD                            OK
+        Route
+        Validation
+        Gestion
+        Controller
+        
+
+
+POST
+
+    CRUD                            OK
+        Route
+        Validation
+        Gestion
+        Controller
+        
+        Update privacy              OK
+        
+        Validation des champs non required ?
+        check validator
+        
+        
+
+COMMENTAIRES
+
+AMIS
+
+RESTRICTION
+
+
+
+
+
+
+
+
+https://api-rest-youcef-m.c9.io/post/privacy/1

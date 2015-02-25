@@ -1,13 +1,13 @@
 <?php namespace Lib\Gestion\User;
 
 use User;
-use Input;
 use Hash;
 use Request;
 
 class UserGestion implements UserGestionInterface {
     
-    public function store(){
+    public function store()
+    {
         $user = new User;
 		$user->username = Request::get('username');
 		$user->email = Request::get('email');
@@ -17,11 +17,13 @@ class UserGestion implements UserGestionInterface {
 		$user->save();
     }
     
-    public function show($id){
+    public function show($id)
+    {
         return User::find($id);
     }
     
-    public function update($id){
+    public function update($id)
+    {
         $user = User::find($id);
 		$user->username = Request::get('username');
 		$user->email = Request::get('email');
@@ -29,15 +31,29 @@ class UserGestion implements UserGestionInterface {
 		$user->save();
     }
     
-    public function destroy($id){
+    public function destroy($id)
+    {
         User::find($id)->delete();
     }
     
-    public function login(){
+    public function login()
+    {
         return User::
 				where('username', Request::get('username'))
 				->first();
     }
     
-    
+    public function activate()
+    {
+        $token = Request::get('token');
+        $user = User::where('token',$token);
+        if(is_null($user)){
+            return false;
+        }else{
+            $user->active = 1;
+            $user->token = '';
+            $user->save();
+            return true;
+        }
+    }
 }

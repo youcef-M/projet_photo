@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration {
 			$table->int('privacy')->unsigned();
 			$table->int('user_id')->unsigned();
 			$table->int('note_totale');
-			$table->timestamps();
+			$table->timestamps()->default('0000-00-00 00:00:00');
 		});
 	}
 

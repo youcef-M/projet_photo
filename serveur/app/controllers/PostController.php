@@ -5,6 +5,7 @@ use Lib\Validation\Post\PostCreateValidator 	as PostCreateValidator;
 use Lib\Validation\Post\PostPrivacyValidator 	as PostPrivacyValidator;
 use Lib\Gestion\Post\PostGestion as PostGestion;
 
+
 class PostController extends \BaseController {
 
 
@@ -45,7 +46,7 @@ class PostController extends \BaseController {
 		}else{
 			$this->post_gestion->store();
 			$statusCode = 200;
-			$message = "ok";
+			$message = HTTP_OK;
 		}
     	return Response::json($message, $statusCode);
 	}
@@ -63,7 +64,7 @@ class PostController extends \BaseController {
 		if(is_null($post))
 		{
 			$statusCode = 404;
-			$message = "not found";
+			$message = HTTP_NOT_FOUND;
 		}else{
 			$statusCode = 200;
 			$message = $post->toArray();
@@ -88,11 +89,11 @@ class PostController extends \BaseController {
 		}else{
 			if(is_null($this->post_gestion->show($id))){
 				$statusCode = 404;
-				$message = "not found";
+				$message = HTTP_NOT_FOUND;
 			}else{
 				$this->post_gestion->update($id);
 				$statusCode = 200;
-				$message = "ok";
+				$message = HTTP_OK;
 			}
 			
 		}
@@ -110,11 +111,11 @@ class PostController extends \BaseController {
 	{
 		if(is_null($this->post_gestion->show($id))){
 			$statusCode = 404;
-			$message = "not found";
+			$message = HTTP_NOT_FOUND;
 		}else{
-			$this->post_gestion->delete($id);
+			$this->post_gestion->destroy($id);
 			$statusCode = 200;
-			$message = "ok";
+			$message = HTTP_OK;
 		}
 		return Response::json($message, $statusCode);
 	}
@@ -134,14 +135,29 @@ class PostController extends \BaseController {
 		}else{
 			if(is_null($this->post_gestion->show($id))){
 				$statusCode = 404;
-				$message = "not found";
+				$message = HTTP_NOT_FOUND;
 			}else{
 				$this->post_gestion->privacy($id);
 				$statusCode = 200;
-				$message = "ok";
+				$message = HTTP_OK;
 			}
 		}
 		return Response::json($message, $statusCode);
 	}
 	
+	
+	public function getFeed($id)
+	{
+		$user = User::find($id);
+		if(is_null($user))
+		{
+			$statusCode = 404;
+			$message = HTTP_NOT_FOUND;
+		}else{
+			$statusCode = 200;
+			$message = $this->post_gestion->getFeed($id)->toArray();
+		}
+		
+		return Response::json($message, $statusCode);
+	}
 }

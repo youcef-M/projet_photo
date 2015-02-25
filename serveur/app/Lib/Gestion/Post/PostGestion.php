@@ -1,12 +1,12 @@
 <?php namespace Lib\Gestion\Post;
 
 use Post;
-use Input;
 use Hash;
 use Request;
 use Str;
-
+use Route;
 class PostGestion implements PostGestionInterface {
+    
     
     public function store()
     {
@@ -58,6 +58,10 @@ class PostGestion implements PostGestionInterface {
     
     public function destroy($id)
     {
+        $path = public_path() . Post::find($id)->chemin;
+        if(file_exists($path)){
+            unlink($path);
+        }
         Post::find($id)->delete();
     }
     
@@ -66,6 +70,14 @@ class PostGestion implements PostGestionInterface {
         $post = Post::find($id);
         $post->privacy = Request::get('privacy');
 		$post->save();
+    }
+    
+    public function getFeed($id)
+    {
+        $request = Request::create('/following/id/'.$id, 'GET', array());
+		$userIds = json_decode(Route::dispatch($request)->getContent());
+		
+		return Post::whereIn('user_id', $userIds)->latest()->get();
     }
     
 }
