@@ -51,7 +51,7 @@ EDIT: le lien pour supprimer est désactivé pour le moment.
 |         URL        | METHOD |             ARGUMENTS             |                   UTILITY                  |
 |:------------------:|:------:|:---------------------------------:|:------------------------------------------:|
 |     /follow/new    |  POST  | **follower_id**, **following_id** | follower_id suit les posts de following_id |
-|   /follow/delete   |   GET  | **follower_id**, **following_id** |                                            |
+|   /follow/delete   |   GET  | **follower_id**, **following_id** |    follower_id ne suit plus following_id   |
 |   /followers/{id}  |   GET  |                none               |   Liste de nos followers (liste de users)  |
 | /followers/id/{id} |   GET  |                none               |       Liste des id de nos followers        |
 |   /following/{id}  |   GET  |                none               |    Liste de nos follows (liste de users)   |
