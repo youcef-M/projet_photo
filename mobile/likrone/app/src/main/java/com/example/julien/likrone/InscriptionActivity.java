@@ -16,6 +16,7 @@ public class InscriptionActivity extends Activity {
     EditText mp = null;
     EditText mp2 = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class InscriptionActivity extends Activity {
 
         raz.setOnClickListener(razListener);
         confirm.setOnClickListener(apresConfirmation);
+
     }
 
 
@@ -46,8 +48,9 @@ public class InscriptionActivity extends Activity {
     private View.OnClickListener apresConfirmation = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(InscriptionActivity.this, LoginActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(InscriptionActivity.this, LoginActivity.class);
+            setResult(0);
+            finish();
         }
     };
 }

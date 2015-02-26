@@ -8,6 +8,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Nouvelle Photo"
+        android:textStyle="bold"
+        android:textSize="50sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 

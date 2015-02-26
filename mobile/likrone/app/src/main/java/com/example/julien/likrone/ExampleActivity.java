@@ -11,8 +11,14 @@ import android.widget.TextView;
 
 public class ExampleActivity extends Activity {
 
-    Button boutonDeconnexion = null;
-    Button boutonAjout = null;
+    public void onActivityResult (int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 0) {
+            if (resultCode == 0)
+                finish();
+        }
+    }
+
     final String EXTRA_LOGIN = "user_login";
     private Menu m = null;
 
@@ -27,11 +33,6 @@ public class ExampleActivity extends Activity {
         if (intent != null) {
             loginDisplay.setText(intent.getStringExtra(EXTRA_LOGIN));
         }
-
-        boutonDeconnexion = (Button) findViewById(R.id.deconnexion);
-        boutonAjout = (Button) findViewById(R.id.publier);
-
-
     }
 
 
@@ -56,17 +57,19 @@ public class ExampleActivity extends Activity {
                 break;
             }*/
 
-           /* case R.id.publier: {
-                newPhoto();
-                break;
-            }*/
+            case R.id.publier: {
+                Intent intent2 = new Intent(ExampleActivity.this, Photo.class);
+                startActivity(intent2);
+                return true;
+            }
 
             case R.id.deconnexion: {
-                Intent intent = new Intent(ExampleActivity.this, LoginActivity.class);
-                startActivity(intent);
-                return true;
+                //Intent intent = new Intent(ExampleActivity.this, LoginActivity.class);
+                setResult(0);
+                finish();
             }
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

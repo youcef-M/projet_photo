@@ -35,7 +35,7 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, ExampleActivity.class);
                 intent.putExtra(EXTRA_LOGIN, login.getText().toString());
-                startActivity(intent);
+                startActivityForResult(intent,0);
             }
         });
 
