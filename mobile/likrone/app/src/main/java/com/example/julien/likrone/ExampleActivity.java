@@ -2,17 +2,16 @@ package com.example.julien.likrone;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 
 public class ExampleActivity extends MenuActivity {
 
-
-
     final String EXTRA_LOGIN = "user_login";
-    private Menu m = null;
+
+    public ExampleActivity(){
+        super(1);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,41 +23,6 @@ public class ExampleActivity extends MenuActivity {
 
         if (intent != null) {
             loginDisplay.setText(intent.getStringExtra(EXTRA_LOGIN));
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-          /*  case R.id.refresh: {
-                updateHomeList();
-                break;
-            }
-
-            case R.id.compte: {
-                showUser();
-                break;
-            }*/
-
-            case R.id.publier: {
-                Intent intent = new Intent(ExampleActivity.this, Photo.class);
-                startActivityForResult(intent,1);
-                return true;
-            }
-
-            case R.id.deconnexion: {
-                setResult(0);
-                finish();
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void onActivityResult (int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if (resultCode == 0)
-                finish();
         }
     }
 }

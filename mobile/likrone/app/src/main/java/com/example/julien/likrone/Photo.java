@@ -3,7 +3,6 @@ package com.example.julien.likrone;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +21,12 @@ public class Photo extends MenuActivity {
     Button raz = null;
     EditText titre = null;
     EditText desc = null;
+
+
+    public Photo(){
+        super(2);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,35 +61,6 @@ public class Photo extends MenuActivity {
                 img.setImageBitmap(bit);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-          /*  case R.id.refresh: {
-                updateHomeList();
-                break;
-            }
-
-            case R.id.compte: {
-                showUser();
-                break;
-            }*/
-
-            /*case R.id.publier: {
-                Intent intent2 = new Intent(ExampleActivity.this, Photo.class);
-                startActivity(intent2);
-                return true;
-            }*/
-
-            case R.id.deconnexion: {
-                //Intent intent = new Intent(Photo.this, LoginActivity.class);
-                setResult(0);
-                finish();
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private View.OnClickListener razListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -92,6 +68,4 @@ public class Photo extends MenuActivity {
             desc.getText().clear();
         }
     };
-
-
 }
