@@ -11,7 +11,7 @@
  
 |        URL        | METHOD |         ARGUMENTS         |                      Utilité                      |
 |:-----------------:|:------:|:-------------------------:|:-------------------------------------------------:|
-|       /users      |   GET  |            none           |               Liste des utilisateurs              |
+|       /users      |   GET  |          **page**         |               Liste des utilisateurs              |
 |     /user/new     |  POST  | *username,email,password* |                 Nouvel utilisateur                |
 |  /user/show/{id}  |   GET  |            none           |           Info de l'utilisateur n° {id}           |
 | /user/update/{id} |   PUT  | *username,email,password* |            MAJ de l'utilisateur n° {id}           |
@@ -23,13 +23,13 @@
       
 |         URL        | METHOD |                                 ARGUMENTS                                 |                     UTILITY                     |
 |:------------------:|:------:|:-------------------------------------------------------------------------:|:-----------------------------------------------:|
-|     /posts/{id}    |   GET  |                                    none                                   |                 Liste des posts                 |
+|     /posts/{id}    |   GET  |                                  **page**                                 |                 Liste des posts                 |
 |      /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)** |                   Nouveau post                  |
 |   /post/show/{id}  |   GET  |                                    none                                   |               Info du post n° {id}              |
 |  /post/update/{id} |   PUT  |                   **titre**, *description*, **privacy**                   |               MAJ du post n° {id}               |
 |  /post/delete/{id} |   GET  |                                    none                                   |           Suppression du post n° {id}           |
 | /post/privacy/{id} |  POST  |                                 *privacy*                                 |      Change la visibilité du post n° {id}       |
-|   /post/feed/{id}  |   GET  |                                    none                                   |   Liste des posts des follow du user n° {id}    |
+|   /post/feed/{id}  |   GET  |                                  **page**                                 |   Liste des posts des follow du user n° {id}    |
  
 EDIT: le lien pour supprimer est désactivé pour le moment.
 
@@ -38,8 +38,8 @@ EDIT: le lien pour supprimer est désactivé pour le moment.
 
 |          URL          | METHOD |               ARGUMENTS               |                 UTILITY                 |
 |:---------------------:|:------:|:-------------------------------------:|:---------------------------------------:|
-| /comments/bypost/{id} |   GET  |                  none                 |   Liste des commentaires pour un post   |
-| /comments/byuser/{id} |   GET  |                  none                 | Liste des commentaires d'un utilisateur |
+| /comments/bypost/{id} |   GET  |                **page**               |   Liste des commentaires pour un post   |
+| /comments/byuser/{id} |   GET  |                **page**               | Liste des commentaires d'un utilisateur |
 |      /comment/new     |  POST  |  **content**,**user_id**,**post_id**  |           Nouveau commentaire           |
 |   /comment/show/{id}  |   GET  |                  none                 |       Info du commentaire n° {id}       |
 |  /comment/update/{id} |   PUT  | **titre**, *description*, **privacy** |        MAJ du commentaire n° {id}       |
