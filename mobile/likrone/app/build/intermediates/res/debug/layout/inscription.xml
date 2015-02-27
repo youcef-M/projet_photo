@@ -108,4 +108,4 @@
         android:layout_alignRight="@+id/mp2"
         android:text="@string/confirmation"/>
 
-</RelativeLayout><!-- From: file:/C:/Users/rem/Desktop/Projet_M1/projet-photo/mobile/likrone/app/src/main/res/layout/inscription.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Julien/Documents/GitHub/projet-photo/mobile/likrone/app/src/main/res/layout/inscription.xml -->

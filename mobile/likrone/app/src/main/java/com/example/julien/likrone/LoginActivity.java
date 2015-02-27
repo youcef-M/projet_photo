@@ -35,28 +35,16 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, ExampleActivity.class);
                 intent.putExtra(EXTRA_LOGIN, login.getText().toString());
-                startActivityForResult(intent,0);
+                startActivityForResult(intent, 0);
             }
         });
 
-        creation.setOnClickListener(creationListener);
-        //connexion.setOnClickListener(connexionListener);
+        creation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, InscriptionActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-
-
-    /*  private View.OnClickListener connexionListener = new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              Intent intent2 = new Intent(LoginActivity.this, ExampleActivity.class);
-              startActivity(intent2);
-          }
-      };
-  */
-    private View.OnClickListener creationListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(LoginActivity.this, InscriptionActivity.class);
-            startActivity(intent);
-        }
-    };
 }

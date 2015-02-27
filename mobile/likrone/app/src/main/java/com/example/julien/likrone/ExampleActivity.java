@@ -1,23 +1,15 @@
 package com.example.julien.likrone;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
 
 
-public class ExampleActivity extends Activity {
+public class ExampleActivity extends MenuActivity {
 
-    public void onActivityResult (int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == 0) {
-            if (resultCode == 0)
-                finish();
-        }
-    }
 
     final String EXTRA_LOGIN = "user_login";
     private Menu m = null;
@@ -35,14 +27,6 @@ public class ExampleActivity extends Activity {
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -58,13 +42,12 @@ public class ExampleActivity extends Activity {
             }*/
 
             case R.id.publier: {
-                Intent intent2 = new Intent(ExampleActivity.this, Photo.class);
-                startActivity(intent2);
+                Intent intent = new Intent(ExampleActivity.this, Photo.class);
+                startActivityForResult(intent,1);
                 return true;
             }
 
             case R.id.deconnexion: {
-                //Intent intent = new Intent(ExampleActivity.this, LoginActivity.class);
                 setResult(0);
                 finish();
             }
@@ -72,4 +55,10 @@ public class ExampleActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onActivityResult (int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == 0)
+                finish();
+        }
+    }
 }
