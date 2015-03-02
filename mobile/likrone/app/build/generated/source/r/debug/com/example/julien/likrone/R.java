@@ -28,6 +28,7 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f090016;
+        public static final int camera=0x7f090010;
         public static final int cancel=0x7f090012;
         public static final int compte=0x7f090018;
         public static final int confirm=0x7f09000b;
@@ -37,7 +38,6 @@ public final class R {
         public static final int description=0x7f090015;
         public static final int email=0x7f090005;
         public static final int imageView=0x7f09000c;
-        public static final int importer=0x7f090010;
         public static final int login_display=0x7f090000;
         public static final int mp=0x7f090007;
         public static final int mp2=0x7f090009;
