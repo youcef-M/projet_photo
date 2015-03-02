@@ -56,11 +56,11 @@ public class MenuActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+/*
     public void onActivityResult (int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             if (resultCode == 1)
                 finish();
         }
-    }
+    }*/
 }
