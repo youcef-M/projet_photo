@@ -17,7 +17,7 @@
 | /user/update/{id} |   PUT  | *username,email,password* |            MAJ de l'utilisateur n° {id}           |
 | /user/delete/{id} |   GET  |            none           |        Suppression de l'utilisateur n° {id}       |
 |    /user/login    |  POST  |    *username, password*   | Vérifie la présence de l'utilisateur dans la BDD  |
-
+| /user/activate    |  POST  |    	   **token**		 | 	 Active un utilisateur identifié par son token   |
 
 ### Routes pour la gestion des posts. (en gras les parametres obligatoires)
       
