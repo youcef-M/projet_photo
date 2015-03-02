@@ -20,5 +20,19 @@
     <string name="compte">Acceder au compte</string>
     <string name="publier">Publier une photo</string>
     <string name="deconnexion">Deconnexion</string>
+    <string name="principale">Principale</string>
+    <string name="meilleures">Les meilleures</string>
+    <string name="pires">Les pires</string>
+    <string name="suivis">Les suivis</string>
+    <string name="poucev">+ 1 pastèque</string>
+    <string name="poucer">- 1 pastèque</string>
+    <string name="commenter">Commenter</string>
+    <string name="modifier">Modifier</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="titre">Cosmo le Dodo</string>
+    <string name="auteur">Publié par Cosmo lui-même</string>
+    <string name="score">Trois pastèques</string>
+    <string name="fgauche">Page précédente</string>
+    <string name="fdroite">Page suivante</string>
 
 </resources>
