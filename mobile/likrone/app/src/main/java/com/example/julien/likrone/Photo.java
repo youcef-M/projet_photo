@@ -1,27 +1,27 @@
 package com.example.julien.likrone;
 
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 
-public class Photo extends MenuActivity implements View.OnClickListener {
+public class Photo extends MenuActivity {
 
     /*
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         File fichier = new File(Environment.getExternalStorageDirectory(), "/storage/emulated/0/DCIM/Camera/20150211_083145.jpg");
         Uri chemin = Uri.fromFile(fichier);
     */
-
-    Button img = null;
+    ImageView img = null;
     Button raz = null;
     EditText titre = null;
     EditText desc = null;
-    String OPERATOR;
+
 
     public Photo(){
         super(2);
@@ -29,43 +29,43 @@ public class Photo extends MenuActivity implements View.OnClickListener {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_photo);
-
-        img = (Button) findViewById(R.id.photo);
-        img.setOnClickListener(this);
-        Intent operator_intent = getIntent();
-        OPERATOR = operator_intent.getStringExtra("operator");
 
         raz = (Button) findViewById(R.id.cancel);
         // intent.putExtra(MediaStore.EXTRA_OUTPUT, chemin);
 
         //this.startActivityForResult(intent, 0);
-        //raz.setOnClickListener(razListener);
+        raz.setOnClickListener(razListener);
         titre = (EditText) findViewById(R.id.titre);
         desc = (EditText) findViewById(R.id.description);
-    }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.photo) {
-            startCameraActivity();
-        }
+        img = (ImageView) findViewById(R.id.photo);
+        ImageView b = (ImageView) findViewById(R.id.photo);
 
-    }
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Photo.this, "Activation de l'appareil photo", Toast.LENGTH_SHORT).show();
 
-    public void startCameraActivity() {
-        final Intent capture_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(capture_intent, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == 1) {
-                Uri picUri = data.getData();
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,0);
             }
-        }
+        });
     }
+
+    @Override
+    public  void onActivityResult(int requestCode, int resultCode, Intent data) {
+                Bitmap bit= (Bitmap) data.getExtras().get("data");
+                img.setImageBitmap(bit);
+    }
+
+    private View.OnClickListener razListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            titre.getText().clear();
+            desc.getText().clear();
+        }
+    };
 }
