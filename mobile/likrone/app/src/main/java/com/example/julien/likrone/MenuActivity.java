@@ -33,12 +33,12 @@ public class MenuActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
-          /*  case R.id.refresh: {
-                updateHomeList();
-                break;
-            }
+            case R.id.refresh: {
+              //getWindow().getDecorView().findViewById(android.R.id.content).invalidate();
+              return true;
+          }
 
-            case R.id.compte: {
+           /*case R.id.compte: {
                 showUser();
                 break;
             }*/

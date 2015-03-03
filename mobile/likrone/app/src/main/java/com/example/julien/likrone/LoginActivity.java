@@ -1,3 +1,11 @@
+//J'ai placé l'accès à ExempleActivity en commentaire histoire de le remplacer par un accès à
+//l'acceuil. Il reste deux-trois détails d'ordre esthétique qu'il faudrait prendre en commun du
+//style on place une paire de bouton "page précédente/suivante" en haut de la vue également.
+//Les classes GalerieItem GalerieItem et les layout correspondant (ainsi que les layouts fragment)
+//ne serve pour le moment à rien.
+//Enfin, sur l'émulateur ça rend correctement, mais faudrait test sur une tablette en live.
+
+
 package com.example.julien.likrone;
 
 
@@ -30,12 +38,19 @@ public class LoginActivity extends Activity {
 
         final EditText login = (EditText) findViewById(R.id.pseudo);
 
+        //connexion.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        Intent intent = new Intent(LoginActivity.this, ExampleActivity.class);
+        //        intent.putExtra(EXTRA_LOGIN, login.getText().toString());
+        //        startActivityForResult(intent, 0);
+        //    }
+        //});
         connexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ExampleActivity.class);
-                intent.putExtra(EXTRA_LOGIN, login.getText().toString());
-                startActivityForResult(intent, 0);
+                Intent pAcceuil = new Intent(LoginActivity.this, AcceuilActivity.class);
+                startActivity(pAcceuil);
             }
         });
 

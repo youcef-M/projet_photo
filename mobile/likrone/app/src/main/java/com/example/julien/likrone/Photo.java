@@ -2,7 +2,6 @@ package com.example.julien.likrone;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +34,6 @@ public class Photo extends MenuActivity {
         titre = (EditText) findViewById(R.id.titre);
         desc = (EditText) findViewById(R.id.description);
         camera = (ImageButton) findViewById(R.id.camera);
-
         img = (ImageView) findViewById(R.id.photo);
 
         camera.setOnClickListener(new View.OnClickListener() {
