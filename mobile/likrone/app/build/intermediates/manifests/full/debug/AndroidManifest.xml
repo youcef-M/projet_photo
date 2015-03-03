@@ -31,9 +31,6 @@
         <activity
             android:name="com.example.julien.likrone.Photo"
             android:label="Photo" />
-        <activity
-            android:name="com.example.julien.likrone.AcceuilActivity"
-            android:label="Acceuil" />
     </application>
 
 </manifest>
