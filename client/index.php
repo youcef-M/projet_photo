@@ -12,34 +12,34 @@
     <body>
 		<header><h1 id="pascagram">Pascagram</h1></header>
 		<section id="inscription">
-		<form id="form_978276" class="appnitro" enctype="multipart/form-data" method="post" action="inscription.php">
+		<form id="form_inscription" class="appnitro" enctype="multipart/form-data" method="post" action="inscription.php">
 		<h2>Inscription</h2>	
 			<ul >
 				<li id="li_1" >
-					<label class="description" for="element_1">Pseudo </label>
+					<label class="description" for="pseudo">Pseudo </label>
 					<div>
-						<input id="element_1" name="element_1" type="text" maxlength="255" value=""/> 
+						<input id="pseudo" name="pseudo" type="text" maxlength="255" value=""/> 
 					</div> 
 				</li>		
 				
 				<li id="li_2" >
-					<label class="description" for="element_2">Mot de passe </label>
+					<label class="description" for="password">Mot de passe </label>
 					<div>
-						<input id="element_2" name="element_2" type="text" maxlength="255" value=""/> 
+						<input id="password" name="password" type="password" maxlength="255" value=""/> 
 					</div> 
 				</li>		
 				
 				<li id="li_3" >
-					<label class="description" for="element_3">Email </label>
+					<label class="description" for="mail">Email </label>
 					<div>
-						<input id="element_3" name="element_3" type="text" maxlength="255" value=""/> 
+						<input id="mail" name="mail" type="text" maxlength="255" value=""/> 
 					</div> 
 				</li>		
 				
 				<li id="li_4" >
-					<label class="description" for="element_4">T&eacute;l&eacute;charger un avatar </label>
+					<label class="description" for="avatar">T&eacute;l&eacute;charger un avatar </label>
 					<div>
-						<input id="element_4" name="element_4" type="file"/> 
+						<input id="avatar" name="avatar" type="file"/> 
 					</div>  
 				</li>
 			

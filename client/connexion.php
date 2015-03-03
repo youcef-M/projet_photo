@@ -12,20 +12,20 @@
     <body>
 		<header><h1 id="pascagram">Pascagram</h1></header>
 		<section id="inscription">
-		<form id="form_978276" class="appnitro" enctype="multipart/form-data" method="post" action="inscription.php">
+		<form id="form_978276" class="appnitro" enctype="multipart/form-data" method="post" action="connect.php">
 		<h2>Inscription</h2>	
 			<ul >
 				<li id="li_1" >
-					<label class="description" for="element_1">Pseudo </label>
+					<label class="description" for="pseudo">Pseudo </label>
 					<div>
-						<input id="element_11" name="element_11" type="text" maxlength="255" value=""/> 
+						<input id="pseudo" name="pseudo" type="text" maxlength="255" value=""/> 
 					</div> 
 				</li>		
 				
 				<li id="li_2" >
-					<label class="description" for="element_2">Mot de passe </label>
+					<label class="description" for="password">Mot de passe </label>
 					<div>
-						<input id="element_12" name="element_12" type="text" maxlength="255" value=""/> 
+						<input id="element_12" name="password" type="password" maxlength="255" value=""/> 
 					</div> 
 				</li>		
 				
