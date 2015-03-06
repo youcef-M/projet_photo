@@ -8,23 +8,13 @@
     </head>
 
     <body>
-		
 		<header>
 				<a href="accueil.php">Accueil</a>
 				<a href="accueil.php"><img src="images/pascagram.png" alt="" /></a>
 				<a href="profil.php">Afficher mon profil</a>
 				<a href="connexion.php">D&eacute;connexion</a>
 		</header>
-		<section id="profil">
-			<hr>
-			<img src="images/avatar.png" alt="" />
-			<h1>@_Pseudo</h1>
-			<p> Amis, Abonn&eacute;s, Groupes </p>
-			<a href="importerphoto.php">Importer une photo</a><br/>
-			<a href="creerungroupe.php">Cr&eacute;er un groupe</a><br/>
-			<a href="modifierprofil.php">Modifier mes informations</a><br/>
-			<hr>
-		</section>
+		<nav>Public   ---    Mes relations</nav>
 		<section id="photos">
 			<ul id="inedit">
 				<li><a href="./images/photo.png" title=""><img src="./images/photo.png" alt="" onclick="return false"/></a></li>
@@ -37,6 +27,5 @@
 		</section>
 		<hr>
 		<footer>2015. Pascagram</footer>
-		<script type="text/javascript" src="popup.js"></script>
     </body>
 </html>

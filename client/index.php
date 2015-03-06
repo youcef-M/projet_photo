@@ -5,12 +5,10 @@
         <title>Bienvenue sur Pascagram</title>
 		<link rel="stylesheet" type="text/css" href="css/reset-design.css" />
 		<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
-		<!--<link rel="stylesheet" type="text/css" href="form_inscription/view.css" media="all">
-		<script type="text/javascript" src="form_inscription/view.js"></script>-->
     </head>
 
     <body>
-		<header><h1 id="pascagram">Pascagram</h1></header>
+		<header><a href="accueil.php"><img src="images/pascagram.png" alt="" /></a></header>
 		<section id="inscription">
 		<form id="form_inscription" class="appnitro" enctype="multipart/form-data" method="post" action="inscription.php">
 		<h2>Inscription</h2>	
