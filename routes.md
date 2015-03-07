@@ -31,7 +31,6 @@
 | /post/privacy/{id} |  POST  |                                 *privacy*                                 |      Change la visibilité du post n° {id}       |
 |   /post/feed/{id}  |   GET  |                                  **page**                                 |   Liste des posts des follow du user n° {id}    |
  
-EDIT: le lien pour supprimer est désactivé pour le moment.
 
 
 ### Routes pour la gestion des commentaires.
@@ -53,6 +52,4 @@ EDIT: le lien pour supprimer est désactivé pour le moment.
 |     /follow/new    |  POST  | **follower_id**, **following_id** | follower_id suit les posts de following_id |
 |   /follow/delete   |   GET  | **follower_id**, **following_id** |    follower_id ne suit plus following_id   |
 |   /followers/{id}  |   GET  |                none               |   Liste de nos followers (liste de users)  |
-| /followers/id/{id} |   GET  |                none               |       Liste des id de nos followers        |
 |   /following/{id}  |   GET  |                none               |    Liste de nos follows (liste de users)   |
-| /following/id/{id} |   GET  |                none               |         Liste des id de nos follows        |
