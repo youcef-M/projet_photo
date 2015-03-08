@@ -17,12 +17,12 @@
 		<nav>Public   ---    Mes relations</nav>
 		<section id="photos">
 			<ul id="inedit">
-				<li><a href="./images/photo.png" title=""><img src="./images/photo.png" alt="" onclick="return false"/></a></li>
-				<li><a href="./images/photo.png" title=""><img src="./images/photo.png" alt="" onclick="return false"/></a></li>
-				<li><a href="./images/photo.png" title=""><img src="./images/photo.png" alt="" onclick="return false"/></a></li>
-				<li><a href="./images/photo.png" title=""><img src="./images/photo.png" alt="" onclick="return false"/></a></li>
-				<li><a href="./images/photo.png" title=""><img src="./images/photo.png" alt="" onclick="return false"/></a></li>
-				<li><a href="./images/photo.png" title=""><img src="./images/photo.png" alt="" onclick="return false"/></a></li>
+				<li><a href="afficherphoto.php" title=""><img src="./images/photo.png" alt=""/></a></li>
+				<li><a href="afficherphoto.php" title=""><img src="./images/photo.png" alt=""/></a></li>
+				<li><a href="afficherphoto.php" title=""><img src="./images/photo.png" alt=""/></a></li>
+				<li><a href="afficherphoto.php" title=""><img src="./images/photo.png"/></a></li>
+				<li><a href="afficherphoto.php" title=""><img src="./images/photo.png"/></a></li>
+				<li><a href="afficherphoto.php" title=""><img src="./images/photo.png"/></a></li>
 			</ul>
 		</section>
 		<hr>
