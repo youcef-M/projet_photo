@@ -27,7 +27,8 @@ public final class R {
         public static final int likorne=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f090074;
+        public static final int action_settings=0x7f090078;
+        public static final int apercu=0x7f090064;
         public static final int auteur=0x7f09000b;
         public static final int auteur10=0x7f09005c;
         public static final int auteur2=0x7f090014;
@@ -38,8 +39,8 @@ public final class R {
         public static final int auteur7=0x7f090041;
         public static final int auteur8=0x7f09004a;
         public static final int auteur9=0x7f090053;
-        public static final int camera=0x7f09006f;
-        public static final int cancel=0x7f090071;
+        public static final int camera=0x7f090073;
+        public static final int cancel=0x7f090075;
         public static final int commenter=0x7f090007;
         public static final int commenter10=0x7f090058;
         public static final int commenter2=0x7f090010;
@@ -50,15 +51,17 @@ public final class R {
         public static final int commenter7=0x7f09003d;
         public static final int commenter8=0x7f090046;
         public static final int commenter9=0x7f09004f;
-        public static final int compte=0x7f090076;
-        public static final int confirm=0x7f09006b;
-        public static final int connect=0x7f09006c;
-        public static final int creation=0x7f09006d;
-        public static final int deconnexion=0x7f090078;
-        public static final int description=0x7f090073;
-        public static final int email=0x7f090065;
+        public static final int compte=0x7f09007a;
+        public static final int confirm=0x7f09006f;
+        public static final int connect=0x7f090070;
+        public static final int creation=0x7f090071;
+        public static final int deconnexion=0x7f09007c;
+        public static final int desc_display=0x7f090063;
+        public static final int description=0x7f090077;
+        public static final int email=0x7f090069;
         public static final int fdroite=0x7f09005f;
         public static final int fgauche=0x7f09005e;
+        public static final int idUser=0x7f090060;
         public static final int imageView=0x7f090004;
         public static final int imageView10=0x7f090055;
         public static final int imageView2=0x7f09000d;
@@ -69,7 +72,6 @@ public final class R {
         public static final int imageView7=0x7f09003a;
         public static final int imageView8=0x7f090043;
         public static final int imageView9=0x7f09004c;
-        public static final int login_display=0x7f090060;
         public static final int meilleures=0x7f090001;
         public static final int modifier=0x7f090008;
         public static final int modifier10=0x7f090059;
@@ -81,10 +83,11 @@ public final class R {
         public static final int modifier7=0x7f09003e;
         public static final int modifier8=0x7f090047;
         public static final int modifier9=0x7f090050;
-        public static final int mp=0x7f090067;
-        public static final int mp2=0x7f090069;
-        public static final int newphoto=0x7f09006e;
-        public static final int photo=0x7f090072;
+        public static final int mp=0x7f09006b;
+        public static final int mp2=0x7f09006d;
+        public static final int newphoto=0x7f090072;
+        public static final int nom=0x7f090061;
+        public static final int photo=0x7f090076;
         public static final int pires=0x7f090002;
         public static final int poucer=0x7f090006;
         public static final int poucer10=0x7f090057;
@@ -107,11 +110,11 @@ public final class R {
         public static final int poucev8=0x7f090044;
         public static final int poucev9=0x7f09004d;
         public static final int principale=0x7f090000;
-        public static final int pseudo=0x7f090063;
-        public static final int publier=0x7f090077;
-        public static final int raz=0x7f09006a;
-        public static final int refresh=0x7f090075;
-        public static final int save=0x7f090070;
+        public static final int pseudo=0x7f090067;
+        public static final int publier=0x7f09007b;
+        public static final int raz=0x7f09006e;
+        public static final int refresh=0x7f090079;
+        public static final int save=0x7f090074;
         public static final int score=0x7f09000c;
         public static final int score10=0x7f09005d;
         public static final int score2=0x7f090015;
@@ -143,22 +146,24 @@ public final class R {
         public static final int titre7=0x7f090040;
         public static final int titre8=0x7f090049;
         public static final int titre9=0x7f090052;
-        public static final int viewEmail=0x7f090064;
-        public static final int viewInsc=0x7f090061;
-        public static final int viewMp=0x7f090066;
-        public static final int viewMp2=0x7f090068;
-        public static final int viewPseudo=0x7f090062;
+        public static final int titre_display=0x7f090062;
+        public static final int viewEmail=0x7f090068;
+        public static final int viewInsc=0x7f090065;
+        public static final int viewMp=0x7f09006a;
+        public static final int viewMp2=0x7f09006c;
+        public static final int viewPseudo=0x7f090066;
     }
     public static final class layout {
         public static final int acceuil=0x7f030000;
-        public static final int example=0x7f030001;
-        public static final int fragment_photo_grid=0x7f030002;
-        public static final int fragment_photo_list=0x7f030003;
-        public static final int galeriephoto_grid_item=0x7f030004;
-        public static final int galeriephoto_list_item=0x7f030005;
-        public static final int inscription=0x7f030006;
-        public static final int login=0x7f030007;
-        public static final int new_photo=0x7f030008;
+        public static final int compte=0x7f030001;
+        public static final int example=0x7f030002;
+        public static final int fragment_photo_grid=0x7f030003;
+        public static final int fragment_photo_list=0x7f030004;
+        public static final int galeriephoto_grid_item=0x7f030005;
+        public static final int galeriephoto_list_item=0x7f030006;
+        public static final int inscription=0x7f030007;
+        public static final int login=0x7f030008;
+        public static final int new_photo=0x7f030009;
     }
     public static final class menu {
         public static final int menu_main=0x7f080000;
