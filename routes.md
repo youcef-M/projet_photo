@@ -41,7 +41,7 @@
 | /comments/byuser/{id} |   GET  |                **page**               | Liste des commentaires d'un utilisateur |
 |      /comment/new     |  POST  |  **content**,**user_id**,**post_id**  |           Nouveau commentaire           |
 |   /comment/show/{id}  |   GET  |                  none                 |       Info du commentaire n° {id}       |
-|  /comment/update/{id} |   PUT  | **titre**, *description*, **privacy** |        MAJ du commentaire n° {id}       |
+|  /comment/update/{id} |   PUT  |              **content**              |        MAJ du commentaire n° {id}       |
 |  /comment/delete/{id} |   GET  |                  none                 |       Suppression du post n° {id}       |
 
 
