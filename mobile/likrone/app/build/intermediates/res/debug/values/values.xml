@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/rem/Desktop/Projet_M1/projet-photo/mobile/likrone/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Julien/AndroidStudioProjects/likrone/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="background">#FFFFFF</color>
     <color name="blanc">#FFFFFF</color>
-    <!-- From: file:/C:/Users/rem/Desktop/Projet_M1/projet-photo/mobile/likrone/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Julien/AndroidStudioProjects/likrone/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/rem/Desktop/Projet_M1/projet-photo/mobile/likrone/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Julien/AndroidStudioProjects/likrone/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="Password">Password</string>
+    <string name="Role">Mauvais identifiants</string>
+    <string name="Status">Not login</string>
+    <string name="Username">Username</string>
     <string name="action_settings">Settings</string>
     <string name="actualiser">Actualiser</string>
     <string name="app_name">DodoMino</string>
@@ -43,7 +47,7 @@
     <string name="viewMp">Mot de passe : </string>
     <string name="viewMp2">Confirmation du mot de passe : </string>
     <string name="viewPseudo">Pseudo : </string>
-    <!-- From: file:/C:/Users/rem/Desktop/Projet_M1/projet-photo/mobile/likrone/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Julien/AndroidStudioProjects/likrone/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="background">
         <item name="android:background">@color/background</item>

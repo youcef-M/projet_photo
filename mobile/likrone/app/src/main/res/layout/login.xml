@@ -23,6 +23,11 @@
         android:textStyle="bold"
         android:text="@string/viewPseudo"/>
 
+    <TextView
+        android:id="@+id/reponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/pseudo"
         android:layout_width="250dp"
@@ -55,6 +60,14 @@
         android:ems="10"
         android:hint="@string/mp"/>
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/creation"
+        android:text="@string/Role"
+        android:textSize="10sp"/>
+
     <Button
         android:id="@+id/connect"
         android:layout_width="120dp"
@@ -62,6 +75,7 @@
         android:layout_below="@id/mp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
+        android:onClick="loginPost"
         android:text="@string/connect"/>
 
     <Button
