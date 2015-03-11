@@ -57,20 +57,20 @@
 
 ### Routes pour la gestion des friends
 
-|         URL        | METHOD |             ARGUMENTS             |                   UTILITY                  |
-|:------------------:|:------:|:---------------------------------:|:------------------------------------------:|
-|     /friends/{id}  |  GET   |                none               |   Liste des friends de l'{id}              | 
-|   /friend/activate |  PUT   |   **user_id**, **friend_id**      |    Accepte friend_id de user_id            |
-|/friends/waiting/{id}|  GET  |                none               |   Liste des amis en attente de l'{id}      |
-|   /friend/new      |  POST  |        **user_id**, **friend_id**   |   Demande de nouvel ami                    |
-|   /friend/delete   | DELETE |        **user_id**, **friend_id**   |  Suppression de la relation ami            |        
+|         URL        | METHOD |             ARGUMENTS               |                   UTILITY                  |
+|:------------------:|:------:|:-----------------------------------:|:------------------------------------------:|
+|     /friends/{id}  |  GET   |                none                 |   Liste des friends de l'{id}              | 
+|   /friend/activate |  PUT   |     **user_id**, **friend_id**      |     friend_id accepte user_id              |
+|/friends/waiting/{id}|  GET  |                none                 |   Liste des amis en attente de l'{id}      |
+|   /friend/new      |  POST  |      **user_id**, **friend_id**     |   user_id demande friend_id en ami         |
+|   /friend/delete   | DELETE |      **user_id**, **friend_id**     |  Suppression de la relation ami            |        
 
 ### Routes pour la gestion des votes
 
-|         URL        | METHOD |             ARGUMENTS             |                   UTILITY                  |
-|:------------------:|:------:|:---------------------------------:|:------------------------------------------:|
-|  /vote/likes/{id}  |  GET   |                none               |   Nombre de like pour le post {id}         | 
-|/vote/dislikes/{id} |  GET   |                none               |    Nombre de dislike pour le post {id}     |
+|         URL        | METHOD |             ARGUMENTS             |                   UTILITY                   |
+|:------------------:|:------:|:---------------------------------:|:-------------------------------------------:|
+|  /vote/likes/{id}  |  GET   |                none               |   Nombre de like pour le post {id}          | 
+|/vote/dislikes/{id} |  GET   |                none               |    Nombre de dislike pour le post {id}      |
 |/vote/like/         |  POST  |      **user_id**, **post_id**     |    user_ id like la photo post_id           |
 |/vote/dislike/      |  POST  |      **user_id**, **post_id**     |    user_ id dislike la photo post_id        |
 |/vote/voted/        |  GET   |      **user_id**, **post_id**     |    Vérifie si la personne à déjà votée      |
