@@ -9,15 +9,16 @@
    
 ### Routes pour la gestion des utilisateurs.
  
-|        URL        | METHOD |         ARGUMENTS         |                      Utilité                      |
-|:-----------------:|:------:|:-------------------------:|:-------------------------------------------------:|
-|       /users      |   GET  |          **page**         |               Liste des utilisateurs              |
-|     /user/new     |  POST  | *username,email,password* |                 Nouvel utilisateur                |
-|  /user/show/{id}  |   GET  |            none           |           Info de l'utilisateur n° {id}           |
-| /user/update/{id} |   PUT  | *username,email,password* |            MAJ de l'utilisateur n° {id}           |
-| /user/delete/{id} | DELETE |            none           |        Suppression de l'utilisateur n° {id}       |
-|    /user/login    |  POST  |    *username, password*   | Vérifie la présence de l'utilisateur dans la BDD  |
-| /user/activate    |  POST  |    **token**		         | 	 Active un utilisateur identifié par son token   |
+|        URL        | METHOD |         ARGUMENTS         |                      Utilité                          |
+|:-----------------:|:------:|:-------------------------:|:-----------------------------------------------------:|
+|       /users      |   GET  |          **page**         |               Liste des utilisateurs                  |
+|     /user/new     |  POST  | *username,email,password* |                 Nouvel utilisateur                    |
+|  /user/show/{id}  |   GET  |            none           |           Info de l'utilisateur n° {id}               |
+| /user/update/{id} |   PUT  | *username,email,password* |            MAJ de l'utilisateur n° {id}               |
+| /user/delete/{id} | DELETE |            none           |        Suppression de l'utilisateur n° {id}           |
+|    /user/login    |  POST  |    *username, password*   |    Vérifie la présence de l'utilisateur dans la BD    |
+| /user/activate    |  POST  |         **token*	         |     Active un utilisateur identifié par son token     |
+| /user/avatar/{id} |  POST  |    **photo**(image jpg)   |      Change la photo de profil de l'utilisateur {id}  |
 
 ### Routes pour la gestion des posts. (en gras les parametres obligatoires)
       
