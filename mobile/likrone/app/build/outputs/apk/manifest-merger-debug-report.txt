@@ -23,7 +23,7 @@ ADDED from AndroidManifest.xml:5:5
 		ADDED from AndroidManifest.xml:8:9
 	android:theme
 		ADDED from AndroidManifest.xml:10:9
-activity#com.example.julien.likrone.ExampleActivity
+activity#com.example.julien.likrone.LoginActivity
 ADDED from AndroidManifest.xml:11:9
 	android:label
 		ADDED from AndroidManifest.xml:13:13
@@ -45,10 +45,10 @@ ADDED from AndroidManifest.xml:21:9
 		ADDED from AndroidManifest.xml:21:55
 	android:name
 		ADDED from AndroidManifest.xml:21:19
-activity#com.example.julien.likrone.LoginActivity
+activity#com.example.julien.likrone.ExampleActivity
 ADDED from AndroidManifest.xml:22:9
 	android:label
-		ADDED from AndroidManifest.xml:22:49
+		ADDED from AndroidManifest.xml:22:51
 	android:name
 		ADDED from AndroidManifest.xml:22:19
 activity#com.example.julien.likrone.Photo
@@ -57,16 +57,20 @@ ADDED from AndroidManifest.xml:23:9
 		ADDED from AndroidManifest.xml:23:41
 	android:name
 		ADDED from AndroidManifest.xml:23:19
-activity#com.example.julien.likrone.AcceuilActivity
+activity#com.example.julien.likrone.AccueilActivity
 ADDED from AndroidManifest.xml:24:9
 	android:label
 		ADDED from AndroidManifest.xml:24:51
 	android:name
 		ADDED from AndroidManifest.xml:24:19
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from AndroidManifest.xml:26:9
+ADDED from AndroidManifest.xml:27:5
 	android:name
-		ADDED from AndroidManifest.xml:26:26
+		ADDED from AndroidManifest.xml:27:22
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:28:5
+	android:name
+		ADDED from AndroidManifest.xml:28:22
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 	android:targetSdkVersion

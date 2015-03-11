@@ -35,4 +35,13 @@
     <string name="fgauche">Page précédente</string>
     <string name="fdroite">Page suivante</string>
 
+
+
+
+
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="Role">Mauvais identifiants</string>
+
+
 </resources>

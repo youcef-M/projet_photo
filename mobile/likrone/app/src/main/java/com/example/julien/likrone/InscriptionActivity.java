@@ -31,7 +31,6 @@ public class InscriptionActivity extends Activity {
 
         raz.setOnClickListener(razListener);
         confirm.setOnClickListener(apresConfirmation);
-
     }
 
 
@@ -48,8 +47,8 @@ public class InscriptionActivity extends Activity {
     private View.OnClickListener apresConfirmation = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //Intent intent = new Intent(InscriptionActivity.this, LoginActivity.class);
-            setResult(0);
+            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(i);
             finish();
         }
     };
