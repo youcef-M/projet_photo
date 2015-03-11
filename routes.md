@@ -73,6 +73,5 @@
 |/vote/dislikes/{id} |  GET   |                none               |    Nombre de dislike pour le post {id}      |
 |/vote/like/         |  POST  |      **user_id**, **post_id**     |    user_ id like la photo post_id           |
 |/vote/dislike/      |  POST  |      **user_id**, **post_id**     |    user_ id dislike la photo post_id        |
-|/vote/voted/        |  GET   |      **user_id**, **post_id**     |    Vérifie si la personne à déjà votée      |
 |/vote/delete/       | DELETE |      **user_id**, **post_id**     |    Supprime le vote                         |
 
