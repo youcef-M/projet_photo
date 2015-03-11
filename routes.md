@@ -15,9 +15,9 @@
 |     /user/new     |  POST  | *username,email,password* |                 Nouvel utilisateur                |
 |  /user/show/{id}  |   GET  |            none           |           Info de l'utilisateur n° {id}           |
 | /user/update/{id} |   PUT  | *username,email,password* |            MAJ de l'utilisateur n° {id}           |
-| /user/delete/{id} |   GET  |            none           |        Suppression de l'utilisateur n° {id}       |
+| /user/delete/{id} | DELETE |            none           |        Suppression de l'utilisateur n° {id}       |
 |    /user/login    |  POST  |    *username, password*   | Vérifie la présence de l'utilisateur dans la BDD  |
-| /user/activate    |  POST  |    	   **token**		 | 	 Active un utilisateur identifié par son token   |
+| /user/activate    |  POST  |    **token**		 | 	 Active un utilisateur identifié par son token   |
 
 ### Routes pour la gestion des posts. (en gras les parametres obligatoires)
       
@@ -27,9 +27,10 @@
 |      /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)** |                   Nouveau post                  |
 |   /post/show/{id}  |   GET  |                                    none                                   |               Info du post n° {id}              |
 |  /post/update/{id} |   PUT  |                   **titre**, *description*, **privacy**                   |               MAJ du post n° {id}               |
-|  /post/delete/{id} |   GET  |                                    none                                   |           Suppression du post n° {id}           |
+|  /post/delete/{id} |   DELETE  |                                    none                                   |        Suppression du post n° {id}           |
 | /post/privacy/{id} |  POST  |                                 *privacy*                                 |      Change la visibilité du post n° {id}       |
-|   /post/feed/{id}  |   GET  |                                  **page**                                 |   Liste des posts des follow du user n° {id}    |
+|   /post/feed/{id}/follow  |   GET  |                                  **page**                                 |   Liste des posts des follow du user n° {id}    |
+| /post/feed/{id}/friend    |   GET  |               **page**                                           
  
 
 
