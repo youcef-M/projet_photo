@@ -17,7 +17,7 @@
 | /user/update/{id} |   PUT  | *username,email,password* |            MAJ de l'utilisateur n° {id}           |
 | /user/delete/{id} | DELETE |            none           |        Suppression de l'utilisateur n° {id}       |
 |    /user/login    |  POST  |    *username, password*   | Vérifie la présence de l'utilisateur dans la BDD  |
-| /user/activate    |  POST  |    **token**		 | 	 Active un utilisateur identifié par son token   |
+| /user/activate    |  POST  |    **token**		         | 	 Active un utilisateur identifié par son token   |
 
 ### Routes pour la gestion des posts. (en gras les parametres obligatoires)
       
@@ -27,10 +27,10 @@
 |      /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)** |                   Nouveau post                  |
 |   /post/show/{id}  |   GET  |                                    none                                   |               Info du post n° {id}              |
 |  /post/update/{id} |   PUT  |                   **titre**, *description*, **privacy**                   |               MAJ du post n° {id}               |
-|  /post/delete/{id} |   DELETE  |                                    none                                   |        Suppression du post n° {id}           |
+|  /post/delete/{id} |   DELETE  |                                 none                                   |        Suppression du post n° {id}           |
 | /post/privacy/{id} |  POST  |                                 *privacy*                                 |      Change la visibilité du post n° {id}       |
-|   /post/feed/{id}/follow  |   GET  |                                  **page**                                 |   Liste des posts des follow du user n° {id}    |
-| /post/feed/{id}/friend    |   GET  |               **page**                                           
+|   /post/feed/{id}/follow  |   GET  |                           **page**                                 |   Liste des posts des follow du user n° {id}    |
+| /post/feed/{id}/friend    |   GET  |                            **page**                                | Liste des posts des friends du user n° id}    | 
  
 
 
@@ -43,7 +43,7 @@
 |      /comment/new     |  POST  |  **content**,**user_id**,**post_id**  |           Nouveau commentaire           |
 |   /comment/show/{id}  |   GET  |                  none                 |       Info du commentaire n° {id}       |
 |  /comment/update/{id} |   PUT  |              **content**              |        MAJ du commentaire n° {id}       |
-|  /comment/delete/{id} |   GET  |                  none                 |       Suppression du post n° {id}       |
+|  /comment/delete/{id} | DELETE |                  none                 |       Suppression du post n° {id}       |
 
 
 ### Routes pour la gestion des follows
@@ -51,6 +51,28 @@
 |         URL        | METHOD |             ARGUMENTS             |                   UTILITY                  |
 |:------------------:|:------:|:---------------------------------:|:------------------------------------------:|
 |     /follow/new    |  POST  | **follower_id**, **following_id** | follower_id suit les posts de following_id |
-|   /follow/delete   |   GET  | **follower_id**, **following_id** |    follower_id ne suit plus following_id   |
+|   /follow/delete   |  DELETE| **follower_id**, **following_id** |    follower_id ne suit plus following_id   |
 |   /followers/{id}  |   GET  |                none               |   Liste de nos followers (liste de users)  |
-|   /following/{id}  |   GET  |                none               |    Liste de nos follows (liste de users)   |
+|   /following/{id}  |   GET  |  **follower_id**, **following_id**|    Liste de nos follows (liste de users)   |
+
+### Routes pour la gestion des friends
+
+|         URL        | METHOD |             ARGUMENTS             |                   UTILITY                  |
+|:------------------:|:------:|:---------------------------------:|:------------------------------------------:|
+|     /friends/{id}  |  GET   |                none               |   Liste des friends de l'{id}              | 
+|   /friend/activate |  PUT   |   **user_id**, **friend_id**      |    Accepte friend_id de user_id            |
+|/friends/waiting/{id}|  GET  |                none               |   Liste des amis en attente de l'{id}      |
+|   /friend/new      |  POST  |        **user_id, **friend_id**   |   Demande de nouvel ami                    |
+|   /friend/delete   | DELETE |        **user_id, **friend_id**   |  Suppression de la relation ami            |        
+
+### Routes pour la gestion des votes
+
+|         URL        | METHOD |             ARGUMENTS             |                   UTILITY                  |
+|:------------------:|:------:|:---------------------------------:|:------------------------------------------:|
+|  /vote/likes/{id}  |  GET   |                none               |   Nombre de like pour le post {id}         | 
+|/vote/dislikes/{id} |  GET   |                none               |    Nombre de dislike pour le post {id}     |
+|/vote/like/         |  POST  |      **user_id**, **post_id**     |    user_ id like la photo post_id           |
+|/vote/dislike/      |  POST  |      **user_id**, **post_id**     |    user_ id dislike la photo post_id        |
+|/vote/voted/        |  GET   |      **user_id**, **post_id**     |    Vérifie si la personne à déjà votée      |
+|/vote/delete/       | DELETE |      **user_id**, **post_id**     |    Supprime le vote                         |
+
