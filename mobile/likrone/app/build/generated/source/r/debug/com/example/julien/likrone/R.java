@@ -24,9 +24,10 @@ public final class R {
         public static final int ic_action_person=0x7f020002;
         public static final int ic_action_refresh=0x7f020003;
         public static final int ic_launcher=0x7f020004;
+        public static final int likorne=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f09007a;
+        public static final int action_settings=0x7f090078;
         public static final int apercu=0x7f090064;
         public static final int auteur=0x7f09000b;
         public static final int auteur10=0x7f09005c;
@@ -38,8 +39,8 @@ public final class R {
         public static final int auteur7=0x7f090041;
         public static final int auteur8=0x7f09004a;
         public static final int auteur9=0x7f090053;
-        public static final int camera=0x7f090075;
-        public static final int cancel=0x7f090077;
+        public static final int camera=0x7f090073;
+        public static final int cancel=0x7f090075;
         public static final int commenter=0x7f090007;
         public static final int commenter10=0x7f090058;
         public static final int commenter2=0x7f090010;
@@ -50,13 +51,13 @@ public final class R {
         public static final int commenter7=0x7f09003d;
         public static final int commenter8=0x7f090046;
         public static final int commenter9=0x7f09004f;
-        public static final int compte=0x7f09007c;
+        public static final int compte=0x7f09007a;
         public static final int confirm=0x7f09006f;
-        public static final int connect=0x7f090073;
-        public static final int creation=0x7f090072;
-        public static final int deconnexion=0x7f09007e;
+        public static final int connect=0x7f090070;
+        public static final int creation=0x7f090071;
+        public static final int deconnexion=0x7f09007c;
         public static final int desc_display=0x7f090063;
-        public static final int description=0x7f090079;
+        public static final int description=0x7f090077;
         public static final int email=0x7f090069;
         public static final int fdroite=0x7f09005f;
         public static final int fgauche=0x7f09005e;
@@ -84,9 +85,9 @@ public final class R {
         public static final int modifier9=0x7f090050;
         public static final int mp=0x7f09006b;
         public static final int mp2=0x7f09006d;
-        public static final int newphoto=0x7f090074;
+        public static final int newphoto=0x7f090072;
         public static final int nom=0x7f090061;
-        public static final int photo=0x7f090078;
+        public static final int photo=0x7f090076;
         public static final int pires=0x7f090002;
         public static final int poucer=0x7f090006;
         public static final int poucer10=0x7f090057;
@@ -110,11 +111,10 @@ public final class R {
         public static final int poucev9=0x7f09004d;
         public static final int principale=0x7f090000;
         public static final int pseudo=0x7f090067;
-        public static final int publier=0x7f09007d;
+        public static final int publier=0x7f09007b;
         public static final int raz=0x7f09006e;
-        public static final int refresh=0x7f09007b;
-        public static final int reponse=0x7f090070;
-        public static final int save=0x7f090076;
+        public static final int refresh=0x7f090079;
+        public static final int save=0x7f090074;
         public static final int score=0x7f09000c;
         public static final int score10=0x7f09005d;
         public static final int score2=0x7f090015;
@@ -136,7 +136,6 @@ public final class R {
         public static final int supprimer7=0x7f09003f;
         public static final int supprimer8=0x7f090048;
         public static final int supprimer9=0x7f090051;
-        public static final int textView7=0x7f090071;
         public static final int titre=0x7f09000a;
         public static final int titre10=0x7f09005b;
         public static final int titre2=0x7f090013;
@@ -155,54 +154,54 @@ public final class R {
         public static final int viewPseudo=0x7f090066;
     }
     public static final class layout {
-        public static final int accueil=0x7f030000;
+        public static final int acceuil=0x7f030000;
         public static final int compte=0x7f030001;
         public static final int example=0x7f030002;
-        public static final int inscription=0x7f030003;
-        public static final int login=0x7f030004;
-        public static final int new_photo=0x7f030005;
+        public static final int fragment_photo_grid=0x7f030003;
+        public static final int fragment_photo_list=0x7f030004;
+        public static final int galeriephoto_grid_item=0x7f030005;
+        public static final int galeriephoto_list_item=0x7f030006;
+        public static final int inscription=0x7f030007;
+        public static final int login=0x7f030008;
+        public static final int new_photo=0x7f030009;
     }
     public static final class menu {
         public static final int menu_main=0x7f080000;
     }
     public static final class string {
-        public static final int Password=0x7f060000;
-        public static final int Role=0x7f060001;
-        public static final int Status=0x7f060002;
-        public static final int Username=0x7f060003;
-        public static final int action_settings=0x7f060004;
-        public static final int actualiser=0x7f060005;
-        public static final int app_name=0x7f060006;
-        public static final int auteur=0x7f060007;
-        public static final int commenter=0x7f060008;
-        public static final int compte=0x7f060009;
-        public static final int confirmation=0x7f06000a;
-        public static final int connect=0x7f06000b;
-        public static final int deconnexion=0x7f06000c;
-        public static final int effacer=0x7f06000d;
-        public static final int email=0x7f06000e;
-        public static final int fdroite=0x7f06000f;
-        public static final int fgauche=0x7f060010;
-        public static final int inscription=0x7f060011;
-        public static final int meilleures=0x7f060012;
-        public static final int modifier=0x7f060013;
-        public static final int mp=0x7f060014;
-        public static final int mp2=0x7f060015;
-        public static final int pires=0x7f060016;
-        public static final int poucer=0x7f060017;
-        public static final int poucev=0x7f060018;
-        public static final int principale=0x7f060019;
-        public static final int pseudo=0x7f06001a;
-        public static final int publier=0x7f06001b;
-        public static final int score=0x7f06001c;
-        public static final int suivis=0x7f06001d;
-        public static final int supprimer=0x7f06001e;
-        public static final int titre=0x7f06001f;
-        public static final int viewEmail=0x7f060020;
-        public static final int viewInsc=0x7f060021;
-        public static final int viewMp=0x7f060022;
-        public static final int viewMp2=0x7f060023;
-        public static final int viewPseudo=0x7f060024;
+        public static final int action_settings=0x7f060000;
+        public static final int actualiser=0x7f060001;
+        public static final int app_name=0x7f060002;
+        public static final int auteur=0x7f060003;
+        public static final int commenter=0x7f060004;
+        public static final int compte=0x7f060005;
+        public static final int confirmation=0x7f060006;
+        public static final int connect=0x7f060007;
+        public static final int deconnexion=0x7f060008;
+        public static final int effacer=0x7f060009;
+        public static final int email=0x7f06000a;
+        public static final int fdroite=0x7f06000b;
+        public static final int fgauche=0x7f06000c;
+        public static final int inscription=0x7f06000d;
+        public static final int meilleures=0x7f06000e;
+        public static final int modifier=0x7f06000f;
+        public static final int mp=0x7f060010;
+        public static final int mp2=0x7f060011;
+        public static final int pires=0x7f060012;
+        public static final int poucer=0x7f060013;
+        public static final int poucev=0x7f060014;
+        public static final int principale=0x7f060015;
+        public static final int pseudo=0x7f060016;
+        public static final int publier=0x7f060017;
+        public static final int score=0x7f060018;
+        public static final int suivis=0x7f060019;
+        public static final int supprimer=0x7f06001a;
+        public static final int titre=0x7f06001b;
+        public static final int viewEmail=0x7f06001c;
+        public static final int viewInsc=0x7f06001d;
+        public static final int viewMp=0x7f06001e;
+        public static final int viewMp2=0x7f06001f;
+        public static final int viewPseudo=0x7f060020;
     }
     public static final class style {
         public static final int AppTheme=0x7f070001;
