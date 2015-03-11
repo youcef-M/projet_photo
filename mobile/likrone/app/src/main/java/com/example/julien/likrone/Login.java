@@ -48,7 +48,6 @@ public class Login extends AsyncTask<String,Void,String> {
                 sb.append(line);
                 break;
             }
-            this.roleField.setText(sb.toString());
             return sb.toString();
         } catch (Exception e) {
             return "Mauvais identifiants";
@@ -57,6 +56,6 @@ public class Login extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result){
-        roleField.setText(result);
+        this.roleField.setText(result);
     }
 }

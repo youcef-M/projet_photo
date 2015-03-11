@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.concurrent.ExecutionException;
+
 public class LoginActivity extends Activity{
     private EditText pseudo,mp;
     private TextView role;
     Button creation = null;
+    final String  EXTRA_INFO ="info_user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +34,19 @@ public class LoginActivity extends Activity{
             }
         });
 
+
     }
 
-    public void loginPost(View view){
+    public void loginPost(View view) throws ExecutionException, InterruptedException {
         String username = pseudo.getText().toString();
         String password = mp.getText().toString();
-        new Login(this,role).execute(username,password);
         mp.getText().clear();
-        if(role.getText()=="Mauvais identifiants") {
+        if(new Login(this,role).execute(username,password).get()!="Mauvais identifiants") {
             Intent intent = new Intent(LoginActivity.this, AccueilActivity.class);
-            role.setVisibility(view.INVISIBLE);
+            intent.putExtra(EXTRA_INFO,role.getText().toString());
             startActivity(intent);
         }
+        else
+            role.setVisibility(view.VISIBLE);
     }
 }

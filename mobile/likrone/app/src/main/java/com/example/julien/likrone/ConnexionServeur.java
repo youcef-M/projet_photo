@@ -41,7 +41,6 @@ class ConnexionServeur extends AsyncTask<Void, Void, String> {
 
             EXTRA_ID = result;
 
-
             //code = Integer.toString(connection.getResponseCode());
             //EXTRA_ID = connection.getResponseMessage();
 
@@ -54,5 +53,4 @@ class ConnexionServeur extends AsyncTask<Void, Void, String> {
         }
         return nom;
     }
-
 }
