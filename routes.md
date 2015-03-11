@@ -62,8 +62,8 @@
 |     /friends/{id}  |  GET   |                none               |   Liste des friends de l'{id}              | 
 |   /friend/activate |  PUT   |   **user_id**, **friend_id**      |    Accepte friend_id de user_id            |
 |/friends/waiting/{id}|  GET  |                none               |   Liste des amis en attente de l'{id}      |
-|   /friend/new      |  POST  |        **user_id, **friend_id**   |   Demande de nouvel ami                    |
-|   /friend/delete   | DELETE |        **user_id, **friend_id**   |  Suppression de la relation ami            |        
+|   /friend/new      |  POST  |        **user_id**, **friend_id**   |   Demande de nouvel ami                    |
+|   /friend/delete   | DELETE |        **user_id**, **friend_id**   |  Suppression de la relation ami            |        
 
 ### Routes pour la gestion des votes
 
