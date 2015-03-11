@@ -33,7 +33,7 @@
 
 
 * Code 200
-⋅⋅* Ressources simples (/show)
+	*Ressources simples (/show)
 
 ```json
 {
@@ -43,7 +43,7 @@
 }
 ```
 
-⋅⋅* Liste de ressources
+	*Liste de ressources
 ```json
 {
 	"type de ressources": [
