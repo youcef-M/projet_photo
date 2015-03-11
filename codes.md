@@ -33,36 +33,36 @@
 
 
 * Code 200
-..* Ressources simples (/show)
+⋅⋅* Ressources simples (/show)
 
 ```json
 {
-"champ 1": "valeur 1",
-"champ 2": "valeur 2",
-"champ 3": "valeur 3"
+	"champ 1": "valeur 1",
+	"champ 2": "valeur 2",
+	"champ 3": "valeur 3"
 }
 ```
 
-..* Liste de ressources
+⋅⋅* Liste de ressources
 ```json
 {
-"type de ressources": [
-{
-"champ 1": "valeur 1",
-"champ 2": "valeur 2",
-"champ 3": "valeur 3"
-},
-{
-"champ 1": "valeur 1",
-"champ 2": "valeur 2",
-"champ 3": "valeur 3"
-},
-{
-"champ 1": "valeur 1",
-"champ 2": "valeur 2",
-"champ 3": "valeur 3"
-}
-]
+	"type de ressources": [
+	{
+		"champ 1": "valeur 1",
+		"champ 2": "valeur 2",
+		"champ 3": "valeur 3"
+	},
+	{
+		"champ 1": "valeur 1",
+		"champ 2": "valeur 2",
+		"champ 3": "valeur 3"
+	},
+	{
+		"champ 1": "valeur 1",
+		"champ 2": "valeur 2",
+		"champ 3": "valeur 3"
+	}
+	]
 }
 ```
 
@@ -70,15 +70,15 @@
 
 ```json
 {
-"param 1": [
-"Le param 1 a fail car ...."
-],
-"param 2": [
-"Le param 2 a fail car ...."
-],
-"param 3": [
-"Le param 3 a fail car ...."
-]
+	"param 1": [
+		"Le param 1 a fail car ...."
+	],
+	"param 2": [
+		"Le param 2 a fail car ...."
+	],
+	"param 3": [
+		"Le param 3 a fail car ...."
+	]
 }
 ```
 
@@ -88,10 +88,10 @@
 * Code 404
 
 ```json
-"Not Found"
+	"Not Found"
 ```
 
 * Code 409
 ```json
-"Already Exist"
+	"Already Exist"
 ```
