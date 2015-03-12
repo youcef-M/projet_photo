@@ -27,7 +27,6 @@ public class AccueilActivity extends Activity {
     private GridViewAdapter customGridAdapter;
     final String  EXTRA_INFO ="info_user";
     final String EXTRA_User = "info login";
-    Button accesCompte = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +43,6 @@ public class AccueilActivity extends Activity {
             }
         });
 
-        Intent intent = getIntent();
-        final TextView idUser = (TextView) findViewById(R.id.idUser);
-        idUser.setText(intent.getStringExtra(EXTRA_INFO));
 
         //On met les données obtenu lors de la connexion dans un nouvel EXTRA et on créé un nouvel intent et un nouveau bouton
 
@@ -107,10 +103,9 @@ public class AccueilActivity extends Activity {
             case R.id.compte: {
                 //Intent intent = new Intent(this, CompteActivity.class);
                 Intent intent = getIntent();
-                final TextView idUser = (TextView) findViewById(R.id.idUser);
-                idUser.setText(intent.getStringExtra(EXTRA_INFO));
+                final String idUser = intent.getStringExtra(EXTRA_INFO).toString();
                 Intent intent1 = new Intent(AccueilActivity.this, CompteActivity.class);
-                intent1.putExtra(EXTRA_User, idUser.getText().toString());
+                intent1.putExtra(EXTRA_User, idUser.toString());
                 startActivityForResult(intent1,4);
                 return true;
             }

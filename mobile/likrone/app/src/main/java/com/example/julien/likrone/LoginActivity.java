@@ -41,6 +41,7 @@ public class LoginActivity extends Activity{
     public void loginPost(View view) throws ExecutionException, InterruptedException, TimeoutException {
         String username = pseudo.getText().toString();
         String password = mp.getText().toString();
+        role.setVisibility(view.INVISIBLE);
         Login valide = (Login) new Login(this,role).execute(username,password);
         //mp.getText().clear();
         role.setText(valide.get());

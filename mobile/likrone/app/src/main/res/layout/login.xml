@@ -64,10 +64,12 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/creation"
+        android:layout_below="@+id/pseudo"
+        android:layout_toRightOf="@+id/mp"
         android:visibility="invisible"
         android:text="@string/Role"
-        android:textSize="10sp"/>
+        android:textSize="20sp"
+        android:textColor="#FF0000"/>
 
     <Button
         android:id="@+id/connect"
