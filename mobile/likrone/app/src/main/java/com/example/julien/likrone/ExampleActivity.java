@@ -3,8 +3,6 @@ package com.example.julien.likrone;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import java.util.concurrent.ExecutionException;
-
 
 public class ExampleActivity extends MenuActivity {
 
@@ -23,7 +21,7 @@ public class ExampleActivity extends MenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compte);
-        try {
+       /* try {
             String x =new ConnexionServeur().execute().get();
             id= (TextView) findViewById(R.id.idUser);
             id.setText(x);
@@ -32,7 +30,7 @@ public class ExampleActivity extends MenuActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
+*/
         /*Intent intent = getIntent();
         TextView titreDisplay = (TextView) findViewById(R.id.titre_display);
         TextView descDisplay = (TextView) findViewById(R.id.desc_display);

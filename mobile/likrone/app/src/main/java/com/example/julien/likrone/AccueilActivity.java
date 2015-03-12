@@ -10,9 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -79,16 +77,9 @@ public class AccueilActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        if(getActiviteFille()==2) {
-            MenuItem item = menu.findItem(R.id.publier);
-            item.setVisible(false);
-        }
+        MenuItem item = menu.findItem(R.id.home);
+        item.setVisible(false);
         return true;
-    }
-
-    public int getActiviteFille(){
-        return numAct;
     }
 
     @Override
@@ -96,7 +87,9 @@ public class AccueilActivity extends Activity {
         switch (item.getItemId()) {
 
             case R.id.refresh: {
-                //getWindow().getDecorView().findViewById(android.R.id.content).invalidate();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
                 return true;
             }
 
@@ -106,7 +99,7 @@ public class AccueilActivity extends Activity {
                 final String idUser = intent.getStringExtra(EXTRA_INFO).toString();
                 Intent intent1 = new Intent(AccueilActivity.this, CompteActivity.class);
                 intent1.putExtra(EXTRA_User, idUser.toString());
-                startActivityForResult(intent1,4);
+                startActivityForResult(intent1,1);
                 return true;
             }
 
@@ -125,9 +118,7 @@ public class AccueilActivity extends Activity {
     }
 
     public void onActivityResult (int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if (resultCode == 1)
-                finish();
-        }
+        if (resultCode == 1)
+            finish();
     }
 }

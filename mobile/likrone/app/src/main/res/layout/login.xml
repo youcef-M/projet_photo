@@ -69,7 +69,7 @@
         android:visibility="invisible"
         android:text="@string/Role"
         android:textSize="20sp"
-        android:textColor="#FF0000"/>
+        android:textColor="@color/rouge"/>
 
     <Button
         android:id="@+id/connect"

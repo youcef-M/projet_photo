@@ -20,9 +20,17 @@ public class MenuActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         if(getActiviteFille()==2) {
-            MenuItem item = menu.findItem(R.id.publier);
+            MenuItem item1 = menu.findItem(R.id.publier);
+            item1.setVisible(false);
+            MenuItem item2 = menu.findItem(R.id.compte);
+            item2.setVisible(false);
+        }
+
+        if(getActiviteFille()==4){
+            MenuItem item=menu.findItem(R.id.compte);
             item.setVisible(false);
         }
+
         return true;
     }
 
@@ -33,26 +41,38 @@ public class MenuActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
             case R.id.refresh: {
-              //getWindow().getDecorView().findViewById(android.R.id.content).invalidate();
-              return true;
-          }
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+                return true;
+            }
 
-           case R.id.compte: {
-               Intent intent = new Intent(this, CompteActivity.class);
-               startActivityForResult(intent,4);
-               return true;
+            case R.id.home:{
+                finish();
+                return true;
+            }
+
+            case R.id.compte: {
+                Intent intent = new Intent(this, CompteActivity.class);
+                startActivityForResult(intent, 1);
+                if(getActiviteFille()!=0)
+                    finish();
+                return true;
             }
 
             case R.id.publier: {
                 Intent intent = new Intent(this, Photo.class);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent,2);
+                if(getActiviteFille()!=0)
+                    finish();
                 return true;
             }
 
             case R.id.deconnexion: {
-                setResult(1);
+                Intent intent = new Intent(this,LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivityForResult(intent,1);
                 finish();
             }
         }
@@ -60,9 +80,8 @@ public class MenuActivity extends Activity {
     }
 
     public void onActivityResult (int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if (resultCode == 1)
-                finish();
+        if (requestCode == 2) {
+            finish();
         }
     }
 }
