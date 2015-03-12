@@ -5,6 +5,16 @@
     android:background="#f0f0f0"
     android:clickable="true"
     tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/idUser"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textSize="25sp" >
+    </TextView>
+
     <GridView
         android:id="@+id/gridView"
         android:layout_width="fill_parent"
@@ -15,6 +25,7 @@
         android:numColumns="auto_fit"
         android:verticalSpacing="5dp"
         android:drawSelectorOnTop="true"
-        android:stretchMode="columnWidth" >
+        android:stretchMode="columnWidth"
+        android:layout_below="@+id/idUser">
     </GridView>
 </RelativeLayout>

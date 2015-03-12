@@ -10,6 +10,7 @@ public class MenuActivity extends Activity {
 
     int numAct = 0;
 
+
     public MenuActivity(int pNumAct){
         numAct = pNumAct;
     }
@@ -38,10 +39,11 @@ public class MenuActivity extends Activity {
               return true;
           }
 
-           /*case R.id.compte: {
-                showUser();
-                break;
-            }*/
+           case R.id.compte: {
+               Intent intent = new Intent(this, CompteActivity.class);
+               startActivityForResult(intent,4);
+               return true;
+            }
 
             case R.id.publier: {
                 Intent intent = new Intent(this, Photo.class);

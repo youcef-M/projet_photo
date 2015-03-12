@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class LoginActivity extends Activity{
     private EditText pseudo,mp;
@@ -37,16 +38,20 @@ public class LoginActivity extends Activity{
 
     }
 
-    public void loginPost(View view) throws ExecutionException, InterruptedException {
+    public void loginPost(View view) throws ExecutionException, InterruptedException, TimeoutException {
         String username = pseudo.getText().toString();
         String password = mp.getText().toString();
-        mp.getText().clear();
-        if(new Login(this,role).execute(username,password).get()!="Mauvais identifiants") {
+        Login valide = (Login) new Login(this,role).execute(username,password);
+        //mp.getText().clear();
+        role.setText(valide.get());
+        if(!("Mauvais identifiants".equals(role.getText()))) {
             Intent intent = new Intent(LoginActivity.this, AccueilActivity.class);
             intent.putExtra(EXTRA_INFO,role.getText().toString());
+            role.setText(intent.getStringExtra(EXTRA_INFO));
             startActivity(intent);
-        }
-        else
+        }else
             role.setVisibility(view.VISIBLE);
-    }
+
+        }
+
 }

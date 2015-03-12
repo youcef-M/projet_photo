@@ -37,6 +37,9 @@
         <activity
             android:name="com.example.julien.likrone.AccueilActivity"
             android:label="Accueil" />
+        <activity
+            android:name="com.example.julien.likrone.CompteActivity"
+            android:label="Compte" />
     </application>
 
 </manifest>

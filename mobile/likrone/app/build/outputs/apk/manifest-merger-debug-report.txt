@@ -63,14 +63,20 @@ ADDED from AndroidManifest.xml:24:9
 		ADDED from AndroidManifest.xml:24:51
 	android:name
 		ADDED from AndroidManifest.xml:24:19
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from AndroidManifest.xml:27:5
+activity#com.example.julien.likrone.CompteActivity
+ADDED from AndroidManifest.xml:25:9
+	android:label
+		ADDED from AndroidManifest.xml:25:50
 	android:name
-		ADDED from AndroidManifest.xml:27:22
-uses-permission#android.permission.INTERNET
+		ADDED from AndroidManifest.xml:25:19
+uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from AndroidManifest.xml:28:5
 	android:name
 		ADDED from AndroidManifest.xml:28:22
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:29:5
+	android:name
+		ADDED from AndroidManifest.xml:29:22
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 	android:targetSdkVersion
