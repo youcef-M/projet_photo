@@ -3,22 +3,28 @@
 use Lib\Validation\Post\PostUpdateValidator 	as PostUpdateValidator;
 use Lib\Validation\Post\PostCreateValidator 	as PostCreateValidator;
 use Lib\Validation\Post\PostPrivacyValidator 	as PostPrivacyValidator;
-use Lib\Gestion\Post\PostGestion as PostGestion;
+use Lib\Validation\GeneralListValidator 		as GeneralListValidator;
+use Lib\Gestion\Post\PostGestion 				as PostGestion;
+use Lib\Check\Post\PostCheck					as PostCheck;
 
 
 class PostController extends \BaseController {
 
 
 	public function __construct(
-		PostUpdateValidator $update_validation,
-		PostCreateValidator $create_validation,
-		PostPrivacyValidator $privacy_validation,
-		PostGestion $post_gestion
+		PostUpdateValidator 	$update_validation,
+		PostCreateValidator 	$create_validation,
+		PostPrivacyValidator 	$privacy_validation,
+		GeneralListValidator 	$list_validation,
+		PostGestion 			$post_gestion,
+		PostCheck				$post_check
 	){
-		$this->update_validation = $update_validation;
-		$this->create_validation = $create_validation;
-		$this->privacy_validation = $privacy_validation;
-		$this->post_gestion = $post_gestion;
+		$this->update_validation 	= $update_validation;
+		$this->create_validation 	= $create_validation;
+		$this->privacy_validation 	= $privacy_validation;
+		$this->list_validation 		= $list_validation;
+		$this->post_gestion 		= $post_gestion;
+		$this->post_check			= $post_check;
 	}
 	
 	
@@ -29,7 +35,12 @@ class PostController extends \BaseController {
 	 */
 	public function index($id)
 	{
-		return Post::where('user_id',$id);
+		if($this->list_validation->fails())
+		{
+			return BaseController::httpError($this->list_validation);
+		}else{
+			return BaseController::httpContent($this->post_gestion->index($id),'posts');
+		}
 	}
 
 
@@ -40,15 +51,12 @@ class PostController extends \BaseController {
 	 */
 	public function store()
 	{
-		 if ($this->create_validation->fails()) {
-			$statusCode = 404;
-			$message = $this->create_validation->errors();
+		if ($this->create_validation->fails()) {
+			return BaseController::httpError($this->create_validation);
 		}else{
 			$this->post_gestion->store();
-			$statusCode = 200;
-			$message = HTTP_OK;
+			return BaseController::httpOk();
 		}
-    	return Response::json($message, $statusCode);
 	}
 
 
@@ -60,17 +68,12 @@ class PostController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$post = $this->post_gestion->show($id);
-		if(is_null($post))
+		if($this->post_check->missing($id))
 		{
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+			return BaseController::httpNotFound();
 		}else{
-			$statusCode = 200;
-			$message = $post->toArray();
+			return BaseController::httpContent($this->post_gestion->show($id),'post');
 		}
-		
-		return Response::json($message, $statusCode);
 	}
 
 
@@ -84,20 +87,15 @@ class PostController extends \BaseController {
 	public function update($id)
 	{
 		if ($this->update_validation->fails($id)) {
-			$statusCode = 404;
-			$message = $this->update_validation->errors();
+			return BaseController::httpError($this->update_validation);
 		}else{
-			if(is_null($this->post_gestion->show($id))){
-				$statusCode = 404;
-				$message = HTTP_NOT_FOUND;
+			if($this->post_check->missing($id)){
+				return BaseController::httpNotFound();
 			}else{
 				$this->post_gestion->update($id);
-				$statusCode = 200;
-				$message = HTTP_OK;
+				return BaseController::httpOk();
 			}
-			
 		}
-    	return Response::json($message, $statusCode);
 	}
 
 
@@ -109,15 +107,12 @@ class PostController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		if(is_null($this->post_gestion->show($id))){
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+		if($this->post_check->missing($id)){
+			return BaseController::httpNotFound();
 		}else{
 			$this->post_gestion->destroy($id);
-			$statusCode = 200;
-			$message = HTTP_OK;
+			return BaseController::httpOk();
 		}
-		return Response::json($message, $statusCode);
 	}
 	
 	
@@ -130,34 +125,45 @@ class PostController extends \BaseController {
 	public function privacy($id)
 	{
 		if ($this->privacy_validation->fails($id) ) {
-			$statusCode = 404;
-			$message = $this->privacy_validation->errors();
+			return BaseController::httpError($this->privacy_validation);
 		}else{
-			if(is_null($this->post_gestion->show($id))){
-				$statusCode = 404;
-				$message = HTTP_NOT_FOUND;
+			if($this->post_check->missing($id)){
+				return BaseController::httpNotFound();
 			}else{
 				$this->post_gestion->privacy($id);
-				$statusCode = 200;
-				$message = HTTP_OK;
+				return BaseController::httpOk();
 			}
 		}
-		return Response::json($message, $statusCode);
 	}
 	
 	
 	public function getFeed($id)
 	{
-		$user = User::find($id);
-		if(is_null($user))
+		if($this->list_validation->fails())
 		{
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+			return BaseController::httpError($this->list_validation);
 		}else{
-			$statusCode = 200;
-			$message = $this->post_gestion->getFeed($id)->toArray();
+			if($this->post_check->missingUser($id))
+			{
+				return BaseController::httpNotFound();
+			}else{
+				return BaseController::httpContent($this->post_gestion->getFeed($id),'follow_posts');
+			}
 		}
-		
-		return Response::json($message, $statusCode);
+	}
+	
+	public function friendsFeed($id)
+	{
+		if($this->list_validation->fails())
+		{
+			return BaseController::httpError($this->list_validation);
+		}else{
+			if($this->post_check->missingUser($id))
+			{
+				return BaseController::httpNotFound();
+			}else{
+				return BaseController::httpContent($this->post_gestion->friendsFeed($id),'friends_posts');
+			}
+		}
 	}
 }

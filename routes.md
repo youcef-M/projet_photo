@@ -9,6 +9,10 @@
    
 ### Routes pour la gestion des utilisateurs.
  
+   > Les avatars des utilisateurs sont situés à l'adresse : https://api-rest-youcef-m.c9.io/avatar/{id}.jpg
+   > où {id} est l'id de l'utilisateur. A noté que toutes les images sont au format jpg et donc lors d'une modification
+   > vous devrez envoyer une image au format JPG
+   
 |        URL        | METHOD |         ARGUMENTS         |                      Utilité                          |
 |:-----------------:|:------:|:-------------------------:|:-----------------------------------------------------:|
 |       /users      |   GET  |          **page**         |               Liste des utilisateurs                  |

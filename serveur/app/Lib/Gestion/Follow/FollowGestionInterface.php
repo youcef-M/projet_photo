@@ -4,9 +4,9 @@ namespace Lib\Gestion\Follow;
 interface FollowGestionInterface {
     
     public function store();
-    public static function following($id);
-    public function followingIds($id);
-    public static function followers($id);
-    public function followersIds($id);
+    public function following($id);
+    public static function followingIds($id);
+    public function followers($id);
+    public static function followersIds($id);
     public function destroy();
 }

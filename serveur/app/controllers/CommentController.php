@@ -2,18 +2,24 @@
 
 use Lib\Validation\Comment\CommentUpdateValidator	as CommentUpdateValidator;
 use Lib\Validation\Comment\CommentCreateValidator 	as CommentCreateValidator;
-use Lib\Gestion\Comment\CommentGestion as CommentGestion;
+use Lib\Validation\GeneralListValidator 			as GeneralListValidator;
+use Lib\Gestion\Comment\CommentGestion 				as CommentGestion;
+use Lib\Check\Comment\CommentCheck					as CommentCheck;
 	
 class CommentController extends \BaseController {
 
 	public function __construct(
-		CommentUpdateValidator $update_validation,
-		CommentCreateValidator $create_validation,
-		CommentGestion $comment_gestion
+		CommentUpdateValidator 	$update_validation,
+		CommentCreateValidator 	$create_validation,
+		GeneralListValidator 	$list_validation,
+		CommentGestion 			$comment_gestion,
+		CommentCheck			$comment_check
 	){
-		$this->update_validation = $update_validation;
-		$this->create_validation = $create_validation;
-		$this->comment_gestion = $comment_gestion;
+		$this->update_validation 	= $update_validation;
+		$this->create_validation 	= $create_validation;
+		$this->list_validation 		= $list_validation;
+		$this->comment_gestion 		= $comment_gestion;
+		$this->comment_check		= $comment_check;
 	}
 
 	/**
@@ -24,15 +30,16 @@ class CommentController extends \BaseController {
 	 */
 	public function byPost($id)
 	{
-		$comment = $this->comment_gestion->byPost($id);
-		if(is_null($comment)){
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+		if($this->list_validation->fails())
+		{
+			return BaseController::httpError($this->list_validation);
 		}else{
-			$statusCode = 200;
-			$message = $comment->toArray();
+			if($this->comment_check->missingPost($id)){
+				return BaseController::httpNotFound();
+			}else{
+				return BaseController::httpContent($this->comment_gestion->byPost($id),'comments');
+			}
 		}
-		return Response::json($message, $statusCode);
 	}
 
 
@@ -44,15 +51,16 @@ class CommentController extends \BaseController {
 	 */
 	public function byUser($id)
 	{
-		$comment = $this->comment_gestion->byUser($id);
-		if(is_null($comment)){
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+		if($this->list_validation->fails())
+		{
+			return BaseController::httpError($this->list_validation);
 		}else{
-			$statusCode = 200;
-			$message = $comment->toArray();
+			if($this->comment_check->missingUser($id)){
+				return BaseController::httpNotFound();
+			}else{
+				return BaseController::httpContent($this->comment_gestion->byUser($id),'comments_by_user');
+			}
 		}
-		return Response::json($message, $statusCode);
 	}
 	
 
@@ -64,14 +72,11 @@ class CommentController extends \BaseController {
 	public function store()
 	{
 		 if ($this->create_validation->fails()) {
-			$statusCode = 404;
-			$message = $this->create_validation->errors();
+			return BaseController::httpError($this->create_validation);
 		}else{
 			$this->comment_gestion->store();
-			$statusCode = 200;
-			$message = HTTP_OK;
+			return BaseController::httpOk();
 		}
-    	return Response::json($message, $statusCode);
 	}
 
 
@@ -83,17 +88,12 @@ class CommentController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$comment = $this->comment_gestion->show($id);
-		if(is_null($comment))
+		if($this->comment_check->missing($id))
 		{
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+			return BaseController::httpNotFound();
 		}else{
-			$statusCode = 200;
-			$message = $comment->toArray();
+			return BaseController::httpContent($this->comment_gestion->show($id),'comment');
 		}
-		
-		return Response::json($message, $statusCode);
 	}
 
 
@@ -106,20 +106,15 @@ class CommentController extends \BaseController {
 	public function update($id)
 	{
 		if ($this->update_validation->fails($id)) {
-			$statusCode = 404;
-			$message = $this->update_validation->errors();
+			return BaseController::httpError($this->update_validation);
 		}else{
-			if(is_null($this->comment_gestion->show($id))){
-				$statusCode = 404;
-				$message = HTTP_NOT_FOUND;
+			if($this->comment_check->missing($id)){
+				return BaseController::httpNotFound();
 			}else{
 				$this->comment_gestion->update($id);
-				$statusCode = 200;
-				$message = HTTP_OK;
+				return BaseController::httpOk();
 			}
-			
 		}
-    	return Response::json($message, $statusCode);
 	}
 
 
@@ -131,15 +126,12 @@ class CommentController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		if(is_null($this->comment_gestion->show($id))){
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+		if($this->comment_check->missing($id)){
+			return BaseController::httpNotFound();
 		}else{
-			$this->comment_gestion->delete($id);
-			$statusCode = 200;
-			$message = HTTP_OK;
+			$this->comment_gestion->destroy($id);
+			return BaseController::httpOk();
 		}
-		return Response::json($message, $status);
 	}
 
 

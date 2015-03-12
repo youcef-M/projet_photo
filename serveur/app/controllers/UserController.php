@@ -1,25 +1,34 @@
 <?php
 
-use Lib\Validation\User\UserUpdateValidator as UserUpdateValidator;
-use Lib\Validation\User\UserCreateValidator as UserCreateValidator;
-use Lib\Validation\User\UserLoginValidator  as UserLoginValidator;
-use Lib\Validation\User\UserActivateValidator as UserActivateValidator;
-use Lib\Gestion\User\UserGestion as UserGestion;
+use Lib\Validation\User\UserUpdateValidator 	as UserUpdateValidator;
+use Lib\Validation\User\UserCreateValidator 	as UserCreateValidator;
+use Lib\Validation\User\UserLoginValidator  	as UserLoginValidator;
+use Lib\Validation\User\UserActivateValidator 	as UserActivateValidator;
+use Lib\Validation\User\UserAvatarValidator 	as UserAvatarValidator;
+use Lib\Validation\GeneralListValidator 		as GeneralListValidator;
+use Lib\Gestion\User\UserGestion 				as UserGestion;
+use Lib\Check\User\UserCheck					as UserCheck;
 
 class UserController extends \BaseController 
 {
 	public function __construct(
-		UserUpdateValidator $update_validation,
-		UserCreateValidator $create_validation,
-		UserLoginValidator	$login_validation,
-		UserActivateValidator $activate_validation,
-		UserGestion $user_gestion
+		UserUpdateValidator 	$update_validation,
+		UserCreateValidator 	$create_validation,
+		UserLoginValidator		$login_validation,
+		UserActivateValidator 	$activate_validation,
+		UserAvatarValidator		$avatar_validation,
+		GeneralListValidator 	$list_validation,
+		UserGestion 			$user_gestion,
+		UserCheck 				$user_check
 	){
-		$this->update_validation = $update_validation;
-		$this->create_validation = $create_validation;
-		$this->login_validation  = $login_validation;
-		$this->activate_validation = $activate_validation;
-		$this->user_gestion = $user_gestion;
+		$this->update_validation 	= $update_validation;
+		$this->create_validation 	= $create_validation;
+		$this->login_validation  	= $login_validation;
+		$this->activate_validation 	= $activate_validation;
+		$this->avatar_validation	= $avatar_validation;
+		$this->list_validation 		= $list_validation;
+		$this->user_gestion 		= $user_gestion;
+		$this->user_check 			= $user_check;
 	}
 
 	/**
@@ -29,7 +38,12 @@ class UserController extends \BaseController
 	 */
 	public function index()
 	{
-		return User::all();
+		if($this->list_validation->fails())
+		{
+			return BaseController::httpError($this->list_validation);
+		}else{
+			return BaseController::httpContent($this->user_gestion->index(),'users');
+		}
 	}
 	
 
@@ -41,14 +55,11 @@ class UserController extends \BaseController
 	public function store()
 	{
 		if ($this->create_validation->fails()) {
-			$statusCode = 404;
-			$message = $this->create_validation->errors();
+			return BaseController::httpError($this->create_validation);
 		}else{
 			$this->user_gestion->store();
-			$statusCode = 200;
-			$message = HTTP_OK;
+			return BaseController::httpOk();
 		}
-    	return Response::json($message, $statusCode);
 	}
 
 
@@ -60,18 +71,12 @@ class UserController extends \BaseController
 	 */
 	public function show($id)
 	{
-		$user = $this->user_gestion->show($id);
-		if(is_null($user))
+		if($this->user_check->missing($id))
 		{
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+			return BaseController::httpNotFound();
 		}else{
-			$statusCode = 200;
-			$message = $user->toArray();
+			return BaseController::httpContent($this->user_gestion->show($id));
 		}
-		
-		return Response::json($message, $statusCode);
-		
 	}
 
 
@@ -84,20 +89,16 @@ class UserController extends \BaseController
 	public function update($id)
 	{
 		if ($this->update_validation->fails($id)) {
-			$statusCode = 404;
-			$message = $this->update_validation->errors();
+			return BaseController::httpError($this->update_validation);
 		}else{
-			if(is_null($this->user_gestion->show($id))){
-				$statusCode = 404;
-				$message = HTTP_NOT_FOUND;
+			if($this->user_check->missing($id)){
+				return BaseController::httpNotFound();
 			}else{
 				$this->user_gestion->update($id);
-				$statusCode = 200;
-				$message = HTTP_OK;
+				return BaseController::httpOk();
 			}
-			
 		}
-    	return Response::json($message, $statusCode);
+    	
 	}
 
 
@@ -109,13 +110,11 @@ class UserController extends \BaseController
 	 */
 	public function destroy($id)
 	{
-		if(is_null($this->user_gestion->show($id))){
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+		if($this->user_check->missing($id)){
+			return BaseController::httpNotFound();
 		}else{
-			$this->user_gestion->delete($id);
-			$statusCode = 200;
-			$message = HTTP_OK;
+			$this->user_gestion->destroy($id);
+			return BaseController::httpOk();
 		}
 	}
 
@@ -128,21 +127,15 @@ class UserController extends \BaseController
 	{
 		if($this->login_validation->fails())
 		{
-			$statusCode = 404;
-			$message = $this->login_validation->errors();
-		}else
-		{
-			$user = $this->user_gestion->login();
-			if(is_null($user) || !Hash::check(Request::get('password'), $user->password) )
+			return BaseController::httpError($this->login_validation);
+		}else{
+			if($this->user_check->badLogin())
 			{
-				$statusCode = 404;
-				$message = HTTP_NOT_FOUND;
+				return BaseController::httpNotFound();
 			}else{
-				$statusCode = 200;
-				$message = $user->toArray();
+				return BaseController::httpContent($this->user_gestion->login());
 			}
 		}
-		return Response::json($message, $statusCode);
 	}
 
 	/**
@@ -154,19 +147,28 @@ class UserController extends \BaseController
 	public function activate()
 	{
 		if ($this->activate_validation->fails()) {
-			$statusCode = 404;
-			$message = $this->activate_validation->errors();
+			return BaseController::httpError($this->activate_validation);
 		}else{
-			if($this->user_gestion->activate()){
-				$statusCode = 404;
-				$message = HTTP_NOT_FOUND;
+			if($this->user_check->badToken()){
+				return BaseController::httpNotFound();
 			}else{
-				$statusCode = 200;
-				$message = HTTP_OK;
+				$this->user_gestion->activate();
+				return BaseController::httpOk();
 			}
-			
 		}
-    	return Response::json($message, $statusCode);
+	}
+	
+	public function avatar($id)
+	{
+		if($this->avatar_validation->fails())
+		{
+			return BaseController::httpError($this->avatar_validation);
+		}elseif($this->user_check->missing($id)){
+			return BaseController::httpNotFound();
+		}else{
+			$this->user_gestion->avatar($id);
+			return BaseController::httpOk();
+		}
 	}
 	
 }

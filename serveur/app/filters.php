@@ -13,7 +13,16 @@
 
 App::before(function($request)
 {
-	//
+	/*if(Request::has('identification_key'))
+	{
+		$key = Request::get('identification_key');
+		if(strcmp($key, WEB_KEY) !== 0 && strcmp($key,MOBILE_KEY) !== 0)
+		{
+			return Response::make('Unauthorized', 401);
+		}
+	}else{
+		return Response::make('Unauthorized', 401);
+	}*/
 });
 
 

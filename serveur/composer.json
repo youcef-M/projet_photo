@@ -20,7 +20,8 @@
 			"Lib": "app"
 		},
 		"files": [
-		"app/constants.php"
+		"app/constants.php",
+		"app/resize.php"
    		]
 	},
 	"scripts": {

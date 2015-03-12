@@ -1,121 +1,79 @@
 <?php
 
-use Lib\Gestion\Follow\FollowGestion as FollowGestion;
 use Lib\Validation\Follow\FollowCreateValidator as FollowCreateValidator;
 use Lib\Validation\Follow\FollowDeleteValidator as FollowDeleteValidator;
+use Lib\Gestion\Follow\FollowGestion            as FollowGestion;
+use Lib\Check\Follow\FollowCheck                as FollowCheck;
 
 class FollowController extends \BaseController {
     
     public function __construct(
-        FollowCreateValidator $create_validation,
-        FollowDeleteValidator $delete_validation,
-        FollowGestion $follow_gestion
+        FollowCreateValidator   $create_validation,
+        FollowDeleteValidator   $delete_validation,
+        FollowGestion           $follow_gestion,
+        FollowCheck             $follow_check
         
     )
     {
-        $this->create_validation = $create_validation;
-        $this->delete_validation = $delete_validation;
-        $this->follow_gestion = $follow_gestion;
+        $this->create_validation    = $create_validation;
+        $this->delete_validation    = $delete_validation;
+        $this->follow_gestion       = $follow_gestion;
+        $this->follow_check         = $follow_check;
     }
     
     
     public function store()
     {
+        //dd($this->follow_check->missing());
         if($this->create_validation->fails())
         {
-            $statusCode = 404;
-            $message = $this->create_validation->errors();
+            return BaseController::httpError($this->create_validation);
+        }elseif($this->follow_check->missingUser()){
+            return BaseController::httpNotfound();
+        }elseif(!$this->follow_check->missing()){
+            return BaseController::httpExist();
         }else{
             $this->follow_gestion->store();
-            $statusCode = 200;
-            $message = HTTP_OK;
+            return BaseController::httpOk();
         }
-        return Response::json($message, $statusCode);
     }
     
     
     public static function following($id)
     {
-        $following = $this->follow_gestion->following($id);
-		if(is_null($following ))
+		if($this->follow_check->noFollowing($id))
 		{
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+			return BaseController::httpNotfound();
 		}else{
-			$statusCode = 200;
-			$message = $following;
+			return BaseController::httpContent($following,'following');
 		}
-		
-		return Response::json($message, $statusCode);
-    }
-    
-    
-    public function followingIds($id)
-    {
-        $following = $this->follow_gestion->followingIds($id);
-        if(is_null($following))
-        {
-            $statusCode = 404;
-            $message = HTTP_NOT_FOUND;
-        }else{
-            $statusCode = 200;
-            $message = $following;
-        }
-        return Response::json($message, $statusCode);
     }
     
     
     public static function followers($id)
     {
-        $follower = $this->follow_gestion->follower($id);
-		if(is_null($follower ))
+		if($this->follow_check->noFollowers($id))
 		{
-			$statusCode = 404;
-			$message = HTTP_NOT_FOUND;
+			return BaseController::httpNotfound();
 		}else{
-			$statusCode = 200;
-			$message = $follower;
+			return BaseController::httpContent($followers,'followers');
 		}
-		
-		return Response::json($message, $statusCode);
     }
-    
-    
-    public function followersIds($id)
-    {
-        $followersIds = $this->follow_gestion->followersIds($id);
-        if(is_null($followersIds))
-        {
-            $statusCode = 404;
-            $message = HTTP_NOT_FOUND;
-        }else{
-            $statusCode = 200;
-            $message = $followersIds;
-        }
-        return Response::json($message, $statusCode);
-    }
-    
+
     
     public function destroy()
     {
         if($this->delete_validation->fails())
         {
-            $statusCode = 404;
-            $message = $this->delete_validation->errors();
+           return BaseController::httpError($this->delete_validation);
         }else{
-            $user = Request::get('follower_id');
-            $follow = Request::get('following_id');
-            $tuple = Follow::where('user_id', $user)->where('follow_id', $follow)->first();
-            if(is_null($tuple))
+            if($this->follow_check->missing())
             {
-                $statusCode = 404;
-                $message = HTTP_NOT_FOUND;
+                return BaseController::httpNotfound();
             }else{
                 $this->follow_gestion->destroy();
-                $statusCode = 200;
-                $message = HTTP_OK;
+                BaseController::httpOk();
             }
         }
-        return Response::json($message,$statusCode);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 	
-	class Post extends Eloquent{
+class Post extends Eloquent{
 	
 	protected $table = 'posts';
 	
@@ -15,5 +15,9 @@
 		{
 			return $this->hasMany('Comment');
 		}
-	
-	}
+
+		public function posts()
+		{
+			return $this->hasMany('Vote');
+		}
+}

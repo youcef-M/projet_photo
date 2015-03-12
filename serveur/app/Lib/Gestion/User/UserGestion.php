@@ -6,6 +6,13 @@ use Request;
 
 class UserGestion implements UserGestionInterface {
     
+    public function index()
+    {
+        $page = Request::get('page');
+        return User::skip(10*($page-1))->take(10)->get();
+    }
+    
+    
     public function store()
     {
         $user = new User;
@@ -15,6 +22,8 @@ class UserGestion implements UserGestionInterface {
 		$user->active = 0;
 		$user->token = md5(time() . ' - ' . uniqid());
 		$user->save();
+		//$id = User::lastInsertId();
+		copy(public_path() . '/avatar/base.jpg', public_path() . '/avatar/' . $user->id.'.jpg');
     }
     
     public function show($id)
@@ -38,22 +47,36 @@ class UserGestion implements UserGestionInterface {
     
     public function login()
     {
-        return User::
-				where('username', Request::get('username'))
-				->first();
+        return User::where('username', Request::get('username'))->first();
     }
     
     public function activate()
     {
+        $user = $this->byToken();
+        $user->active = 1;
+        $user->token = '';
+        $user->save();
+    }
+    
+    public function byToken()
+    {
         $token = Request::get('token');
-        $user = User::where('token',$token);
-        if(is_null($user)){
-            return false;
-        }else{
-            $user->active = 1;
-            $user->token = '';
-            $user->save();
-            return true;
+        return User::where('token',$token)->first();
+    }
+    
+    public function getPassword()
+    {
+        return Request::get('password');
+    }
+    
+    public function avatar($id)
+    {
+        $image = Request::file('photo');
+        $path = public_path() . '/avatar/' . $id .'.jpg';
+        if(file_exists($path)){
+            unlink($path);
+            $image->move(public_path() . '/avatar/',$id.'.jpg');
         }
+        
     }
 }

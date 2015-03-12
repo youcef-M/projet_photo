@@ -8,9 +8,7 @@ class CommentUpdateValidator extends BaseValidator {
     public function __construct()
 	{
 		$this->regles = array(
-			'content'			=>	'required|max:255|string:value|min:3',
-			'user_id'			=>	'required',
-			'post_id'			=>	'required'
+			'content'			=>	'required|max:255|string:value|min:3'
 		);
 	}
 

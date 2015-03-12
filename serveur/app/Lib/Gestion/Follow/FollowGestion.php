@@ -15,26 +15,28 @@ class FollowGestion implements FollowGestionInterface {
         $user1->following()->save($user2);
     }
     
-    public static function following($id)
+    public function following($id)
     {   
         $user = User::find($id);
         return $user->following;
     }
 
-    public function followingIds($id)
+    public static function followingIds($id)
     {
-        return $this->following($id)->lists('id');
+        $user = User::find($id);
+        return $user->following->lists('id');
     }
     
-    public static function followers($id)
+    public function followers($id)
     {
         $user = User::find($id);
         return $user->follower;
     }
 
-    public function followersIds($id)
+    public static function followersIds($id)
     {
-        return $this->followers($id)->lists('id');
+        $user = User::find($id);
+        return $user->follower->lists('id');
     }
     
     public function destroy()

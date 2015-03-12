@@ -5,8 +5,15 @@ use Hash;
 use Request;
 use Str;
 use Route;
+//require '../resize.php';
+
 class PostGestion implements PostGestionInterface {
-    
+
+    public function index()
+    {
+        $page = Request::get('page');
+        return Post::latest()->skip(10*($page-1))->take(10)->get();
+    }
     
     public function store()
     {
@@ -21,7 +28,6 @@ class PostGestion implements PostGestionInterface {
 		}
         $post->user_id = Request::get('user_id');
         $post->privacy = Request::get('privacy');
-        $post->note_totale = 0;
         
         $chemin = public_path() . '/images/' . $post->user_id;
         $image = Request::file('photo');
@@ -33,6 +39,7 @@ class PostGestion implements PostGestionInterface {
         
         $post->chemin = '/images/' . $post->user_id . '/' . $nom;
         $image->move($chemin,$nom);
+        //resizeImage('/' . $chemin . '/' . $nom, 200, 200);
         $post->save();
         
     }
@@ -74,10 +81,19 @@ class PostGestion implements PostGestionInterface {
     
     public function getFeed($id)
     {
-        $request = Request::create('/following/id/'.$id, 'GET', array());
-		$userIds = json_decode(Route::dispatch($request)->getContent());
+        $page = Request::get('page');
+		$userIds = \Lib\Gestion\Follow\FollowGestion::followingIds($id);
 		
-		return Post::whereIn('user_id', $userIds)->latest()->get();
+		return Post::whereIn('user_id', $userIds)->latest()->skip(10*($page-1))->take(10)->get();
+    }
+    
+    public function friendsFeed($id)
+    {
+        $page = Request::get('page');
+        $userIds = \Lib\Gestion\Friend\FriendGestion::friendsIds($id);
+        
+        return Post::whereIn('user_id', $userIds)->latest()->skip(10*($page-1))->take(10)->get();
+        
     }
     
 }
