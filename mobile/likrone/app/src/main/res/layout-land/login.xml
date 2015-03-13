@@ -23,11 +23,6 @@
         android:textStyle="bold"
         android:text="@string/viewPseudo"/>
 
-    <TextView
-        android:id="@+id/reponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <EditText
         android:id="@+id/pseudo"
         android:layout_width="250dp"
@@ -60,33 +55,22 @@
         android:ems="10"
         android:hint="@string/mp"/>
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pseudo"
-        android:layout_toRightOf="@+id/mp"
-        android:visibility="invisible"
-        android:text="@string/Role"
-        android:textSize="20sp"
-        android:textColor="@color/rouge"/>
-
     <Button
         android:id="@+id/connect"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/mp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:onClick="loginPost"
+        android:layout_alignLeft="@id/viewMp"
+        android:layout_marginTop="30dp"
         android:text="@string/connect"/>
 
     <Button
         android:id="@+id/creation"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/connect"
-        android:layout_centerHorizontal="true"
-        android:text="@string/inscription"/>
+        android:text="@string/inscription"
+        android:layout_alignTop="@+id/connect"
+        android:layout_alignRight="@+id/mp"
+        android:layout_alignEnd="@+id/mp" />
 
-</RelativeLayout><!-- From: file:/C:/Users/Pierre/Desktop/Fac/projet-photo/mobile/likrone/app/src/main/res/layout/login.xml -->
+</RelativeLayout>

@@ -36,7 +36,17 @@
     <string name="fgauche">Page précédente</string>
     <string name="fdroite">Page suivante</string>
 
-
+    <string name="monde">Public</string>
+    <string name="privé">Privé</string>
+    <string name="amis">Amis</string>
+    <string name="groupes">Groupes</string>
+    <string name="nouvellePhoto">Nouvelle Photo</string>
+    <string name="valider">Valider</string>
+    <string name="annuler">Annuler</string>
+    <string name="date">Publié le </string>
+    <string name="commentaire">Tout plein de commentaire</string>
+    <string name="nouveauCom">Ton nouveau commentaire</string>
+    <string name="confirmCom">Envoyer</string>
 
 
 

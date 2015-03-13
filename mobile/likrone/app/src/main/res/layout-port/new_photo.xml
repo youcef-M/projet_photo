@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/newphoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Nouvelle Photo"
+        android:textStyle="bold"
+        android:textSize="50sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:id="@+id/camera"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/photo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src = "@drawable/ic_action_camera" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_alignLeft="@+id/description"
+        android:layout_marginTop="50dp"
+        android:text="Valider" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_alignRight="@+id/description"
+        android:layout_marginTop="50dp"
+        android:text="Annuler" />
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/newphoto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"/>
+
+    <EditText
+        android:id="@+id/titre"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/description"
+        android:layout_alignLeft="@+id/description"
+        android:layout_below="@+id/camera"
+        android:layout_marginTop="25dp"
+        android:hint="Titre de la photo"/>
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:hint="Description de la photo"
+        android:layout_below="@+id/titre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp" />
+
+    <RadioGroup
+        android:id="@+id/visibilité"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/save"
+        android:layout_centerHorizontal="true">
+        <RadioButton
+            android:id="@+id/monde"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/monde"
+            android:checked="true" />
+        <RadioButton
+            android:id="@+id/privé"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/privé"/>
+        <RadioButton
+            android:id="@+id/amis"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/amis"/>
+        <RadioButton
+            android:id="@+id/groupes"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/groupes"/>
+    </RadioGroup>
+
+
+</RelativeLayout>

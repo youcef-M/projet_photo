@@ -39,6 +39,9 @@
         <activity
             android:name="com.example.julien.likrone.CompteActivity"
             android:label="Compte" />
+        <activity
+            android:name="com.example.julien.likrone.ImageAdapter"
+            android:label="Image" />
     </application>
 
 </manifest>

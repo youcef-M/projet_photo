@@ -17,10 +17,11 @@
         android:id="@+id/viewPseudo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/viewInsc"
-        android:layout_toLeftOf="@+id/pseudo"
-        android:layout_marginTop="15dp"
-        android:text="@string/viewPseudo" />
+        android:text="@string/viewPseudo"
+        android:layout_marginTop="10dp"
+        android:layout_alignTop="@+id/pseudo"
+        android:layout_alignRight="@+id/viewEmail"
+        android:layout_alignEnd="@+id/viewEmail" />
 
     <EditText
         android:id="@+id/pseudo"
@@ -28,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/viewInsc"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
+        android:layout_marginTop="200dp"
         android:hint="@string/pseudo"/>
 
     <TextView
@@ -108,4 +109,4 @@
         android:layout_alignRight="@+id/mp2"
         android:text="@string/confirmation"/>
 
-</RelativeLayout><!-- From: file:/C:/Users/Pierre/Desktop/Fac/projet-photo/mobile/likrone/app/src/main/res/layout/inscription.xml -->
+</RelativeLayout>

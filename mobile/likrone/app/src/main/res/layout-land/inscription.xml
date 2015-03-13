@@ -15,12 +15,15 @@
 
     <TextView
         android:id="@+id/viewPseudo"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/viewInsc"
+        android:text="@string/viewPseudo"
+        android:layout_above="@+id/email"
         android:layout_toLeftOf="@+id/pseudo"
-        android:layout_marginTop="15dp"
-        android:text="@string/viewPseudo" />
+        android:layout_marginBottom="15dp"
+        android:layout_alignRight="@+id/viewEmail"
+        android:layout_alignEnd="@+id/viewEmail" />
 
     <EditText
         android:id="@+id/pseudo"
@@ -28,11 +31,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/viewInsc"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
+        android:layout_marginTop="75dp"
         android:hint="@string/pseudo"/>
 
     <TextView
         android:id="@+id/viewEmail"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/pseudo"
@@ -53,6 +57,7 @@
 
     <TextView
         android:id="@+id/viewMp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/email"
@@ -73,6 +78,7 @@
 
     <TextView
         android:id="@+id/viewMp2"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/mp"
@@ -108,4 +114,4 @@
         android:layout_alignRight="@+id/mp2"
         android:text="@string/confirmation"/>
 
-</RelativeLayout><!-- From: file:/C:/Users/Pierre/Desktop/Fac/projet-photo/mobile/likrone/app/src/main/res/layout/inscription.xml -->
+</RelativeLayout>
