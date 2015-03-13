@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
 public class CompteActivity extends MenuActivity {
 
     public CompteActivity() {
-        super(4);
+        super(3);
     }
 
 

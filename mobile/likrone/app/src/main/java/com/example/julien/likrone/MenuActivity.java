@@ -9,33 +9,39 @@ import android.view.MenuItem;
 public class MenuActivity extends Activity {
 
     int numAct = 0;
-
+    final String  EXTRA_INFO ="info_user";
+    final String EXTRA_User = "info login";
 
     public MenuActivity(int pNumAct){
         numAct = pNumAct;
+    }
+
+    public int getActiviteFille(){
+        return numAct;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        if(getActiviteFille()==2) {
+        if(getActiviteFille()==1){
+            MenuItem item = menu.findItem(R.id.home);
+            item.setVisible(false);
+        }
+
+        if(getActiviteFille()==2){
             MenuItem item1 = menu.findItem(R.id.publier);
             item1.setVisible(false);
             MenuItem item2 = menu.findItem(R.id.compte);
             item2.setVisible(false);
         }
 
-        if(getActiviteFille()==4){
+        if(getActiviteFille()==3){
             MenuItem item=menu.findItem(R.id.compte);
             item.setVisible(false);
         }
 
         return true;
-    }
-
-    public int getActiviteFille(){
-        return numAct;
     }
 
     @Override
@@ -54,10 +60,20 @@ public class MenuActivity extends Activity {
             }
 
             case R.id.compte: {
-                Intent intent = new Intent(this, CompteActivity.class);
-                startActivityForResult(intent, 1);
-                if(getActiviteFille()!=0)
+                if(getActiviteFille()==1){
+                    Intent intent2 = getIntent();
+                    final String idUser = intent2.getStringExtra(EXTRA_INFO).toString();
+                    Intent intent1 = new Intent(this, CompteActivity.class);
+                    intent1.putExtra(EXTRA_User, idUser.toString());
+                    startActivityForResult(intent1,1);
+                }
+
+                else {
+                    Intent intent = new Intent(this, CompteActivity.class);
+                    startActivityForResult(intent, 1);
                     finish();
+                }
+
                 return true;
             }
 

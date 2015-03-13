@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:clickable="true"
     tools:context=".MainActivity" >
-
     <GridView
         android:id="@+id/gridView"
         android:layout_width="fill_parent"
@@ -12,10 +11,10 @@
         android:layout_margin="5dp"
         android:columnWidth="100dp"
         android:gravity="center"
-        android:numColumns="auto_fit"
+        android:numColumns="2"
         android:verticalSpacing="5dp"
         android:drawSelectorOnTop="true"
-        android:stretchMode="columnWidth"
-        android:layout_below="@+id/idUser">
+        android:stretchMode="columnWidth">
     </GridView>
+
 </RelativeLayout>

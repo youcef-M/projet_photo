@@ -41,8 +41,6 @@ public class LoginActivity extends Activity{
                 startActivity(intent);
             }
         });
-
-
     }
 
     public void loginPost(View view) throws ExecutionException, InterruptedException, TimeoutException {
