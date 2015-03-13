@@ -3,6 +3,7 @@
 use User;
 use Hash;
 use Request;
+use Image;
 
 class UserGestion implements UserGestionInterface {
     
@@ -22,8 +23,8 @@ class UserGestion implements UserGestionInterface {
 		$user->active = 0;
 		$user->token = md5(time() . ' - ' . uniqid());
 		$user->save();
-		//$id = User::lastInsertId();
 		copy(public_path() . '/avatar/base.jpg', public_path() . '/avatar/' . $user->id.'.jpg');
+		Image::make('/avatar/' . $user->id.'.jpg')->resize(200, 200)->save(resizedName($path . '/' . $name, 200, 200));
     }
     
     public function show($id)
@@ -72,11 +73,13 @@ class UserGestion implements UserGestionInterface {
     public function avatar($id)
     {
         $image = Request::file('photo');
-        $path = public_path() . '/avatar/' . $id .'.jpg';
-        if(file_exists($path)){
-            unlink($path);
-            $image->move(public_path() . '/avatar/',$id.'.jpg');
+        $path = public_path() . '/avatar';
+        $name = $id . '.jpg';
+        if(file_exists($path . '/' . $name)){
+            unlink($path . '/' . $name);
+            unlink(resizedName($path . '/' . $name, 200, 200));
         }
-        
+        $image->move($path, $name);
+        Image::make($path . '/' . $name)->resize(200, 200)->save(resizedName($path . '/' . $name, 200, 200));
     }
 }

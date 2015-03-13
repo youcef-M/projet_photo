@@ -50,4 +50,5 @@ class VoteGestion implements VoteGestionInterface {
 		$vote = Vote::where('user_id',$user)->where('post_id',$post)->first();
 		$vote->delete();
 	}
+	
 }

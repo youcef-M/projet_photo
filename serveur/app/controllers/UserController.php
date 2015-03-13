@@ -160,10 +160,10 @@ class UserController extends \BaseController
 	
 	public function avatar($id)
 	{
-		if($this->avatar_validation->fails())
+		/*if($this->avatar_validation->fails())
 		{
 			return BaseController::httpError($this->avatar_validation);
-		}elseif($this->user_check->missing($id)){
+		}else*/if($this->user_check->missing($id)){
 			return BaseController::httpNotFound();
 		}else{
 			$this->user_gestion->avatar($id);

@@ -166,4 +166,25 @@ class PostController extends \BaseController {
 			}
 		}
 	}
+	
+	public function latestFeed()
+	{
+	    if($this->list_validation->fails())
+		{
+			return BaseController::httpError($this->list_validation);
+		}else{
+			return BaseController::httpContent($this->post_gestion->latestFeed(),'latest_feed');
+		}
+	}
+	
+	public function voteFeed()
+	{
+		if($this->list_validation->fails())
+		{
+			return BaseController::httpError($this->list_validation);
+		}else{
+			return BaseController::httpContent($this->post_gestion->voteFeed(),'vote_feed');
+		}
+	}
+	
 }

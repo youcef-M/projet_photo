@@ -5,6 +5,7 @@ use Hash;
 use Request;
 use Str;
 use Route;
+use Image;
 //require '../resize.php';
 
 class PostGestion implements PostGestionInterface {
@@ -32,14 +33,13 @@ class PostGestion implements PostGestionInterface {
         $chemin = public_path() . '/images/' . $post->user_id;
         $image = Request::file('photo');
         $extension = $image->getClientOriginalExtension();
-        
         do{
             $nom = Str::random(10) . '.' . $extension;
         }while(file_exists($chemin . '/' . $nom));
         
         $post->chemin = '/images/' . $post->user_id . '/' . $nom;
         $image->move($chemin,$nom);
-        //resizeImage('/' . $chemin . '/' . $nom, 200, 200);
+        Image::make($chemin . '/' . $nom)->resize(200, 200)->save(resizedName($chemin . '/' . $nom, 200, 200));
         $post->save();
         
     }
@@ -94,6 +94,25 @@ class PostGestion implements PostGestionInterface {
         
         return Post::whereIn('user_id', $userIds)->latest()->skip(10*($page-1))->take(10)->get();
         
+    }
+    
+    public function latestFeed()
+    {
+        $page = Request::get('page');
+        return Post::where('privacy',0)->latest()->skip(10*($page-1))->take(10)->get();
+    }
+    
+    public function voteFeed()
+    {
+        $page = Request::get('page');
+        $cleanIds = [];
+        $ids =\DB::select(\DB::raw('SELECT `post_id` FROM `votes` GROUP BY `post_id` order by sum(`note`) desc limit 10 offset '. ($page-1)*10));
+        foreach($ids as $k=>$v)
+        {
+            array_push($cleanIds, $v->post_id);
+        }
+        $ids = implode(',', $cleanIds);
+        return Post::whereIn('id', $cleanIds)->orderByRaw(\DB::raw("FIELD(id, $ids)"))->get();
     }
     
 }

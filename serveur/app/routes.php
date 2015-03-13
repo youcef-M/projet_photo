@@ -29,6 +29,7 @@ Route::post('/user/login','UserController@login');
 Route::post('/user/activate','UserController@activate');
 Route::post('/user/avatar/{id}','UserController@avatar');
 
+
 /**
  * POSTS
  **/
@@ -40,6 +41,8 @@ Route::delete('/post/delete/{id}','PostController@destroy');
 Route::post('/post/privacy/{id}','PostController@privacy');
 Route::get('/post/feed/{id}/follow','PostController@getFeed');
 Route::get('/post/feed/{id}/friend','PostController@friendsFeed');
+Route::get('/post/feed/latest/', 'PostController@latestFeed');
+Route::get('/post/feed/vote','PostController@voteFeed');
 
 /**
  * COMMENTS

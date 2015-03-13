@@ -112,5 +112,4 @@ class VoteController extends \BaseController {
 		
 	}
 
-
 }
