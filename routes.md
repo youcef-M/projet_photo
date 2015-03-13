@@ -36,7 +36,8 @@
 | /post/privacy/{id} |  POST  |                                 *privacy*                                 |      Change la visibilité du post n° {id}       |
 |   /post/feed/{id}/follow  |   GET  |                           **page**                                 |   Liste des posts des follow du user n° {id}    |
 | /post/feed/{id}/friend    |   GET  |                            **page**                                | Liste des posts des friends du user n° id}    | 
- 
+| /post/feed/latest   |   GET  |                            **page**                                | Liste des derniers posts    | 
+| /post/feed/vote   |   GET  |                            **page**                                | Liste des posts les mieux notés| 
 
 
 ### Routes pour la gestion des commentaires.
