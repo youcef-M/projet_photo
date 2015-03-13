@@ -1,31 +1,35 @@
 <?php
+	if (session_status() == PHP_SESSION_NONE) {
+	    	session_start();
+	}
 
-include "postcurl.php";
+	include 'http_request.php';
 
-if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['mail']))
-{
-	$pseudo=$_POST['pseudo'];
-	$password=$_POST['password'];
-	$mail=$_POST['mail'];
-
-
-	//extract data from the post
-
-
-	$url = 'https://api-rest-youcef-m.c9.io/user/new'; // url nouvel utilisateur
+	$fields = [
+		'username' => urlencode($_POST['username']),
+		'email' => urlencode($_POST['email']),
+		'password' => urlencode($_POST['password'])
+	];
+	$url = 'http://api-rest-youcef-m.c9.io/user/new';
 	
-	//set POST variables
-	$fields = array(
-							'username' => urlencode($pseudo),
-							'email' => urlencode($mail),
-							'password' => urlencode($password),
-					);
-	$result = postcurl($fields,$url);
-	var_dump($result);
+	$result = httpPost($fields,$url);
 
-
-}
-else
-echo "<p> veuillez rentrer vos pseudonymes mot de passe et adresse mail </p>";
+	if($result['code'] == 400)
+	{
+		$error = json_decode($result['content']);
+		foreach ($error as $k => $v) {
+			$_SESSION['errors'][$k] = $v[0];
+		}
+		redirect('index.php');		
+	}elseif($result['code'] == 400)
+	{
+		redirect('serveur_down.php');
+	}
+	else{
+		var_dump($result);die();
+		$_SESSION['errors'] = [];
+		redirect('connexion.php');
+	}
+	
 
 ?>

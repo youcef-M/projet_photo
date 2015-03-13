@@ -1,3 +1,9 @@
+<?php
+	if (session_status() == PHP_SESSION_NONE) {
+    	session_start();
+	}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,6 +11,9 @@
         <title>Bienvenue sur Pascagram</title>
 		<link rel="stylesheet" type="text/css" href="css/reset-design.css" />
 		<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
+		<style>
+			.error {color:red;}
+		</style>
     </head>
 
     <body>
@@ -14,9 +23,12 @@
 		<h2>Inscription</h2>	
 			<ul >
 				<li id="li_1" >
-					<label class="description" for="pseudo">Pseudo </label>
+					<label class="description" for="username">Pseudo </label>
 					<div>
-						<input id="pseudo" name="pseudo" type="text" maxlength="255" value=""/> 
+						<input id="username" name="username" type="text" maxlength="255" value=""/> 
+						<?php if (isset($_SESSION['errors']['username'])): ?>
+							<div class="error"> <?= $_SESSION['errors']['username']; ?></div>
+						<?php endif ?>
 					</div> 
 				</li>		
 				
@@ -24,22 +36,28 @@
 					<label class="description" for="password">Mot de passe </label>
 					<div>
 						<input id="password" name="password" type="password" maxlength="255" value=""/> 
+						<?php if (isset($_SESSION['errors']['password'])): ?>
+							<div class="error"> <?= $_SESSION['errors']['password']; ?></div>
+						<?php endif ?>
 					</div> 
 				</li>		
 				
 				<li id="li_3" >
-					<label class="description" for="mail">Email </label>
+					<label class="description" for="email">Email </label>
 					<div>
-						<input id="mail" name="mail" type="text" maxlength="255" value=""/> 
+						<input id="email" name="email" type="text" maxlength="255" value=""/> 
+						<?php if (isset($_SESSION['errors']['email'])): ?>
+							<div class="error"> <?= $_SESSION['errors']['email']; ?></div>
+						<?php endif ?>
 					</div> 
 				</li>		
 				
-				<li id="li_4" >
+				<!--<li id="li_4" >
 					<label class="description" for="avatar">T&eacute;l&eacute;charger un avatar </label>
 					<div>
 						<input id="avatar" name="avatar" type="file"/> 
 					</div>  
-				</li>
+				</li>-->
 			
 				<li class="buttons">
 					<input type="hidden" name="form_id" value="978276" />
