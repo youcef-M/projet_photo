@@ -3,4 +3,7 @@
 
 	isAllowed();
 
+	$_SESSION['profil'] = [];
+	redirect('connexion.php');
+
 	
