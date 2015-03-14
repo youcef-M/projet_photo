@@ -54,7 +54,7 @@
 			<p><?php echo '<b>Titre : </b>'.$infopost->titre.'<br/><b>Description : </b>'.$infopost->description.'<br/><b>Date de publication : </b>'.$infopost->created_at;?></p>
 		</section>
 		<section id=notation>
-			<p><?php echo '<b>'.$nblikes->likes.' Likes -- '.$nblikes->likes.' Dislikes</b>'; ?>
+			<p><?php echo '<b>'.$nblikes->likes.' Likes -- '.$nbdislikes->dislikes.' Dislikes</b>'; ?>
 		</section>
 		<section id=commentaires>
 		<hr>
