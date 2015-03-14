@@ -30,5 +30,5 @@
 		foreach ($user as $k => $v) {
 			$_SESSION['profil'][$k] = $v;
 		}
-		redirect('acceuil.php');
+		redirect('accueil.php');
 	}

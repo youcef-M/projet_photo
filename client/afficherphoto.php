@@ -6,10 +6,13 @@
     <body>
 		
 		<header>
-				<a href="accueil.php">Accueil</a>
-				<a href="accueil.php"><img src="images/pascagram.png" alt="" /></a>
-				<a href="profil.php">Afficher mon profil</a>
-				<a href="connexion.php">D&eacute;connexion</a>
+				<p>
+					<a href="accueil.php">Accueil</a>
+					<a href="accueil.php"><img src="images/pascagram.png" alt="" /></a>
+					Bonjour <?php echo $_SESSION['profil']['username']; ?> !
+					<a href="profil.php">Afficher mon profil</a>
+					<a href="deconnexion.php">D&eacute;connexion</a>
+				</p>
 		</header>
 		<section id=photo>
 			<img src="./images/affichagephoto.png" alt="" onclick="return false"/>
