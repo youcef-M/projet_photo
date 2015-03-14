@@ -14,6 +14,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,18 +22,18 @@ import java.util.ArrayList;
 
 public class DetailPhotoActivity extends Activity {
 
-    confirmCom = (Button) findViewById(R.id.confirmCom);
+    Button confirmCom = (Button) findViewById(R.id.confirmCom);
 
-    auteur = (TextView) findViewById(R.id.auteur);
-    date = (TextView) findViewById(R.id.date);
-    note = (TextView) findViewById(R.id.note);
-    commentaire = (TextView) findViewById(R.id.commentaire);
+    TextView auteur = (TextView) findViewById(R.id.auteur);
+    TextView date = (TextView) findViewById(R.id.date);
+    TextView note = (TextView) findViewById(R.id.note);
+    TextView commentaire = (TextView) findViewById(R.id.commentaire);
 
-    avatar = (ImageView) findViewById(R.id.avatar);
+    ImageView avatar = (ImageView) findViewById(R.id.avatar);
 
-    nouveauCom = (EditText) findViewById(R.id.nouveauCom);
+    EditText nouveauCom = (EditText) findViewById(R.id.nouveauCom);
 
-    confirmCom.setOnClickListener(apresEnvoi);
+    //confirmCom.setOnClickListener(apresEnvoi);
 
     /*private View.OnClickListener apresEnvoi = new View.OnClickListener() {
         @Override

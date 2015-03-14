@@ -62,6 +62,7 @@
         android:layout_below="@id/mp"
         android:layout_alignLeft="@id/viewMp"
         android:layout_marginTop="30dp"
+        android:onClick="loginPost"
         android:text="@string/connect"/>
 
     <Button

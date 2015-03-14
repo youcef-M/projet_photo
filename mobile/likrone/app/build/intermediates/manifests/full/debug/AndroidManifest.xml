@@ -42,6 +42,9 @@
         <activity
             android:name="com.example.julien.likrone.ImageAdapter"
             android:label="Image" />
+        <activity
+            android:name="com.example.julien.likrone.DetailPhotoActivity"
+            android:label="Détail de la Photo" />
     </application>
 
 </manifest>
