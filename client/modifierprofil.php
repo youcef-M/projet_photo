@@ -5,13 +5,10 @@
 
     <body>
 		<header>
-				<p>
-					<a href="accueil.php">Accueil</a>
-					<a href="accueil.php"><img src="images/pascagram.png" alt="" /></a>
-					Bonjour <?php echo $_SESSION['profil']['username']; ?> !
-					<a href="profil.php">Afficher mon profil</a>
-					<a href="deconnexion.php">D&eacute;connexion</a>
-				</p>
+			<a href="accueil.php">Accueil</a>
+			<a href="accueil.php"><img src="images/pascagram.png" alt="" /></a>
+			<a href="profil.php">Afficher mon profil</a>
+			<a href="connexion.php">D&eacute;connexion</a>
 		</header>
 		<section id="inscription">
 		<form id="form_inscription" class="appnitro" enctype="multipart/form-data" method="post" action="inscription.php">

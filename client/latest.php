@@ -9,11 +9,26 @@
 		];
 		$result = httpGet($fields,$url);
 		return json_decode($result['content']);
-
 	}
-	$content = getLatest();
+
+	function getPages($page = 1)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/post/pages';
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
+	if(isset($_GET['page']))
+	{
+		$content = getLatest($_GET['page']);
+	}else{
+		$content = getLatest();
+	}
+	
 	$content = $content->latest_feed;
-	//dd($content);
+	$pages = getPages();
+	
 ?>
 
 <?php
@@ -37,7 +52,23 @@
 		</section>
 
 		<hr>
-
+		<nav>
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+			      </a>
+				    </li>
+				   		<?php for($v=1;$v<=$pages;$v++): ?>
+				   			<li><a href="latest.php?page=<?= $v; ?>"><?= $v; ?></a></li>
+				   		<?php endfor?>
+				    <li>
+			      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
 
 <?php
 	include 'partials/footer.php';
