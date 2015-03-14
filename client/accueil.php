@@ -13,6 +13,7 @@
 				<a href="profil.php">Afficher mon profil</a>
 				<a href="deconnexion.php">D&eacute;connexion</a>
 		</header>
+		<?= flash(); ?>
 		<nav>Public   ---    Mes relations</nav>
 		<section id="photos">
 			<ul id="inedit">
