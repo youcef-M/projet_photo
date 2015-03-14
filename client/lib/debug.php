@@ -1,4 +1,6 @@
-	<div class="row">
+	&nbsp;
+	&nbsp;
+	<div class="row" >
 		<div class="col-sm-4">
 			<h2>Serveur</h2>
 			<?php var_dump($_SERVER); ?>

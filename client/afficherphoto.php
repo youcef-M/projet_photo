@@ -1,12 +1,47 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Bienvenue sur Pascagram</title>
-		<link rel="stylesheet" type="text/css" href="css/reset-design.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
-    </head>
+<?php
+	include 'include.php';
+	isAllowed();
 
+	function getInfoPost($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/post/show/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+	
+	function getNbLikes($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/vote/likes/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+	
+	function getNbDislikes($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/vote/dislikes/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+	
+	if(isset($_GET['id']))
+	{
+		$infopost = getInfoPost($_GET['id']);
+		$nblikes = getNbLikes($_GET['id']);
+		$nbdislikes = getNbDislikes($_GET['id']);
+		
+	}
+	
+	$infopost=$infopost->post;
+	
+?>
+
+
+<?php
+	include 'partials/header.php';
+?>
     <body>
 		
 		<header>
@@ -16,11 +51,11 @@
 				<a href="connexion.php">D&eacute;connexion</a>
 		</header>
 		<section id=photo>
-			<img src="./images/affichagephoto.png" alt="" onclick="return false"/>
-			<p> Ici les infos de la photo </p>
+			<img src="http://api-rest-youcef-m.c9.io<?=$infopost->chemin?>">
+			<p><?php echo '<b>Titre : </b>'.$infopost->titre.'<br/><b>Description : </b>'.$infopost->description.'<br/><b>Date de publication : </b>'.$infopost->created_at;?></p>
 		</section>
 		<section id=notation>
-		<p> Ici la notation de la photo
+			<p><?php echo '<b>'.$nblikes->likes.' Likes -- '.$nbdislikes->dislikes.' Dislikes</b>'; ?>
 		</section>
 		<section id=commentaires>
 		<hr>
@@ -42,7 +77,7 @@
 		</form>	
 		</section>
 		<hr>
-		<footer>2015. Pascagram</footer>
 		<script type="text/javascript" src="popup.js"></script>
-    </body>
-</html>
+<?php
+	include 'partials/footer.php';
+?>

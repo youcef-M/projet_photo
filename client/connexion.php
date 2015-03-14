@@ -1,22 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Bienvenue sur Pascagram</title>
-		<link rel="stylesheet" type="text/css" href="css/reset-design.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
-    </head>
+<?php
+	include 'include.php';
+	alreadyLogged();
+?>
 
+<?php
+	include 'partials/header.php';
+?>
     <body>
 		<header><a href="accueil.php"><img src="images/pascagram.png" alt="" /></a></header>
 		<section id="inscription">
 		<form id="form_978276" class="appnitro" enctype="multipart/form-data" method="post" action="connect.php">
-		<h2>Inscription</h2>	
+		<h2>Connexion</h2>	
 			<ul >
 				<li id="li_1" >
-					<label class="description" for="pseudo">Pseudo </label>
+					<label class="description" for="username">Pseudo </label>
 					<div>
-						<input id="pseudo" name="pseudo" type="text" maxlength="255" value=""/> 
+						<input id="username" name="username" type="text" maxlength="255" value=""/> 
+						<?php if (isset($_SESSION['errors']['username'])): ?>
+							<div class="error"> <?= $_SESSION['errors']['username']; ?></div>
+						<?php endif ?>
 					</div> 
 				</li>		
 				
@@ -24,6 +26,9 @@
 					<label class="description" for="password">Mot de passe </label>
 					<div>
 						<input id="element_12" name="password" type="password" maxlength="255" value=""/> 
+						<?php if (isset($_SESSION['errors']['password'])): ?>
+							<div class="error"> <?= $_SESSION['errors']['password']; ?></div>
+						<?php endif ?>
 					</div> 
 				</li>		
 				
@@ -38,8 +43,8 @@
 
 
 		</section>
-		<footer> 2015. Pascagram</footer>
-		
-	
-    </body>
-</html>
+
+
+<?php
+	include 'partials/footer.php';
+?>

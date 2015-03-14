@@ -1,10 +1,7 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE) {
-	    	session_start();
-	}
-
-	include 'http_request.php';
-
+	include 'include.php';
+	
+	$_SESSION['errors'] = [];
 	$fields = [
 		'username' => urlencode($_POST['username']),
 		'email' => urlencode($_POST['email']),
@@ -21,12 +18,10 @@
 			$_SESSION['errors'][$k] = $v[0];
 		}
 		redirect('index.php');		
-	}elseif($result['code'] == 400)
+	}elseif($result['code'] == 500)
 	{
 		redirect('serveur_down.php');
-	}
-	else{
-		var_dump($result);die();
+	}else{
 		$_SESSION['errors'] = [];
 		redirect('connexion.php');
 	}
