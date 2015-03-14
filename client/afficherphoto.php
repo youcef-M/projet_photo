@@ -26,15 +26,27 @@
 		return json_decode($result['content']);
 	}
 	
+	
+	function getComments($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/comments/bypost/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+		
+	
 	if(isset($_GET['id']))
 	{
 		$infopost = getInfoPost($_GET['id']);
 		$nblikes = getNbLikes($_GET['id']);
 		$nbdislikes = getNbDislikes($_GET['id']);
+		$comments = getComments($_GET['id']);
 		
 	}
 	
 	$infopost=$infopost->post;
+	//dd($comments);
 	
 ?>
 
@@ -52,17 +64,18 @@
 		</header>
 		<section id=photo>
 			<img src="http://api-rest-youcef-m.c9.io<?=$infopost->chemin?>">
-			<p><?php echo '<b>Titre : </b>'.$infopost->titre.'<br/><b>Description : </b>'.$infopost->description.'<br/><b>Date de publication : </b>'.$infopost->created_at;?></p>
+			<p><?= '<b>Titre : </b>'.$infopost->titre.'<br/><b>Description : </b>'.$infopost->description.'<br/><b>Date de publication : </b>'.$infopost->created_at;?></p>
 		</section>
 		<section id=notation>
-			<p><?php echo '<b>'.$nblikes->likes.' Likes -- '.$nbdislikes->dislikes.' Dislikes</b>'; ?>
+			<p><?= '<b>'.$nblikes->likes.' Likes -- '.$nbdislikes->dislikes.' Dislikes</b>'; ?>
 		</section>
 		<section id=commentaires>
 		<hr>
-		<p> Ici les anciens commentaires
-		
+		<p>
+			Ici les commentaires
+		</p>
 		<hr>
-		<form id="form_commentaires" class="" enctype="multipart/form-data" method="post" action="">
+		<form id="form_commentaires" class="" enctype="multipart/form-data" method="post" action="comment.php">
 			<ul>
 				<li>
 					<div>
@@ -71,7 +84,7 @@
 				</li>		
 					
 				<li class="buttons">
-					<input id="commenter" class="button_text" type="submit" name="submit" value="Commenter" />
+					<input id="commenter" class="button_text" type="submit" name="submit" value="Commenter"/>
 				</li>
 			</ul>
 		</form>	

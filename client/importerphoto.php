@@ -12,11 +12,10 @@
 		</header>
 		<section id="inscription">
 		<form id="form_inscription" class="appnitro" enctype="multipart/form-data" method="post" action="importer.php">
-		<h2>Importer une photo</h2>	
-		<h2>Connexion</h2>	
+		<h2>Importer une photo</h2>
 			<ul >
 				<li id="li_1" >
-					<label class="description" for="titre">Titre </label>
+					<label class="description" for="titre">Titre</label>
 					<div>
 						<input id="titre" name="titre" type="text" maxlength="255" value=""/> 
 						<?php if (isset($_SESSION['errors']['titre'])): ?>
@@ -26,19 +25,19 @@
 				</li>		
 				
 				<li id="li_2" >
-					<label class="description" for="description">Description </label>
+					<label class="description" for="description">Description</label>
 					<div>
-						<input id="description" name="description" type="text" maxlength="255" value=""/> 
+						<textarea id="description" name="description" rows=2 cols=40>Tapez votre description ici...</textarea>
 						<?php if (isset($_SESSION['errors']['description'])): ?>
 							<div class="error"> <?= $_SESSION['errors']['description']; ?></div>
 						<?php endif ?>
 					</div> 
 				</li>	
-				
+
 				<li id="li_3" >
-					<label class="description" for="photo">photo </label>
+					<label class="description" for="photo">Photo</label>
 					<div>
-						<input id="photo" name="photo" type="file" maxlength="255" value="" style="marging-left:50%;" /> 
+						<input id="photo" name="photo" type="file"/> 
 						<?php if (isset($_SESSION['errors']['photo'])): ?>
 							<div class="error"> <?= $_SESSION['errors']['photo']; ?></div>
 						<?php endif ?>

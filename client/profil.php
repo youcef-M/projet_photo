@@ -39,9 +39,6 @@
 	}
 	$content = $content->posts;
 	$pages = userPages($user['id']);
-
-
-
 ?>
 
     <body>
@@ -52,11 +49,10 @@
 				<a href="profil.php">Afficher mon profil</a>
 				<a href="connexion.php">D&eacute;connexion</a>
 		</header>
-		<section id="profil">
-			<hr>
+		<section id="profil">	
 			<img src="http://api-rest-youcef-m.c9.io/avatar/<?= $user['id']; ?>_200x200.jpg" alt="" />
 			<h1><?= $user['username']; ?></h1>
-			<p> <a href="">Amis</a>, <a href="">Abonn&eacute;s</a>, <a href="">Abonnements</a></p>
+			<p> <a href="amis.php">Amis</a>, <a href="abonnes.php">Abonn&eacute;s</a>, <a href="abonnements.php">Abonnements</a></p>
 			<a href="importerphoto.php">Importer une photo</a><br/>
 			<a href="modifierprofil.php">Modifier mes informations</a><br/>
 			<hr>
