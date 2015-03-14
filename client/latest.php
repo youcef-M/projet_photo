@@ -46,7 +46,7 @@
 		<section id="photos">
 			<ul id="inedit">
 			<?php foreach ($content as $k => $v): ?>
-				<li><a href="afficherphoto.php?id=<?= $v->id?>"> <img src="http://api-rest-youcef-m.c9.io<?= $v->chemin;?>"></a></li>
+				<li><a href="afficherphoto.php?id=<?= $v->id?>"> <img src="http://api-rest-youcef-m.c9.io<?= implode("_200x200.",explode(".",$v->chemin));?>"></a></li>
 			<?php endforeach ?>
 			</ul>
 		</section>
