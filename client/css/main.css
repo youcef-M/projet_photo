@@ -3,6 +3,7 @@ body
     background-color : white;
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 	text-align:center;
+	position: relative;
 }
 
 header
@@ -93,7 +94,7 @@ label.description
 	padding:0 0 1px;
 }
 
-
+.error {color:red;}
 
 footer
 {

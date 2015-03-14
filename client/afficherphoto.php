@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Bienvenue sur Pascagram</title>
-		<link rel="stylesheet" type="text/css" href="css/reset-design.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
-    </head>
+<?php
+	include 'include.php';
+	include 'partials/header.php';
+?>
 
     <body>
 		
@@ -42,7 +38,7 @@
 		</form>	
 		</section>
 		<hr>
-		<footer>2015. Pascagram</footer>
 		<script type="text/javascript" src="popup.js"></script>
-    </body>
-</html>
+<?php
+	include 'partials/footer.php';
+?>
