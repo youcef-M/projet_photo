@@ -31,6 +31,7 @@
 		$infopost = getInfoPost($_GET['id']);
 		$nblikes = getNbLikes($_GET['id']);
 		$nbdislikes = getNbDislikes($_GET['id']);
+		
 	}
 	
 	$infopost=$infopost->post;
@@ -54,7 +55,7 @@
 			<p><?php echo '<b>Titre : </b>'.$infopost->titre.'<br/><b>Description : </b>'.$infopost->description.'<br/><b>Date de publication : </b>'.$infopost->created_at;?></p>
 		</section>
 		<section id=notation>
-			<p><?php echo '<b>'.$nblikes->likes.' Likes -- '.$nblikes->likes.' Dislikes</b>'; ?>
+			<p><?= '<b>'.$nblikes->likes.' Likes -- '.$nbdislikes->dislikes.' Dislikes</b>'; ?>
 		</section>
 		<section id=commentaires>
 		<hr>
