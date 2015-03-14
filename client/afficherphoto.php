@@ -1,8 +1,46 @@
 <?php
 	include 'include.php';
-	include 'partials/header.php';
+	isAllowed();
+
+	function getInfoPost($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/post/show/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+	
+	function getNbLikes($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/vote/likes/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+	
+	function getNbDislikes($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/vote/dislikes/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+	
+	if(isset($_GET['id']))
+	{
+		$infopost = getInfoPost($_GET['id']);
+		$nblikes = getNbLikes($_GET['id']);
+		$nbdislikes = getNbDislikes($_GET['id']);
+	}
+	
+	$infopost=$infopost->post;
+	
 ?>
 
+
+<?php
+	include 'partials/header.php';
+?>
     <body>
 		
 		<header>
@@ -12,11 +50,11 @@
 				<a href="connexion.php">D&eacute;connexion</a>
 		</header>
 		<section id=photo>
-			<img src="./images/affichagephoto.png" alt="" onclick="return false"/>
-			<p> Ici les infos de la photo </p>
+			<img src="http://api-rest-youcef-m.c9.io<?=$infopost->chemin?>">
+			<p><?php echo '<b>Titre : </b>'.$infopost->titre.'<br/><b>Description : </b>'.$infopost->description.'<br/><b>Date de publication : </b>'.$infopost->created_at;?></p>
 		</section>
 		<section id=notation>
-		<p> Ici la notation de la photo
+			<p><?php echo '<b>'.$nblikes->likes.' Likes -- '.$nblikes->likes.' Dislikes</b>'; ?>
 		</section>
 		<section id=commentaires>
 		<hr>
