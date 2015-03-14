@@ -29,6 +29,20 @@ header
 
 }
 
+#listerelation li
+{
+	list-style: none;
+	display : inline-block;
+	margin-bottom: 50px;
+	width : 30%;
+
+}
+
+#listerelation img
+{
+	margin-right : 10px;
+}
+
 
 #photos li
 {
