@@ -47,4 +47,12 @@
 		die();
 	}
 
+	function error($name)
+	{
+		if (isset($_SESSION['errors'][$name]))
+		{
+			echo '<div class="error">' . $_SESSION['errors'][$name] . '</div>';
+			unset($_SESSION['errors'][$name]);
+		}
+	}
 

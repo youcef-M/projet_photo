@@ -18,9 +18,7 @@
 					<label class="description" for="titre">Titre</label>
 					<div>
 						<input id="titre" name="titre" type="text" maxlength="255" value=""/> 
-						<?php if (isset($_SESSION['errors']['titre'])): ?>
-							<div class="error"> <?= $_SESSION['errors']['titre']; ?></div>
-						<?php endif ?>
+						<?php error('titre'); ?>	
 					</div> 
 				</li>		
 				
@@ -28,9 +26,7 @@
 					<label class="description" for="description">Description</label>
 					<div>
 						<textarea id="description" name="description" rows=2 cols=40>Tapez votre description ici...</textarea>
-						<?php if (isset($_SESSION['errors']['description'])): ?>
-							<div class="error"> <?= $_SESSION['errors']['description']; ?></div>
-						<?php endif ?>
+						<?php error('description'); ?>	
 					</div> 
 				</li>	
 
@@ -38,9 +34,7 @@
 					<label class="description" for="photo">Photo</label>
 					<div>
 						<input id="photo" name="photo" type="file"/> 
-						<?php if (isset($_SESSION['errors']['photo'])): ?>
-							<div class="error"> <?= $_SESSION['errors']['photo']; ?></div>
-						<?php endif ?>
+						<?php error('photo'); ?>	
 					</div> 
 				</li>
 

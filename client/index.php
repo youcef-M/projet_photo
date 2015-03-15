@@ -17,9 +17,7 @@
 					<label class="description" for="username">Pseudo </label>
 					<div>
 						<input id="username" name="username" type="text" maxlength="255" value=""/> 
-						<?php if (isset($_SESSION['errors']['username'])): ?>
-							<div class="error"> <?= $_SESSION['errors']['username']; ?></div>
-						<?php endif ?>
+						<?php error('username'); ?>	
 					</div> 
 				</li>		
 				
@@ -27,9 +25,7 @@
 					<label class="description" for="password">Mot de passe </label>
 					<div>
 						<input id="password" name="password" type="password" maxlength="255" value=""/> 
-						<?php if (isset($_SESSION['errors']['password'])): ?>
-							<div class="error"> <?= $_SESSION['errors']['password']; ?></div>
-						<?php endif ?>
+						<?php error('password'); ?>	
 					</div> 
 				</li>		
 				
@@ -37,18 +33,9 @@
 					<label class="description" for="email">Email </label>
 					<div>
 						<input id="email" name="email" type="text" maxlength="255" value=""/> 
-						<?php if (isset($_SESSION['errors']['email'])): ?>
-							<div class="error"> <?= $_SESSION['errors']['email']; ?></div>
-						<?php endif ?>
+						<?php error('email'); ?>
 					</div> 
 				</li>		
-				
-				<!--<li id="li_4" >
-					<label class="description" for="avatar">T&eacute;l&eacute;charger un avatar </label>
-					<div>
-						<input id="avatar" name="avatar" type="file"/> 
-					</div>  
-				</li>-->
 			
 				<li class="buttons">
 					<input type="hidden" name="form_id" value="978276" />

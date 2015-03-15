@@ -13,23 +13,7 @@
 		$user = $_SESSION['profil'];	
 	}
 
-	function userPosts($id,$page=1)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/posts/'.$id;
-		$fields = [
-			'page' => $page
-		];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
-
-	function userPages($id)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/post/pages/'.$id;
-		$fields = [];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
+	
 
 	if(isset($_GET['page']))
 	{

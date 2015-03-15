@@ -3,17 +3,17 @@
 	isAllowed();
 	
 	$id = $_SESSION['profil']['id'];
-	$pages = friendFeedPages($id);
+	$pages = followFeedPages($id);
 	if($pages > 0)
 	{
 		if(isset($_GET['page']))
 		{
-			$content = getFriendFeed($id,$_GET['page']);
+			$content = getFollowFeed($id,$_GET['page']);
 		}else{
-			$content = getFriendFeed($id);
+			$content = getFollowFeed($id);
 		}
 		
-		$content = $content->friends_posts;
+		$content = $content->follow_posts;
 	}
 	
 ?>
@@ -28,9 +28,8 @@
 				<a href="profil.php">Afficher mon profil</a>
 				<a href="deconnexion.php">D&eacute;connexion</a>
 		</header>
-		<?= flash(); ?>
 		<nav><a href="latest.php">Derniers ajout&eacute;s</a>   -   <a href="vote.php">Mieux not&eacute;s</a>   -   <a href="accueil.php">Mes relations</a></nav>
-		<h2>Les photos de mes relations</h2>
+		<h2>Vos abonnements</h2>
 		<section id="photos">
 			<ul id="inedit">
 			<?php if ($pages > 0): ?>

@@ -2,40 +2,6 @@
 	include 'include.php';
 	isAllowed();
 
-	function getInfoPost($id)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/post/show/'.$id;
-		$fields = [];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
-	
-	function getNbLikes($id)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/vote/likes/'.$id;
-		$fields = [];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
-	
-	function getNbDislikes($id)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/vote/dislikes/'.$id;
-		$fields = [];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
-	
-	
-	function getComments($id)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/comments/bypost/'.$id;
-		$fields = [];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
-		
-	
 	if(isset($_GET['id']))
 	{
 		$infopost = getInfoPost($_GET['id']);
@@ -43,10 +9,11 @@
 		$nbdislikes = getNbDislikes($_GET['id']);
 		$comments = getComments($_GET['id']);
 		
+	}else{
+		setFlash("Cette page n'existe pas.","error");
 	}
-	
+
 	$infopost=$infopost->post;
-	//dd($comments);
 	
 ?>
 

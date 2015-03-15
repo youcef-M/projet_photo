@@ -7,4 +7,4 @@
 
 	include 'lib/http_request.php';
 	include 'lib/tests.php';
-	//include 'lib/debug.php';
+	include 'lib/data.php';

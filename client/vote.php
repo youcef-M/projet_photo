@@ -1,24 +1,6 @@
 <?php
 	include 'include.php';
 	isAllowed();
-	function getVote($page = 1)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/post/feed/vote';
-		$fields = [
-			'page' => urlencode($page),
-		];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-
-	}
-
-	function getPages($page = 1)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/post/pages';
-		$fields = [];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
 
 	if(isset($_GET['page']))
 	{
@@ -57,17 +39,11 @@
 		<nav>
 		  <ul class="pagination">
 		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-			      </a>
-				    </li>
-				   		<?php for($v=1;$v<=$pages;$v++): ?>
-				   			<li><a href="vote.php?page=<?= $v; ?>"><?= $v; ?></a></li>
-				   		<?php endfor?>
-				    <li>
-			      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
+			    </li>
+			   		<?php for($v=1;$v<=$pages;$v++): ?>
+			   			<li><a href="vote.php?page=<?= $v; ?>"><?= $v; ?></a></li>
+			   		<?php endfor?>
+			    <li>
 		    </li>
 		  </ul>
 		</nav>

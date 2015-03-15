@@ -15,10 +15,8 @@
 				<li id="li_1" >
 					<label class="description" for="username">Pseudo </label>
 					<div>
-						<input id="username" name="username" type="text" maxlength="255" value=""/> 
-						<?php if (isset($_SESSION['errors']['username'])): ?>
-							<div class="error"> <?= $_SESSION['errors']['username']; ?></div>
-						<?php endif ?>
+						<input id="username" name="username" type="text" maxlength="255" value=""/>
+						<?php error('username'); ?>	
 					</div> 
 				</li>		
 				
@@ -26,9 +24,7 @@
 					<label class="description" for="password">Mot de passe </label>
 					<div>
 						<input id="element_12" name="password" type="password" maxlength="255" value=""/> 
-						<?php if (isset($_SESSION['errors']['password'])): ?>
-							<div class="error"> <?= $_SESSION['errors']['password']; ?></div>
-						<?php endif ?>
+						<?php error('password'); ?>
 					</div> 
 				</li>		
 				
