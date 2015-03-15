@@ -56,3 +56,9 @@
 		}
 	}
 
+	function nav()
+	{
+
+		return include '/partials/nav.php';
+	}
+

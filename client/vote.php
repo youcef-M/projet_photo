@@ -24,7 +24,7 @@
 				<a href="profil.php">Afficher mon profil</a>
 				<a href="deconnexion.php">D&eacute;connexion</a>
 		</header>
-		<nav><a href="latest.php">Derniers ajout&eacute;s</a>   -   <a href="vote.php">Mieux not&eacute;s</a>   -   <a href="accueil.php">Mes relations</a></nav>
+		<?php nav(); ?>
 		<h2>Les publications les mieux not&eacute;es</h2>
 		<section id="photos">
 			<ul id="inedit">
