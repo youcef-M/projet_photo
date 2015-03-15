@@ -38,7 +38,10 @@
 | /post/feed/{id}/friend    |   GET  |                            **page**                                | Liste des posts des friends du user n° id}    | 
 | /post/feed/latest   |   GET  |                            **page**                                | Liste des derniers posts    | 
 | /post/feed/vote   |   GET  |                            **page**                                | Liste des posts les mieux notés| 
-
+| /post/pages   |   GET  |                            none                                | nombre de pages de posts| 
+| /post/pages/{id}   |   GET  |                            none                                | nombre de pages de posts appartenant a {id}| 
+| /post/follow/pages/{id}   |   GET  |                            none                                | nombre de pages de posts pour /feed/{id}/follow| 
+| /post/friend/pages/{id}   |   GET  |                            none                                | nombre de pages de posts pour /feed/{id}/friend| 
 
 ### Routes pour la gestion des commentaires.
 
