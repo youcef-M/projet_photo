@@ -1,6 +1,8 @@
 <?php
 	include 'include.php';	
-	include 'partials/header.php';
+	include '/partials/header_visitor.php';
+
+	echo flash(); 
 ?>
 <body>
 	

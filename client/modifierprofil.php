@@ -1,22 +1,13 @@
 <?php
 	include 'include.php';
-	include 'partials/header.php';
-?>
 
-    <body>
-		<header>
-			<a href="accueil.php">Accueil</a>
-			<a href="accueil.php"><img src="images/pascagram.png" alt="" /></a>
-			<a href="profil.php">Afficher mon profil</a>
-			<a href="connexion.php">D&eacute;connexion</a>
-		</header>
-		<section id="inscription">
+	getHeader();
+?>
+	<section id="inscription">
 		<form id="form_inscription" class="appnitro" enctype="multipart/form-data" method="post" action="inscription.php">
 		<h2>Modifier mes informations</h2>	
-		
+	</section>
 
-
-		</section>
 <?php
 	include 'partials/footer.php';
 ?>

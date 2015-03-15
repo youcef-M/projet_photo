@@ -1,17 +1,12 @@
 <?php
 	include 'include.php';
 	alreadyLogged();
-?>
 
-<?php
-	include 'partials/header.php';
+	include '/partials/header_visitor.php';
 ?>
-
-    <body>
-		<header><a href="accueil.php"><img src="images/pascagram.png" alt="" /></a></header>
-		<section id="inscription">
+	<section id="inscription">
 		<form id="form_inscription" class="appnitro" enctype="multipart/form-data" method="post" action="inscription.php">
-		<h2>Inscription</h2>	
+			<h2>Inscription</h2>	
 			<ul >
 				<li id="li_1" >
 					<label class="description" for="username">Pseudo </label>
@@ -45,9 +40,7 @@
 		</form>	
 		
 		<p>D&eacute;ja inscrit(e) ?</p><a href="connexion.php">Connexion</a>
-
-
-		</section>
+	</section>
 		
 <?php
 	include 'partials/footer.php';

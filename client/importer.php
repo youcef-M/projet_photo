@@ -26,12 +26,13 @@
 		redirect('importerphoto.php');		
 	}elseif($result['code'] == 500)
 	{	
-		print_r($result['content']);
-		//redirect('serveur_down.php');
+		setFlash('Nos services sont en panne, nous faisons notre possible pour régler le problème.','danger');
+		redirect('serveur_down.php');
 	}elseif($result['code'] == 200){	
 		setFlash("Votre photo a bien été envoyée");
 		redirect('latest.php');
 	}else{
-		print_r($result);
+		setFlash('Nos services sont en panne, nous faisons notre possible pour régler le problème.','danger');
+		redirect('serveur_down.php');
 	}
 	

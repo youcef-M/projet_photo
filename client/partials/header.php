@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Bienvenue sur Pascagram</title>
-		<link rel="stylesheet" type="text/css" href="css/reset-design.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    </head>
+<header>
+		<a href="accueil.php">Accueil &nbsp;</a>
+		<a href="accueil.php"><img src="images/pascagram.png" alt="" /></a>
+		<a href="profil.php">Mon profil &nbsp; &nbsp;</a>		
+		<a href="deconnexion.php">D&eacute;connexion</a>
+</header>
+<?php nav(); ?>
+<?= flash(); ?>

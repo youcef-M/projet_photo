@@ -20,9 +20,11 @@
 		redirect('index.php');		
 	}elseif($result['code'] == 500)
 	{
+		setFlash('Nos services sont en panne, nous faisons notre possible pour régler le problème.','danger');
 		redirect('serveur_down.php');
 	}else{
 		$_SESSION['errors'] = [];
+		setFlash('Votre inscription a bien été éffectuée.');
 		redirect('connexion.php');
 	}
 	

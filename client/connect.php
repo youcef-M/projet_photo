@@ -19,10 +19,12 @@
 		redirect('connexion.php');		
 	}elseif($result['code'] == 500)
 	{
+		setFlash('Nos services sont en panne, nous faisons notre possible pour régler le problème.','danger');
 		redirect('serveur_down.php');
 	}elseif($result['code'] == 404)
 	{
-		$_SESSION['errors']['not_found'] = true;
+		setFlash("Nom d'utilisateur ou mot de passe incorrect","danger");
+		redirect('connexion.php');
 	}else{	
 		
 		$user = json_decode($result['content']);
@@ -30,5 +32,6 @@
 		foreach ($user as $k => $v) {
 			$_SESSION['profil'][$k] = $v;
 		}
+		setFlash('Vous vous etes connecté avec succès');
 		redirect('accueil.php');
 	}

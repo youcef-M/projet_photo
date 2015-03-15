@@ -62,3 +62,12 @@
 		return include '/partials/nav.php';
 	}
 
+	function head()
+	{
+		return include '/partials/head.php';
+	}
+
+	function getHeader()
+	{
+		return include '/partials/header.php';
+	}
