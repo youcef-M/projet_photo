@@ -145,6 +145,28 @@
 		return json_decode($result['content']);
 	}
 
+	function voted($user,$post)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/vote/voted';
+		$fields = [
+			'user_id' => $user,
+			'post_id' => $post
+		];
+		$result = httpGet($fields,$url);
+		return json_decode($result['code']);
+	}
+
+	function getNote($user,$post)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/vote/note';
+		$fields = [
+			'user_id' => $user,
+			'post_id' => $post
+		];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
 	/**
 	 * Contenu relations
 	 */
