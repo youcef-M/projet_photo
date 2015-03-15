@@ -230,3 +230,51 @@
 		$result = httpGet($fields,$url);
 		return json_decode($result['content']);
 	}
+
+
+	/**
+	 * Sumbit
+	 */
+
+	function like($user,$post)
+	{	
+		$url = 'http://api-rest-youcef-m.c9.io/vote/like';
+		$fields = [
+			'user_id' => $user,
+			'post_id' => $post
+		];
+		$result = httpPost($fields,$url);
+		return json_decode($result['content']);	
+	}
+
+	function dislike($user,$post)
+	{	
+		$url = 'http://api-rest-youcef-m.c9.io/vote/dislike';
+		$fields = [
+			'user_id' => $user,
+			'post_id' => $post
+		];
+		$result = httpPost($fields,$url);
+		return json_decode($result['content']);	
+	}
+
+	function unvote($user,$post){	
+		$url = 'http://api-rest-youcef-m.c9.io/vote/delete';
+		$fields = [
+			'user_id' => $user,
+			'post_id' => $post
+		];
+		$result = httpDelete($fields,$url);
+		return json_decode($result['content']);	
+	}
+
+	function updateVote($user,$post)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/vote/update';
+		$fields = [
+			'user_id' => $user,
+			'post_id' => $post
+		];
+		$result = httpPut($fields,$url);
+		return json_decode($result['content']);	
+	}
