@@ -11,7 +11,6 @@
 		];
 		$result = httpGet($fields,$url);
 		return json_decode($result['content']);
-
 	}
 
 	function getLatest($page = 1)
@@ -122,4 +121,60 @@
 		return json_decode($result['content']);
 	}
 
-	
+	function followingPages($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/following/pages/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
+	function followersPages($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/followers/pages/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
+	function friendPages($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/friend/pages/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
+	/**
+	 * Contenu relations
+	 */
+
+	function friends($id,$page = 1)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/friends/'.$id;
+		$fields = [
+			'page' => urlencode($page),
+		];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
+	function following($id,$page = 1)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/following/'.$id;
+		$fields = [
+			'page' => urlencode($page),
+		];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
+	function followers($id,$page = 1)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/followers/'.$id;
+		$fields = [
+			'page' => urlencode($page),
+		];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
