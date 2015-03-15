@@ -45,7 +45,7 @@
 
 	<section id="photo">
 		<img src="http://api-rest-youcef-m.c9.io<?=$infopost->chemin?>">
-		<p><?= '<b>Titre : </b>'.$infopost->titre.'<br/><b>Description : </b>'.$infopost->description.'<br/><b>Date de publication : </b>'.$infopost->created_at;?></p>
+		<p><?= '<b>Titre : </b>'.$infopost->titre.'<br/> <b> Auteur : </b>' . $user['username'] . '<br/> <b>Description : </b>'.$infopost->description.'<br/><b>Date de publication : </b>'.$infopost->created_at;?></p>
 	</section>
 
 	<section id="notation">
