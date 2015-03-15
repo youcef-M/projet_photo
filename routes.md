@@ -63,16 +63,20 @@
 |   /follow/delete   |  DELETE| **follower_id**, **following_id** |    follower_id ne suit plus following_id   |
 |   /followers/{id}  |   GET  |                none               |   Liste de nos followers (liste de users)  |
 |   /following/{id}  |   GET  |  **follower_id**, **following_id**|    Liste de nos follows (liste de users)   |
+| /followers/pages/{id} |   GET  |                none               |   nombres de pages pour /followers/{id}  |
+| /following/pages/{id} |   GET  |                none               |   nombres de pages pour /following/{id}  |
+
 
 ### Routes pour la gestion des friends
 
 |         URL        | METHOD |             ARGUMENTS               |                   UTILITY                  |
 |:------------------:|:------:|:-----------------------------------:|:------------------------------------------:|
-|     /friends/{id}  |  GET   |                none                 |   Liste des friends de l'{id}              | 
+|     /friends/{id}  |  GET   |                page                 |   Liste des friends de l'{id}              | 
 |   /friend/activate |  PUT   |     **user_id**, **friend_id**      |     friend_id accepte user_id              |
 |/friends/waiting/{id}|  GET  |                none                 |   Liste des amis en attente de l'{id}      |
 |   /friend/new      |  POST  |      **user_id**, **friend_id**     |   user_id demande friend_id en ami         |
-|   /friend/delete   | DELETE |      **user_id**, **friend_id**     |  Suppression de la relation ami            |        
+|   /friend/delete   | DELETE |      **user_id**, **friend_id**     |  Suppression de la relation ami            | 
+| /friends/pages/{id}  |  GET   |                none                 |   nombre de pages pour /friends/{id}              |        
 
 ### Routes pour la gestion des votes
 
@@ -83,4 +87,5 @@
 |/vote/like/         |  POST  |      **user_id**, **post_id**     |    user_ id like la photo post_id           |
 |/vote/dislike/      |  POST  |      **user_id**, **post_id**     |    user_ id dislike la photo post_id        |
 |/vote/delete/       | DELETE |      **user_id**, **post_id**     |    Supprime le vote                         |
-
+|/vote/voted/       | GET |      **user_id**, **post_id**     |    Retourne ok si a deja voté not found sinon                        |
+|/vote/note/       | GET |      **user_id**, **post_id**     |    Retourne  la note de l'utilisateur sur le post(1/-1)                       |
