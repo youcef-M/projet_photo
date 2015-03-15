@@ -4,7 +4,6 @@
 	 * Recuperation de donnees
 	 */
 
-	//Récupérer infos de l'utilisateur {id}
 	function getUser($id)
 	{
 		$url = 'http://api-rest-youcef-m.c9.io/user/show/'.$id;
@@ -62,12 +61,10 @@
 		return json_decode($result['content']);
 	}
 
-	function getComments($id, $page=1)
+	function getComments($id)
 	{
 		$url = 'http://api-rest-youcef-m.c9.io/comments/bypost/'.$id;
-		$fields = [
-				'page' => $page
-		];
+		$fields = [];
 		$result = httpGet($fields,$url);
 		return json_decode($result['content']);
 	}
@@ -84,25 +81,6 @@
 		return json_decode($result['content']);
 	}
 
-	//Récupération de la page pour commentaires par post
-	function getPostPages($id,$page=1)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/comments/post/pages/'.$id;
-		$fields = [];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
-	
-	//Récupération de la page pour commentaires par user
-	function getUserPages($id,$page=1)
-	{
-		$url = 'http://api-rest-youcef-m.c9.io/comments/user/pages'.$id;
-		$fields = [];
-		$result = httpGet($fields,$url);
-		return json_decode($result['content']);
-	}
-	
-	
 	function getInfoPost($id)
 	{
 		$url = 'http://api-rest-youcef-m.c9.io/post/show/'.$id;
