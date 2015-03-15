@@ -5,9 +5,7 @@
 	
 	if(isset($_GET['id']))
 	{
-		$url = 'http://api-rest-youcef-m.c9.io/user/show/'.$_GET['id'];
-		$result =  httpGet([],$url);
-		$user = json_decode($result['content'],true);
+		$user = getUser($_GET['id']);
 	}else{
 		$user = $_SESSION['profil'];	
 	}

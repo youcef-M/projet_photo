@@ -3,6 +3,14 @@
 	/**
 	 * Recuperation de donnees
 	 */
+
+	function getUser($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/user/show/'.$id;
+		$result =  httpGet([],$url);
+		return json_decode($result['content'],true);
+	}
+
 	function getVote($page = 1)
 	{
 		$url = 'http://api-rest-youcef-m.c9.io/post/feed/vote';
