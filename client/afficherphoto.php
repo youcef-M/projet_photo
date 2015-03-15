@@ -10,7 +10,21 @@
 		$infopost = getInfoPost($post);
 		$nblikes = getNbLikes($post);
 		$nbdislikes = getNbDislikes($post);
-		$comments = getComments($post);
+		
+		$pages = getPostPages($post);
+		
+		//Si on a des commentaires sur le post, on les récupère
+		if($pages > 0)
+		{
+			if(isset($_GET['page']))
+			{
+				$comments = getComments($post,$_GET['page']);
+			}else{
+				$comments = getComments($post);
+			}
+			$comments=$comments->comments;
+		}
+		
 		$voted = voted($user,$post);
 		if($voted !== 404)
 		{
@@ -23,8 +37,9 @@
 		setFlash("Cette page n'existe pas.","danger");
 		redirect("accueil.php");
 	}
-
+	
 	$infopost=$infopost->post;
+	
 	
 	getHeader();
 ?>
@@ -84,19 +99,29 @@
 
 
 
-
-
-
-
-
-
-
 	<section id="commentaires">
+	
+	<?php if ($pages > 0): ?>
 	<hr>
 	<p>
-		Ici les commentaires	
+		<?php foreach ($comments as $k => $v): ?>
+			<?='<b>'.getUser($v->id)['username'].'</b> a dit : '.$v->content.'<br/><i>'.$v->created_at.'</i>'.'<br/>_________________________<br/><br/>';?>
+		<?php endforeach ?>
 	</p>
+	<nav>
+	  <ul class="pagination">
+	    <li>
+		    </li>
+		   		<?php for($v=1;$v<=$pages;$v++): ?>
+		   			<li><a href="afficherphoto.php?page=<?= $v; ?>"><?= $v; ?></a></li>
+		   		<?php endfor?>
+		    <li>
+	    </li>
+	  </ul>
+	</nav>
 	<hr>
+	<?php endif ?>
+
 	<form id="form_commentaires" class="" enctype="multipart/form-data" method="post" action="comment.php">
 		<ul>
 			<li>
