@@ -10,7 +10,20 @@
 		$infopost = getInfoPost($post);
 		$nblikes = getNbLikes($post);
 		$nbdislikes = getNbDislikes($post);
-		$comments = getComments($post);
+		
+		
+		if(isset($_GET['page']))
+		{
+			$comments = getComments($post,$_GET['page']);
+		}else{
+			$comments = getComments($post);
+		}
+	
+		$comments=$comments->comments;
+		$pages = getPostPages($post);
+		
+		
+		
 		$voted = voted($user,$post);
 		if($voted !== 404)
 		{
@@ -23,8 +36,10 @@
 		setFlash("Cette page n'existe pas.","danger");
 		redirect("accueil.php");
 	}
-
+	
+	//dd($comments);
 	$infopost=$infopost->post;
+	
 	
 	getHeader();
 ?>
@@ -84,17 +99,12 @@
 
 
 
-
-
-
-
-
-
-
 	<section id="commentaires">
 	<hr>
 	<p>
-		Ici les commentaires	
+		<?php foreach ($comments as $k => $v): ?>
+			<?='<b>'.getUser($v->id)['username'].'</b> a dit : '.$v->content.'<br/><i>'.$v->created_at.'</i>'.'<br/>_________________________<br/><br/>';?>
+		<?php endforeach ?>
 	</p>
 	<hr>
 	<form id="form_commentaires" class="" enctype="multipart/form-data" method="post" action="comment.php">
