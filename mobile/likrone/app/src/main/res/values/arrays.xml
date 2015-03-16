@@ -2,14 +2,14 @@
 <resources>
     <string-array name="image_ids">
         <item>@drawable/cosmo</item>
+        <item>@drawable/likorne</item>
+        <item>@drawable/cosmo</item>
+        <item>@drawable/likorne</item>
+        <item>@drawable/chiko</item>
         <item>@drawable/cosmo</item>
         <item>@drawable/cosmo</item>
         <item>@drawable/cosmo</item>
         <item>@drawable/cosmo</item>
-        <item>@drawable/cosmo</item>
-        <item>@drawable/cosmo</item>
-        <item>@drawable/cosmo</item>
-        <item>@drawable/cosmo</item>
-        <item>@drawable/cosmo</item>
+        <item>@drawable/likorne</item>
     </string-array>
 </resources>

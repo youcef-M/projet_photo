@@ -1,108 +1,34 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:orientation="vertical"
-    android:padding="5dp"
-    android:background="@drawable/grid_color">
+    android:background="@drawable/grid_color"
+    android:padding="5dp">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:layout_below="@+id/principale"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="75dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/cosmo">
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp" >
     </ImageView>
 
-    <Button
-        android:id="@+id/poucev"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:text="@string/poucev">
-    </Button>
-
-    <Button
-        android:id="@+id/poucer"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/poucev"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:text="@string/poucer">
-    </Button>
-
-    <Button
-        android:id="@+id/commenter"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/poucer"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:text="@string/commenter">
-    </Button>
-
-    <Button
-        android:id="@+id/modifier"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/commenter"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:text="@string/modifier">
-    </Button>
-
-    <Button
-        android:id="@+id/supprimer"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/modifier"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:text="@string/supprimer">
-    </Button>
-
     <TextView
-        android:id="@+id/titre"
-        android:layout_width="300dp"
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:text="@string/titre">
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textSize="12sp" >
     </TextView>
 
     <TextView
-        android:id="@+id/auteur"
-        android:layout_width="300dp"
+        android:id="@+id/author"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titre"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="@string/auteur">
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textSize="12sp" >
     </TextView>
 
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/supprimer"
-        android:layout_toEndOf="@+id/titre"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:text="@string/score">
-    </TextView>
-</RelativeLayout>
-
+</LinearLayout>

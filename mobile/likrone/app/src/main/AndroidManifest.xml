@@ -25,7 +25,6 @@
         <activity android:name=".AccueilActivity" android:label="Accueil"/>
         <activity android:name=".CompteActivity" android:label="Compte"/>
         <activity android:name=".ImageAdapter" android:label="Image"/>
-        <activity android:name=".DetailPhotoActivity" android:label="Détail de la Photo"/>
     </application>
 
 

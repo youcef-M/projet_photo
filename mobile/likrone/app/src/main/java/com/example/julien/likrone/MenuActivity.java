@@ -20,6 +20,13 @@ public class MenuActivity extends Activity {
         return numAct;
     }
 
+    /**********************************
+     * AccueilActivity ==> numAct = 1 *
+     * Photo           ==> numAct = 2 *
+     * CompteActivity  ==> numAct = 3 *
+     * ExampleActivity ==> numAct = 5 *
+     **********************************/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
