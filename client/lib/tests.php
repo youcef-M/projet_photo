@@ -71,3 +71,13 @@
 	{
 		return include '/partials/header.php';
 	}
+
+	function getFooter()
+	{
+		return include '/partials/footer.php';
+	}
+
+	function visitor_header()
+	{
+		include '/partials/header_visitor.php';
+	}

@@ -15,43 +15,49 @@
 		}
 		$content = $content->following;
 	}
-	
 	getHeader();
 ?>
-	<section id="liste">
-		<br/><h1>Liste des abonnements</h1><br/>
-		<ul id="listerelation">
-			<?php if ($pages > 0): ?>
-				<?php foreach ($content as $k => $v): ?>
-					<li>
-						<a href="profil.php?id=<?= $v->id; ?>" title=""><img src="http://api-rest-youcef-m.c9.io/avatar/<?= $v->id; ?>_200x200.jpg" alt=""/>
-							<?= $v->username; ?>
-						</a>
-					</li>
-				<?php endforeach ?>
-			<?php endif ?>		
-		</ul>
-	</section>
 
-	<nav>
-	  <ul class="pagination">
-	    <li>	        
-		    </li>
-		    	<?php if ($pages > 0): ?>
-		    		<?php for($v=1;$v<=$pages;$v++): ?>
-			   			<li>
-				   			<a href="abonnements.php?page=<?= $v; ?>">
-				   				<?= $v; ?>
-				   			</a>
-			   			</li>
-			   		<?php endfor?>
-		    	<?php endif ?>
-			   		
-		    <li>
+<article>
+	<!-- Contenu de la page -->
+	<div class="contenu">
+		<div class="contenu_static">
+			<section id="liste">
+				<br/><h1>Liste des abonnements</h1><br/>
+				<ul id="listerelation">
+					<?php if ($pages > 0): ?>
+						<?php foreach ($content as $k => $v): ?>
+							<li>
+								<a href="profil.php?id=<?= $v->id; ?>" title="">
+								<img class="img-circle" src="http://api-rest-youcef-m.c9.io/avatar/<?= $v->id; ?>_200x200.jpg" alt="" style="border-radius:50px;"/>
+								<?= $v->username; ?>
+								</a>
+							</li>
+						<?php endforeach ?>
+					<?php endif ?>		
+				</ul>
+			</section>
+		</div>
+	</div>
+</article>
+
+
+<nav>
+  <ul class="pagination">
+    <li>	        
 	    </li>
-	  </ul>
-	</nav>
+	    	<?php if ($pages > 0): ?>
+	    		<?php for($v=1;$v<=$pages;$v++): ?>
+		   			<li>
+			   			<a href="abonnements.php?page=<?= $v; ?>">
+			   				<?= $v; ?>
+			   			</a>
+		   			</li>
+		   		<?php endfor?>
+	    	<?php endif ?>	
+	    <li>
+    </li>
+  </ul>
+</nav>
 
-<?php
-	include 'partials/footer.php';
-?>
+<?php getFooter(); ?>

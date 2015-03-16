@@ -6,5 +6,5 @@
 		'user_id' => urlencode($_POST['user_id']),
 		'post_id' => urlencode($_POST['post_id'])
 	];
-	$url = 
+	//$url = 
 ?>

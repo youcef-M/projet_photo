@@ -231,6 +231,71 @@
 		return json_decode($result['content']);
 	}
 
+	function alreadyFollow($follower,$following)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/follower/exist';
+		$fields = [
+			'follower_id' => $follower,
+			'following_id' => $following
+		];
+		$result = httpGet($fields,$url);
+		return json_decode($result['code']);
+	}
+
+	function alreadyAsked($user,$asked)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/friend/exist';
+		$fields = [
+			'user_id' => $user,
+			'friend_id' => $asked
+		];
+		$result = httpGet($fields,$url);
+		return json_decode($result['code']);
+	}
+
+	function follow($follower,$following)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/follow/new';
+		$fields = [
+			'follower_id' => $follower,
+			'following_id' => $following
+		];
+		$result = httpPost($fields,$url);
+		return json_decode($result['code']);
+	}
+
+	function beFriend($user,$asked)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/friend/new';
+		$fields = [
+			'user_id' => $user,
+			'friend_id' => $asked
+		];
+		$result = httpPost($fields,$url);
+		return json_decode($result['code']);
+	}
+
+	function unfollow($follower,$following)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/follow/delete';
+		$fields = [
+			'follower_id' => $follower,
+			'following_id' => $following
+		];
+		$result = httpDelete($fields,$url);
+		return json_decode($result['code']);
+	}
+
+	function unFriend($user,$asked)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/friend/delete';
+		$fields = [
+			'user_id' => $user,
+			'friend_id' => $asked
+		];
+		$result = httpDelete($fields,$url);
+		return json_decode($result['code']);
+	}
 
 	/**
 	 * Sumbit

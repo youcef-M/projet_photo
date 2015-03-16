@@ -16,7 +16,7 @@
 		foreach ($error as $k => $v) {
 			$_SESSION['errors'][$k] = $v[0];
 		}
-		redirect('connexion.php');		
+		redirect('index.php');		
 	}elseif($result['code'] == 500)
 	{
 		setFlash('Nos services sont en panne, nous faisons notre possible pour régler le problème.','danger');
@@ -24,7 +24,7 @@
 	}elseif($result['code'] == 404)
 	{
 		setFlash("Nom d'utilisateur ou mot de passe incorrect","danger");
-		redirect('connexion.php');
+		redirect('index.php');
 	}else{	
 		
 		$user = json_decode($result['content']);

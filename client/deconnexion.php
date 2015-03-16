@@ -5,6 +5,6 @@
 
 	$_SESSION['profil'] = [];
 	setFlash('Vous avez bien été déconnecté');
-	redirect('connexion.php');
+	redirect('index.php');
 
 	

@@ -1,13 +1,14 @@
 <?php
 	include 'include.php';	
-	include '/partials/header_visitor.php';
-
-	echo flash(); 
+	visitor_header();
 ?>
-<body>
-	
-	<h1> Oups something went wrong </h1>
-	
+<article>
+	<div class="contenu">
+			<div class="contenu_static">
+				<h1> Oups something went wrong </h1>
+		</div>
+	</div>
+</article>
 <?php
-	include 'partials/footer.php';
+	getFooter();
 ?>

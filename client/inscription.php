@@ -4,7 +4,7 @@
 	$_SESSION['errors'] = [];
 	$fields = [
 		'username' => urlencode($_POST['username']),
-		'email' => urlencode($_POST['email']),
+		'email' => $_POST['email'],
 		'password' => urlencode($_POST['password'])
 	];
 	$url = 'http://api-rest-youcef-m.c9.io/user/new';
@@ -17,7 +17,7 @@
 		foreach ($error as $k => $v) {
 			$_SESSION['errors'][$k] = $v[0];
 		}
-		redirect('index.php');		
+		redirect('register.php');		
 	}elseif($result['code'] == 500)
 	{
 		setFlash('Nos services sont en panne, nous faisons notre possible pour régler le problème.','danger');
@@ -25,7 +25,7 @@
 	}else{
 		$_SESSION['errors'] = [];
 		setFlash('Votre inscription a bien été éffectuée.');
-		redirect('connexion.php');
+		redirect('register.php');
 	}
 	
 
