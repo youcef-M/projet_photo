@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context=".MainActivity" >
+
+        <Button
+            android:id="@+id/principale"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:text="@string/principale">
+        </Button>
+
+        <Button
+            android:id="@+id/meilleures"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/principale"
+            android:text="@string/meilleures">
+        </Button>
+
+        <Button
+            android:id="@+id/pires"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/meilleures"
+            android:text="@string/pires">
+        </Button>
+
+        <Button
+            android:id="@+id/suivis"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/pires"
+            android:text="@string/suivis">
+        </Button>
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="500dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/principale"
+            android:columnWidth="100dp"
+            android:gravity="center"
+            android:numColumns="2"
+            android:verticalSpacing="5dp"
+            android:drawSelectorOnTop="true"
+            android:stretchMode="columnWidth">
+        </GridView>
+
+        <Button
+            android:id="@+id/fgauche"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/fgauche"
+            android:layout_below="@+id/gridView"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@+id/meilleures">
+        </Button>
+
+        <Button
+            android:id="@+id/fdroite"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/fdroite"
+            android:layout_alignTop="@+id/fgauche"
+            android:layout_toRightOf="@+id/fgauche"
+            android:layout_toEndOf="@+id/fgauche">
+        </Button>
+
+
+</RelativeLayout>

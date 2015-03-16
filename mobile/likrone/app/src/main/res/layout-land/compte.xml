@@ -12,6 +12,14 @@
         android:textStyle="bold"
         android:textSize="50sp"/>
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/avatar"
+        android:src="@drawable/likorne"
+        android:layout_marginLeft="100dp"
+        android:layout_centerVertical="true"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,26 +27,29 @@
         android:textSize="20sp"
         android:id="@+id/idUser"
         android:text="Id :"
-        android:layout_toLeftOf="@+id/viewId"
-        android:layout_below="@+id/compte"
-        android:layout_margin="10dp"/>
+        android:layout_toRightOf="@+id/avatar"
+        android:layout_toEndOf="@+id/avatar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="150dp"/>
 
     <TextView
         android:id="@+id/viewId"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/compte"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
         android:text="ID"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/idUser"
+        android:layout_toRightOf="@+id/idUser"
+        android:layout_toEndOf="@+id/idUser"
+        android:layout_marginLeft="20dp"/>
 
     <TextView
+        android:id="@+id/nom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:id="@+id/nom"
         android:text="Pseudo :"
         android:layout_below="@+id/idUser"
         android:layout_toLeftOf="@+id/viewId"
@@ -48,18 +59,18 @@
         android:id="@+id/viewName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/idUser"
-        android:layout_centerHorizontal="true"
         android:text="Name"
-        android:layout_margin="10dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/nom"
+        android:layout_alignLeft="@+id/viewId"
+        android:layout_alignStart="@+id/viewId" />
 
     <TextView
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:id="@+id/email"
         android:text="Adresse mail :"
         android:layout_below="@+id/nom"
         android:layout_toLeftOf="@+id/viewId"
@@ -69,18 +80,12 @@
         android:id="@+id/viewMail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nom"
-        android:layout_centerHorizontal="true"
         android:text="Mail"
-        android:layout_margin="10dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/email"
+        android:layout_alignLeft="@+id/viewName"
+        android:layout_alignStart="@+id/viewName" />
 
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/avatar"
-        android:layout_below="@+id/viewMail"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+
 
 </RelativeLayout>

@@ -7,10 +7,10 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:src="@drawable/cosmo"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/cosmo" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/viewPseudo"
@@ -22,11 +22,6 @@
         android:layout_toLeftOf="@id/imageView"
         android:textStyle="bold"
         android:text="@string/viewPseudo"/>
-
-    <TextView
-        android:id="@+id/reponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/pseudo"
@@ -59,17 +54,6 @@
         android:inputType="textPassword"
         android:ems="10"
         android:hint="@string/mp"/>
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pseudo"
-        android:layout_toRightOf="@+id/mp"
-        android:visibility="invisible"
-        android:text="@string/Role"
-        android:textSize="20sp"
-        android:textColor="@color/rouge"/>
 
     <Button
         android:id="@+id/connect"
