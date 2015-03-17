@@ -20,6 +20,13 @@ public class MenuActivity extends Activity {
         return numAct;
     }
 
+    /**********************************
+     * AccueilActivity ==> numAct = 1 *
+     * Photo           ==> numAct = 2 *
+     * CompteActivity  ==> numAct = 3 *
+     * ExampleActivity ==> numAct = 5 *
+     **********************************/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -78,11 +85,21 @@ public class MenuActivity extends Activity {
             }
 
             case R.id.publier: {
-                Intent intent = new Intent(this, Photo.class);
-                startActivityForResult(intent,2);
-                if(getActiviteFille()!=0)
+                if (getActiviteFille() == 1) {
+                    Intent intent2 = getIntent();
+                    final String idUser = intent2.getStringExtra(EXTRA_INFO).toString();
+                    Intent intent1 = new Intent(this, Photo.class);
+                    intent1.putExtra(EXTRA_User, idUser.toString());
+                    startActivityForResult(intent1, 1);
+                }
+                if (getActiviteFille() != 0)
                     finish();
-                return true;
+                else {
+                    Intent intent = new Intent(this, Photo.class);
+                    startActivityForResult(intent, 1);
+                    finish();
+                }
+            return true;
             }
 
             case R.id.deconnexion: {

@@ -90,10 +90,6 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/amis"/>
-        <RadioButton
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/groupes"/>
     </RadioGroup>
 
 

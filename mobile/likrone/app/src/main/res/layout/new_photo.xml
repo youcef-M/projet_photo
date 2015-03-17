@@ -51,8 +51,7 @@
         android:id="@+id/photo"
         android:layout_alignTop="@+id/camera"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        />
+        android:layout_centerVertical="true"/>
 
     <EditText
         android:layout_width="250dp"
@@ -72,5 +71,26 @@
         android:layout_centerHorizontal="true"
         android:hint="Description de la photo"/>
 
+    <RadioGroup
+        android:id="@+id/priv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/photo"
+        android:layout_centerHorizontal="true">
+        <RadioButton
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/monde"
+            android:checked="true" />
+        <RadioButton
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/privé"/>
+        <RadioButton
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/amis"/>
+    </RadioGroup>
 
 </RelativeLayout>

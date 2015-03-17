@@ -3,6 +3,9 @@
     package="com.example.julien.likrone" >
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
 
         android:allowBackup="true"
@@ -25,8 +28,5 @@
         <activity android:name=".AccueilActivity" android:label="Accueil"/>
         <activity android:name=".CompteActivity" android:label="Compte"/>
         <activity android:name=".ImageAdapter" android:label="Image"/>
-        <activity android:name=".DetailPhotoActivity" android:label="Détail de la Photo"/>
     </application>
-
-
 </manifest>
