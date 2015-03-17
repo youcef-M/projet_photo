@@ -49,7 +49,7 @@
 <article>
 	<!-- Contenu de la page -->
 	<div class="contenu">
-		<div class="contenu_static">
+		<div class="contenu_static">	
 			<?php if ($user === $author['id']): ?>
 				<button class="btn btn-primary">
 					<a href="modifierphoto.php?id=<?=$post;?>">Modifier cette publication</a>
@@ -57,13 +57,12 @@
 				<button class="btn btn-danger">
 					<a  href="supprimerphoto.php?id=<?=$post;?>" >Supprimer cette publication</a>
 				</button>
+				<hr>
 			<?php endif ?>
-			<hr>
+			<h2><?= ucfirst($infopost->titre); ?></h2>
 			<section id="photo">
 				<img src="http://api-rest-youcef-m.c9.io<?=$infopost->chemin?>" style="max-width: 1024px;max-height: 700px;">
 				<p>
-				<?= '<b>Titre : </b>'.$infopost->titre.'<br/>'; ?> 
-
 				<?php if ($user !== $author['id'] ): ?>
 					<b> Auteur : </b><a href="profil.php?id=<?= $author['id']; ?>"> <?=  $author['username']  ;?> </a><br/>
 				<?php else: ?>
@@ -97,7 +96,7 @@
 
 
 					<?php if ($note === 1): ?>
-						<button class="btn btn-success">
+						<button class="btn btn-success active">
 							<a href="submit_vote.php?id=<?= $post; ?>&delete=1">
 								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">
 									<?= ' ' . $nblikes->likes; ?>  
@@ -115,7 +114,7 @@
 
 
 					<?php if ($note === -1): ?>
-						<button class="btn btn-success">
+						<button class="btn btn-success active">
 							<a href="submit_vote.php?id=<?= $post; ?>&new=1">
 								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">
 									<?= ' ' . $nblikes->likes; ?>  

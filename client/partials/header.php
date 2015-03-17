@@ -5,7 +5,7 @@
 			<div id="header">
 				<div class="logo">
 					<a href="index.php">
-						<img src="images/log.png" />
+						<img src="images/pascagram3.png" />
 					</a>
 				</div>
 				<div class="topright">
