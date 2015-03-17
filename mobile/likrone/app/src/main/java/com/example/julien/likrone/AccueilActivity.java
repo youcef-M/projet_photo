@@ -31,9 +31,9 @@ public class AccueilActivity extends MenuActivity {
     private GridView gridView;
     private GridViewAdapter customGridAdapter;
     final String EXTRA_ID_IMAGE = "id";
-    String idPhoto = null;
-    String idAuteurPhoto = null;
-    String titrePhoto = null;
+    ArrayList idPhoto = new ArrayList();
+    ArrayList idAuteurPhoto = new ArrayList();
+    ArrayList titrePhoto = new ArrayList();
     ArrayList chemins = new ArrayList();
     Button latest = null;
     Button vote = null;
@@ -110,12 +110,24 @@ public class AccueilActivity extends MenuActivity {
             }
         }*/
         try {
-            new getJson().execute(mode).get();
+            String infoImage = new getJson().execute(mode).get();
+            JSONArray arr  = new JSONArray(infoImage);
+            for(int i=0;i<5;i++) {
+                String result3 = arr.getString(i);
+                JSONObject obj2 = new JSONObject(result3);
+                idPhoto.add(obj2.getString("id"));
+                idAuteurPhoto.add(obj2.getString("user_id"));
+                titrePhoto.add((obj2.getString("titre")).replaceAll("\\+", " "));
+                chemins.add(obj2.getString("chemin"));
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
         for (int i = 0; i < chemins.size(); i++) {
             try {
                 b = new getImage().execute(chemins.get(i).toString()).get();
@@ -125,15 +137,16 @@ public class AccueilActivity extends MenuActivity {
                 e.printStackTrace();
             }
             //chemins.add(chemin);
-            imageItems.add(new ImageItem(b, idPhoto, titrePhoto, idAuteurPhoto));
+            imageItems.add(new ImageItem(b, idPhoto.get(i).toString(), titrePhoto.get(i).toString(), idAuteurPhoto.get(i).toString()));
         }
         return imageItems;
      }
 
 
-    private class getJson extends AsyncTask<Integer, Void, Integer> {
+    private class getJson extends AsyncTask<Integer, Void, String> {
         @Override
-        protected Integer doInBackground(Integer... params) {
+        protected String doInBackground(Integer... params) {
+            String infoImage=null;
             try {
                 URL url;
                 String selec;
@@ -155,8 +168,8 @@ public class AccueilActivity extends MenuActivity {
 
                 JSONObject obj = new JSONObject(result);
 
-                String result2 = obj.getString(selec);
-                JSONArray arr = new JSONArray(result2);
+                infoImage = obj.getString(selec);
+                /*JSONArray arr  = new JSONArray(infoImage);
                 for(int i=0;i<5;i++) {
                     String result3 = arr.getString(i);
                     JSONObject obj2 = new JSONObject(result3);
@@ -164,16 +177,16 @@ public class AccueilActivity extends MenuActivity {
                     idAuteurPhoto = obj2.getString("user_id");
                     titrePhoto = (obj2.getString("titre")).replaceAll("\\+", " ");
                     chemins.add(obj2.getString("chemin"));
-                }
+                }*/
 
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
-                return 1;
+                return "Pas d'image";
             }
-            return 0;
+            return infoImage;
         }
     }
 
