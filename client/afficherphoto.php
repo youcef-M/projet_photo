@@ -50,7 +50,7 @@
 	<!-- Contenu de la page -->
 	<div class="contenu">
 		<div class="contenu_static">
-			<?php if (!($user !== $author['id'])): ?>
+			<?php if ($user === $author['id']): ?>
 				<button class="btn btn-primary">
 					<a href="modifierphoto.php?id=<?=$post;?>">Modifier cette publication</a>
 				</button>
@@ -135,19 +135,41 @@
 			</section>
 			<section id="commentaires">
 
+				<form id="form_commentaires" class="" enctype="multipart/form-data" method="post" action="comment.php?id=<?=$post;?>">
+					<ul>
+						<li>
+							<textarea id="content" name="content" rows=2 cols=40 placeholder="Tapez votre commentaire ici..."></textarea>  
+						</li>		
+							
+						<li>
+							<button class="btn ">
+								<input id="commenter" type="submit" name="submit" value="Commenter"/>
+							</button>
+						</li>
+					</ul>
+				</form>	
+				<hr>
 				<?php if ($pages > 0): ?>
 				<hr>
-				<p>
-					<?php foreach ($comments as $k => $v): ?>
-						<?='<b>'.getUser($v->id)['username'].'</b> a dit : '.$v->content.'<br/><i>'.$v->created_at.'</i>'.'<br/>_________________________<br/><br/>';?>
-					<?php endforeach ?>
-				</p>
+				<br/>_________________________<br/>
+				
+				<?php foreach ($comments as $k => $v): ?>
+
+					<?php if ($v->user_id !== $user): ?>
+						<b><?= getUser($v->user_id)['username'];?></b> a dit : 
+					<?php else: ?>
+						<b> Vous </b> avez dit : 
+					<?php endif ?>
+					<?=urldecode($v->content);?><br/>
+					<i><?=$v->created_at;?></i>
+					<br/>_________________________<br/><br/>
+				<?php endforeach ?>
 				<nav>
 				  <ul class="pagination">
 				    <li>
 					    </li>
 					   		<?php for($v=1;$v<=$pages;$v++): ?>
-					   			<li><a href="afficherphoto.php?page=<?= $v; ?>"><?= $v; ?></a></li>
+					   			<li><a href="afficherphoto.php?id=<?=$post;?>&page=<?= $v; ?>"><?= $v; ?></a></li>
 					   		<?php endfor?>
 					    <li>
 				    </li>
@@ -156,45 +178,12 @@
 				<hr>
 				<?php endif ?>
 
-				<form id="form_commentaires" class="" enctype="multipart/form-data" method="post" action="comment.php">
-					<ul>
-						<li>
-							<div>
-								<textarea name="positive" rows=2 cols=40>Tapez votre commentaire ici...</textarea> 
-							</div> 
-						</li>		
-							
-						<li class="buttons">
-							<input id="commenter" class="button_text" type="submit" name="submit" value="Commenter"/>
-						</li>
-					</ul>
-				</form>	
+			
 			</section>
 		</div>
 	</div>
 </article>
 
-<?php if ($pages > 0): ?>
-	<nav>
-	  <ul class="pagination">
-	    <li>
-		    </li>
-			    
-		    	<?php if (isset($_GET['id'])): ?>
-			    	<?php for($v=1;$v<=$pages;$v++): ?>
-			   			<li><a href="profil.php?page=<?= $v; ?>&id=<?= $_GET['id']; ?>"><?= $v; ?></a></li>
-			   		<?php endfor?>
-			    <?php else: ?>
-			    	<?php for($v=1;$v<=$pages;$v++): ?>
-			   			<li><a href="profil.php?page=<?= $v; ?>"><?= $v; ?></a></li>
-			   		<?php endfor?>
-			    <?php endif ?>
-			 
-		    <li>
-	    </li>
-	  </ul>
-	</nav>
-	<hr>
-<?php endif ?>
+
 
 <?php getFooter(); ?>
