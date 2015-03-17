@@ -175,6 +175,14 @@
 		return json_decode($result['content']);
 	}
 
+	function waitingPages($id)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/friends/waiting/pages/'.$id;
+		$fields = [];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
 	function voted($user,$post)
 	{
 		$url = 'http://api-rest-youcef-m.c9.io/vote/voted';
@@ -204,6 +212,16 @@
 	function friends($id,$page = 1)
 	{
 		$url = 'http://api-rest-youcef-m.c9.io/friends/'.$id;
+		$fields = [
+			'page' => urlencode($page),
+		];
+		$result = httpGet($fields,$url);
+		return json_decode($result['content']);
+	}
+
+	function waiting($id,$page = 1)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/friends/waiting/'.$id;
 		$fields = [
 			'page' => urlencode($page),
 		];
@@ -272,6 +290,17 @@
 			'friend_id' => $asked
 		];
 		$result = httpPost($fields,$url);
+		return json_decode($result['code']);
+	}
+
+	function activate($user,$asked)
+	{
+		$url = 'http://api-rest-youcef-m.c9.io/friend/activate';
+		$fields = [
+			'user_id' => $user,
+			'friend_id' => $asked
+		];
+		$result = httpPut($fields,$url);
 		return json_decode($result['code']);
 	}
 

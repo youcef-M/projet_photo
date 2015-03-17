@@ -8,9 +8,14 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" />
+
+
+
 		<script src="js/jquery.min.js" type="text/javascript"></script>
 		<script src="js/ddsmoothmenu.js" type="text/javascript"></script>
 		<script src="js/menu.js" type="text/javascript"></script>
+
+		
 		<script type="text/javascript">
 		$(function() {
 		var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/")+1);

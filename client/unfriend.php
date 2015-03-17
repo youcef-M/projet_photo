@@ -9,6 +9,8 @@
 		die();
 	}
 
+	$referer = $_SERVER['HTTP_REFERER'];
+
 	$user = $_SESSION['profil']['id'];
 	$asked = $_GET['id'];
 
@@ -24,7 +26,7 @@
 		redirect('serveur_down.php');
 	}elseif($friendship == 200){	
 		setFlash("Cette personne a bien été retiré de votre liste d'amis");
-		redirect('profil.php?id='.$asked);
+		redirect($referer);
 	}else{
 		setFlash('Nos services sont en panne, nous faisons notre possible pour régler le problème.','danger');
 		redirect('serveur_down.php');

@@ -7,6 +7,7 @@
 			<li><a href="vote.php">Mieux not&eacute;s</a></li>
 			<li><a href="accueil.php">Mes relations</a></li>
 			<li><a href="follow.php">Mes abonnements</a></li>
+			<li><a href="invitations.php">Mes invitations</a></li>
 		</ul>				
 	</div>      		                            
 </div>
