@@ -169,6 +169,12 @@
 						<td>
 							<i><?=$v->created_at;?></i>
 						</td>
+						<td>
+							<?php if ($v->user_id == $user): ?>
+								<button class="btn btn-danger"><a href="">Supprimer mon commentaire</a></button>
+							<?php endif ?>
+						</td>
+
 					</tr>	
 					<?php endforeach ?>	
 				</table>
