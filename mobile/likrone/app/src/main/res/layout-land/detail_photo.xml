@@ -5,10 +5,41 @@
     <ImageView
         android:id="@+id/img"
         android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginStart="120dp" />
+        android:layout_height="300dp" />
+
+    <TextView
+        android:id="@+id/titreP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img"/>
+
+    <TextView
+        android:id="@+id/auteurP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img"
+        android:layout_below="@id/titreP"/>
+
+    <TextView
+        android:id="@+id/dateP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img"
+        android:layout_below="@id/auteurP"/>
+
+    <EditText
+        android:id="@+id/newCom"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateP"/>
+
+    <Button
+        android:id="@+id/postCom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/newCom"
+        android:layout_below="@+id/dateP"
+        android:text="Envoyer"/>
 
     <ListView
         android:id="@+id/listView"

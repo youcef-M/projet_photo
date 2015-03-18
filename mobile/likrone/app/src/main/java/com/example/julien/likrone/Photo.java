@@ -45,7 +45,7 @@ public class Photo extends MenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_photo);
-
+        final Intent intent2 = getIntent();
         valider = (Button) findViewById(R.id.save);
         raz = (Button) findViewById(R.id.cancel);
         raz.setOnClickListener(razListener);
@@ -61,7 +61,7 @@ public class Photo extends MenuActivity {
                     Intent imageIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     File imagesFolder = new File(Environment.getExternalStorageDirectory(), "MyImages");
                     imagesFolder.mkdirs();
-                    image = new File(imagesFolder, "image_001.jpg");
+                    image = new File("az");
                     Uri uriSavedImage = Uri.fromFile(image);
                     imageIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
 
@@ -78,7 +78,7 @@ public class Photo extends MenuActivity {
                 String title = titre.getText().toString();
                 String description = desc.getText().toString();
                 String privacy = Integer.toString(priv.getCheckedRadioButtonId());
-                String user_id = EXTRA_User;
+                String user_id = intent2.getStringExtra(EXTRA_User).toString();
                 FileBody file = new FileBody(image);
 
                 HttpClient client = new DefaultHttpClient();

@@ -28,15 +28,18 @@ public class AccueilActivity extends MenuActivity {
         super(1);
     }
 
-    private GridView gridView;
-    private GridViewAdapter customGridAdapter;
-    final String EXTRA_ID_IMAGE = "id";
+    private GridView gridView=null;
+    private GridViewAdapter customGridAdapter=null;
+    final String EXTRA_INFO_IMAGE = "info_image";
+    final String EXTRA_ID_USER ="id_user";
+    final String EXTRA_INFO ="info_user";
     ArrayList idPhoto = new ArrayList();
-    ArrayList idAuteurPhoto = new ArrayList();
+    ArrayList auteur = new ArrayList();
     ArrayList titrePhoto = new ArrayList();
     ArrayList chemins = new ArrayList();
     Button latest = null;
     Button vote = null;
+    JSONArray arr = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,27 +49,27 @@ public class AccueilActivity extends MenuActivity {
         latest = (Button) findViewById(R.id.rec);
         vote = (Button) findViewById(R.id.meilleures);
         gridView = (GridView) findViewById(R.id.gridView);
+        Intent intent2 = getIntent();
+        final String idUser = intent2.getStringExtra(EXTRA_INFO).toString();
 
         latest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(gridView.getChildCount()>0){
-                    customGridAdapter.clear();
-                }
+               // if(!customGridAdapter.()){
+                    //customGridAdapter.clear();
+               // }
                 customGridAdapter = new GridViewAdapter(AccueilActivity.this, R.layout.grid_row, getData(1));
                  gridView.setAdapter(customGridAdapter);
-
            }
         });
 
         vote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(gridView.getChildCount()>0){
-                    customGridAdapter.clear();
-                }
+                //if(!customGridAdapter.isEmpty()){
+                    //customGridAdapter.clear();
+                //}
                 customGridAdapter = new GridViewAdapter(AccueilActivity.this, R.layout.grid_row, getData(2));
-                customGridAdapter.notifyDataSetChanged();
                 gridView.setAdapter(customGridAdapter);
             }
         });
@@ -75,9 +78,14 @@ public class AccueilActivity extends MenuActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Intent intent = new Intent(AccueilActivity.this, ImageAdapter.class);
-                ImageItem imageSelec = customGridAdapter.getItem(position);
-                intent.putExtra("chemin", chemins.get(position).toString());
-                intent.putExtra(EXTRA_ID_IMAGE, imageSelec.getId());
+                //ImageItem imageSelec = customGridAdapter.getItem(position);
+               //intent.putExtra("chemin", chemins.get(position).toString());
+                try {
+                    intent.putExtra(EXTRA_INFO_IMAGE, arr.getString(position));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                intent.putExtra(EXTRA_ID_USER,idUser);
                 startActivity(intent);
             }
         });
@@ -86,37 +94,14 @@ public class AccueilActivity extends MenuActivity {
     private ArrayList getData(int mode) {
         final ArrayList imageItems = new ArrayList();
         Bitmap b = null;
-        int x = 1;
-        //int i = 0;
-        /*for(int j=0;j<5;j++) {
-            try {
-                x = new getJson().execute(mode).get();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-            if (x == 0) {
-                try {
-                    b = new getImage().execute(chemins.get(i).toString()).get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                //chemins.add(chemin);
-                imageItems.add(new ImageItem(b, idPhoto, titrePhoto, idAuteurPhoto));
-                i++;
-            }
-        }*/
         try {
             String infoImage = new getJson().execute(mode).get();
-            JSONArray arr  = new JSONArray(infoImage);
+            arr  = new JSONArray(infoImage);
             for(int i=0;i<5;i++) {
                 String result3 = arr.getString(i);
                 JSONObject obj2 = new JSONObject(result3);
                 idPhoto.add(obj2.getString("id"));
-                idAuteurPhoto.add(obj2.getString("user_id"));
+                auteur.add(new getAuteur().execute(obj2.getString("user_id")).get());
                 titrePhoto.add((obj2.getString("titre")).replaceAll("\\+", " "));
                 chemins.add(obj2.getString("chemin"));
             }
@@ -136,8 +121,7 @@ public class AccueilActivity extends MenuActivity {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-            //chemins.add(chemin);
-            imageItems.add(new ImageItem(b, idPhoto.get(i).toString(), titrePhoto.get(i).toString(), idAuteurPhoto.get(i).toString()));
+            imageItems.add(new ImageItem(b, idPhoto.get(i).toString(), titrePhoto.get(i).toString(), auteur.get(i).toString()));
         }
         return imageItems;
      }
@@ -163,22 +147,9 @@ public class AccueilActivity extends MenuActivity {
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 InputStream inputStream = connection.getInputStream();
-
                 String result = InputStreamOperations.InputStreamToString(inputStream);
-
                 JSONObject obj = new JSONObject(result);
-
                 infoImage = obj.getString(selec);
-                /*JSONArray arr  = new JSONArray(infoImage);
-                for(int i=0;i<5;i++) {
-                    String result3 = arr.getString(i);
-                    JSONObject obj2 = new JSONObject(result3);
-                    idPhoto = obj2.getString("id");
-                    idAuteurPhoto = obj2.getString("user_id");
-                    titrePhoto = (obj2.getString("titre")).replaceAll("\\+", " ");
-                    chemins.add(obj2.getString("chemin"));
-                }*/
-
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (MalformedURLException e) {
@@ -207,6 +178,29 @@ public class AccueilActivity extends MenuActivity {
                 e.printStackTrace();
             }
             return bitmap;
+        }
+    }
+
+    public static class getAuteur extends AsyncTask<String, Void, String> {
+        String auteur = null;
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                URL urlImage = new URL("http://api-rest-youcef-m.c9.io/user/show/" + params[0]);
+                HttpURLConnection connection = (HttpURLConnection) urlImage.openConnection();
+                connection.setRequestMethod("GET");
+                InputStream inputStream = connection.getInputStream();
+                String result = InputStreamOperations.InputStreamToString(inputStream);
+                JSONObject obj = new JSONObject(result);
+                auteur = obj.getString("username");
+            } catch (JSONException e){
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return auteur;
         }
     }
 }

@@ -22,6 +22,7 @@ public class LoginActivity extends Activity{
     private EditText pseudo,mp;
     private TextView role;
     Button creation = null;
+
     final String  EXTRA_INFO ="info_user";
 
     @Override
@@ -94,7 +95,5 @@ public class LoginActivity extends Activity{
         protected void onPostExecute(String result){
             role.setText(result);
         }
-
     }
-
 }

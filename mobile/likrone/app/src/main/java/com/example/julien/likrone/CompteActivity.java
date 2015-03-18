@@ -27,7 +27,7 @@ public class CompteActivity extends MenuActivity {
 
     final String EXTRA_User = "info login";
     String json = null;
-    final String EXTRA_IdUser = "Id User";
+    final String EXTRA_PSEUDO = "Id User";
     ImageView avatar = null;
 
     @Override
@@ -49,6 +49,7 @@ public class CompteActivity extends MenuActivity {
             String id=obj.getString("id");
             idUser.setText(id);
             nomUser.setText(obj.getString("username"));
+            intent.putExtra("pseudo", nomUser.getText().toString());
             mailUser.setText(obj.getString("email"));
             avatar.setImageBitmap(new getAvatar().execute(id).get());
         } catch (JSONException e) {
