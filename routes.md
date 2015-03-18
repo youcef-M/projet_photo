@@ -24,7 +24,7 @@
 | /user/activate    |  POST  |         **token*	         |     Active un utilisateur identifié par son token     |
 | /user/avatar/{id} |  POST  |    **photo**(image jpg)   |      Change la photo de profil de l'utilisateur {id}  |
 
-### Routes pour la gestion des posts. (en gras les parametres obligatoires)
+### Routes pour la gestion des posts.
       
 |         URL        			| METHOD |                                 ARGUMENTS                                 	|                     UTILITY                     	|
 |:-----------------------------:|:------:|:----------------------------------------------------------------------------:|:-------------------------------------------------:|
