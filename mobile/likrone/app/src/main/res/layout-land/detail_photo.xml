@@ -4,41 +4,48 @@
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="300dp"
-        android:layout_height="300dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/titreP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/img"/>
+        android:layout_toRightOf="@id/img"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/auteurP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img"
-        android:layout_below="@id/titreP"/>
+        android:layout_below="@id/titreP"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/dateP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img"
-        android:layout_below="@id/auteurP"/>
+        android:layout_below="@id/auteurP"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="15dp"/>
 
     <EditText
         android:id="@+id/newCom"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dateP"/>
+        android:layout_below="@+id/listView"/>
 
     <Button
         android:id="@+id/postCom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/newCom"
-        android:layout_below="@+id/dateP"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/newCom"
         android:text="Envoyer"/>
 
     <ListView

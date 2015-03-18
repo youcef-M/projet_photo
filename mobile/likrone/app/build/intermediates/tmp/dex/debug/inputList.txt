@@ -1,2 +1,2 @@
-C:\Users\rem\Desktop\Projet_M1\projet-photo\mobile\likrone\app\build\intermediates\classes\debug
-C:\Users\rem\Desktop\Projet_M1\projet-photo\mobile\likrone\app\build\intermediates\pre-dexed\debug\httpmime-4.4-4a081d6c46aaed30cb3ba5117496477207aa4714.jar
+C:\Users\Pierre\Desktop\Fac\projet-photo\mobile\likrone\app\build\intermediates\classes\debug
+C:\Users\Pierre\Desktop\Fac\projet-photo\mobile\likrone\app\build\intermediates\pre-dexed\debug\httpmime-4.4-2bab93df95e253cb311a374e9fc08840278bf15d.jar

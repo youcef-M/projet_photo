@@ -17,7 +17,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/camera"
-        android:layout_marginTop="133dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/newphoto"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="@string/valider"
         android:id="@+id/save"
-        android:layout_marginTop="67dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/camera"
         android:layout_alignLeft="@+id/camera"
         android:layout_alignStart="@+id/camera" />
@@ -57,8 +57,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/titre"
         android:layout_toLeftOf="@+id/photo"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
         android:hint="Titre de la photo"/>
 
     <EditText

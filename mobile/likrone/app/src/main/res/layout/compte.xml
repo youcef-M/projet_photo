@@ -79,7 +79,6 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:id="@+id/avatar"
-        android:src="@drawable/likorne"
         android:layout_below="@+id/viewMail"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
