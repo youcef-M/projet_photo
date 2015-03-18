@@ -13,7 +13,7 @@
 		
 		$pages = getPostPages($post);
 		
-		//Si on a des commentaires sur le post, on les récupère
+		//Si on a des commentaires sur le post, on les rÃ©cupÃ¨re
 		if($pages > 0)
 		{
 			if(isset($_GET['page']))
@@ -70,7 +70,7 @@
 				<?php endif ?>
 					
 
-				<?= '<b>Description : </b>'.$infopost->description.'<br/>';?>
+				<?= '<b>Description : </b>'.urldecode($infopost->description).'<br/>';?>
 				<?= '<b>Date de publication : </b>'.$infopost->created_at;?>
 				</p>
 			</section>
