@@ -149,14 +149,18 @@ input {
 	width:5px;
 	height:30px;
 }
+
+/*
 .topmenu ul li.last {
-	background-image:url(../images/toplinksbg_03.png);
+	background-image:url(../images/toplinks_sep.jpg);
 	background-repeat:no-repeat;
 	width:5px;
 	height:30px;
 }
+*/
+
 .topmenu ul li a {
-	background-image:url(../images/toplinks_sep.jpg);
+	/*background-image:url(../images/toplinks_sep.jpg);*/
 	background-repeat:no-repeat;
 	background-position:right;
 	color:#717171;

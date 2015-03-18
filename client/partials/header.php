@@ -12,11 +12,11 @@
 					<nav>
 						<div class="topmenu">
 							<ul>
-								<li class="first">&nbsp;</li>
-								<li><a href="accueil.php">Acceuil</a></li>
+								<!--<li class="first">&nbsp;</li>-->
+								<li><a href="accueil.php">Accueil</a></li>
 								<li><a href="profil.php">Mon profil</a></li>
 								<li><a href="deconnexion.php">Deconnexion</a></li>
-								<li class="last">&nbsp;</li>
+								<!--<li class="last">&nbsp;</li>-->
 							</ul>
 						</div>
 						<div class="clear"></div>

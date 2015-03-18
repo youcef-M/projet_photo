@@ -13,7 +13,7 @@
 			<form id="form_978276" class="appnitro" enctype="multipart/form-data" method="post" action="connect.php">
 				<ul class="formulaire">
 					<li>
-						<input id="username" name="username" type="text" maxlength="255" value="" placeholder="Nom d'utilisateur"/> 
+						<input id="username" name="username" type="text" maxlength="255" value="" placeholder="Pseudo"/> 
 						<?php error('username'); ?>	
 					</li>
 					<li>

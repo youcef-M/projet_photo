@@ -11,11 +11,11 @@
 			<form 	include 'include.php';class="appnitro" enctype="multipart/form-data" method="post" action="inscription.php"
 				<ul class="formulaire">
 					<li>
-						<input id="username" name="username" type="text" maxlength="255" value="" placeholder="Nom d'utilisateur"/> 
+						<input id="username" name="username" type="text" maxlength="255" value="" placeholder="Pseudo"/> 
 						<?php error('username'); ?>	
 					</li>	
 					<li>
-						<input id="email" name="email" type="text" maxlength="255" value="" placeholder="email"/>
+						<input id="email" name="email" type="text" maxlength="255" value="" placeholder="E-mail"/>
 						<?php error('email'); ?>
 					</li>
 					<li>
