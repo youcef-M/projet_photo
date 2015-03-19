@@ -22,7 +22,7 @@
 	<!-- Contenu de la page -->
 	<div class="contenu">
 		<div class="contenu_static">
-			<h2>Actualit&eacute; de mes abonnements</h2>
+			<h2>Vos abonnements</h2>
 			<section id="photos">
 				<ul id="inedit">
 					<?php if ($pages > 0): ?>

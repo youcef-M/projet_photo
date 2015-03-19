@@ -13,7 +13,7 @@
 		
 		$pages = getPostPages($post);
 		
-		//Si on a des commentaires sur le post, on les récupère
+		//Si on a des commentaires sur le post, on les rÃ©cupÃ¨re
 		if($pages > 0)
 		{
 			if(isset($_GET['page']))
@@ -134,10 +134,10 @@
 			</section>
 			<section id="commentaires">
 
-				<form id="form_commentaires" class="" enctype="multipart/form-data" method="post" action="comment.php?id=<?=$post;?>">
+				<form id="form_commentaires" enctype="multipart/form-data" method="post" action="comment.php?id=<?=$post;?>">
 					<ul>
 						<li>
-							<textarea id="content" name="content" rows=2 cols=40 placeholder="Tapez votre commentaire ici..."></textarea>  
+							<textarea class="form-control" id="content" name="content" rows=2 cols=30 placeholder="Tapez votre commentaire ici..."></textarea>  
 						</li>		
 							
 						<li>
@@ -149,20 +149,35 @@
 				</form>	
 				<hr>
 				<?php if ($pages > 0): ?>
+				<br/>
 				<hr>
-				<br/>_________________________<br/>
-				
-				<?php foreach ($comments as $k => $v): ?>
+				<table class="table table-hover">				
+					<?php foreach ($comments as $k => $v): ?>
+					<tr>
+						<td>
+							<img  style="height:100px;width:100px;" class="img-circle" src="http://api-rest-youcef-m.c9.io/avatar/<?= $v->user_id; ?>_200x200.jpg" alt="" style="border-radius:50px;"/>
+						</td>
+						<td>
+							<?php if ($v->user_id !== $user): ?>
+								<b><?= getUser($v->user_id)['username'];?></b> a dit : 
+							<?php else: ?>
+								<b> Vous </b> avez dit : 
+							<?php endif ?>
+						
+							<?=urldecode($v->content);?><br/>
+						
+						<td>
+							<i><?=$v->created_at;?></i>
+						</td>
+						<td>
+							<?php if ($v->user_id == $user): ?>
+								<button class="btn btn-danger"><a href="">Supprimer mon commentaire</a></button>
+							<?php endif ?>
+						</td>
 
-					<?php if ($v->user_id !== $user): ?>
-						<b><?= getUser($v->user_id)['username'];?></b> a dit : 
-					<?php else: ?>
-						<b> Vous </b> avez dit : 
-					<?php endif ?>
-					<?=urldecode($v->content);?><br/>
-					<i><?=$v->created_at;?></i>
-					<br/>_________________________<br/><br/>
-				<?php endforeach ?>
+					</tr>	
+					<?php endforeach ?>	
+				</table>
 				<nav>
 				  <ul class="pagination">
 				    <li>
