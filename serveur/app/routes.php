@@ -43,6 +43,10 @@ Route::get('/post/feed/{id}/follow','PostController@getFeed');
 Route::get('/post/feed/{id}/friend','PostController@friendsFeed');
 Route::get('/post/feed/latest/', 'PostController@latestFeed');
 Route::get('/post/feed/vote','PostController@voteFeed');
+Route::get('/post/pages','PostController@pages');
+Route::get('/post/pages/{id}','PostController@userPages');
+Route::get('/post/follow/pages/{id}','PostController@followPages');
+Route::get('/post/friend/pages/{id}','PostController@friendsPages');
 
 /**
  * COMMENTS
@@ -53,7 +57,8 @@ Route::post('/comment/new','CommentController@store');
 Route::get('/comment/show/{id}','CommentController@show');
 Route::put('/comment/update/{id}','CommentController@update');
 Route::delete('/comment/delete/{id}','CommentController@destroy');
-
+Route::get('/comments/post/pages/{id}','CommentController@postPages');
+Route::get('/comments/user/pages/{id}','CommentController@userPages');
 
 /**
  * FOLLOW
@@ -63,8 +68,9 @@ Route::post('/follow/new','FollowController@store');
 Route::delete('/follow/delete','FollowController@destroy');
 Route::get('/followers/{id}','FollowController@followers');
 Route::get('/following/{id}','FollowController@following');
-
-
+Route::get('/following/pages/{id}','FollowController@followingPages');
+Route::get('/followers/pages/{id}','FollowController@followersPages');
+Route::get('/follower/exist','FollowController@alreadyFollow');
 
 /**
  * FRIENDS
@@ -75,6 +81,9 @@ Route::put('/friend/activate','FriendController@activate');
 Route::get('/friends/waiting/{id}', 'FriendController@waiting');
 Route::post('/friend/new', 'FriendController@store');
 Route::delete('/friend/delete','FriendController@destroy');
+Route::get('/friend/pages/{id}','FriendController@friendPages');
+Route::get('/friend/exist','FriendController@alreadyAsked');
+Route::get('/friends/waiting/pages/{id}','FriendController@waitingPages');
 
 
 /**
@@ -85,5 +94,6 @@ Route::get('/vote/likes/{id}','VoteController@likes');
 Route::get('/vote/dislikes/{id}', 'VoteController@dislikes');
 Route::post('/vote/like','VoteController@like');
 Route::post('/vote/dislike','VoteController@dislike');
-//Route::get('/vote/voted','VoteController@voted');
+Route::get('/vote/voted','VoteController@voted');
 Route::delete('/vote/delete','VoteController@destroy');
+Route::get('/vote/note','VoteController@getNote');

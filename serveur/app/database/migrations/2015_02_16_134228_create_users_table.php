@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration {
 			$table->string('email',100)->unique();
 			$table->integer('active');
 			$table->string('token',255)->unique();
-			$table->timestamps()->default('0000-00-00 00:00:00');
+			$table->timestamps()->default(DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 

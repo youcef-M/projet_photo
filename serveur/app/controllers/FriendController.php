@@ -43,6 +43,11 @@ class FriendController extends \BaseController {
 		}
 	}
 	
+	public function friendPages($id)
+	{
+		$friends = Friend::where('user_id',$id)->where('active',1)->count() + Friend::where('friend_id',$id)->where('active',1)->count();
+		return ceil($friends/10);
+	}
 	
     public function activate()
     {
@@ -57,16 +62,34 @@ class FriendController extends \BaseController {
 		}
     }
     
+    public function alreadyAsked()
+    {
+        if(!$this->friend_check->exist())
+        {
+            return BaseController::httpNotfound();
+        }else{
+            return BaseController::httpOk();
+        }
+    }
     
     public function waiting($id)
     {
-    	if($this->friend_check->noWaiting($id))
+    	if($this->list_validation->fails())
+		{
+			return BaseController::httpError($this->list_validation);
+		}elseif($this->friend_check->noWaiting($id))
         {
             return BaseController::httpNotFound();
         }else{
             return BaseController::httpContent($this->friend_gestion->waiting($id),'waiting_friends');
         }
     }
+    
+    public function waitingPages($id)
+	{
+		$friends = Friend::where('friend_id',$id)->where('active',0)->count();
+		return ceil($friends/10);
+	}
     
     
 
@@ -103,9 +126,10 @@ class FriendController extends \BaseController {
 		{
 			return BaseController::httpError($this->delete_validation);
 		}
-		elseif($this->friend_check->missing()){
+		elseif(!$this->friend_check->exist()){
 			return BaseController::httpNotFound();
 		}else{
+		
 			$this->friend_gestion->destroy();
 			return BaseController::httpOk();
 		}

@@ -17,8 +17,9 @@ class FollowGestion implements FollowGestionInterface {
     
     public function following($id)
     {   
-        $user = User::find($id);
-        return $user->following;
+        $page = Request::get('page');
+        $ids = Follow::where('user_id',$id)->lists('follow_id');
+        return User::whereIn('id',$ids)->skip(10*($page-1))->take(10)->get();
     }
 
     public static function followingIds($id)
@@ -29,8 +30,10 @@ class FollowGestion implements FollowGestionInterface {
     
     public function followers($id)
     {
-        $user = User::find($id);
-        return $user->follower;
+        $page = Request::get('page');
+        $ids = Follow::where('follow_id',$id)->lists('user_id');
+        
+        return User::whereIn('id',$ids)->skip(10*($page-1))->take(10)->get();
     }
 
     public static function followersIds($id)

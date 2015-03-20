@@ -9,16 +9,17 @@ class FriendGestion implements FriendGestionInterface {
     
     public function index($id)
     {
+    	$page = Request::get('page');
 		$friendsIds = FriendGestion::friendsIds($id);
-		$friends = User::whereIn('id', $friendsIds)->get();
+		$friends = User::whereIn('id', $friendsIds)->skip(10*($page-1))->take(10)->get();
 		return $friends;
     }
     
     
     public static function friendsIds($id)
     {
-    	$asking = Friend::where('user_id',$id)->lists('friend_id');
-    	$asked = Friend::where('friend_id',$id)->lists('user_id');
+    	$asking = Friend::where('user_id',$id)->where('active',1)->lists('friend_id');
+    	$asked = Friend::where('friend_id',$id)->where('active',1)->lists('user_id');
 		$friends = array_unique(array_merge($asking, $asked));
 		return $friends;
     }
@@ -38,11 +39,9 @@ class FriendGestion implements FriendGestionInterface {
     	$asking = Request::get('user_id');
     	$asked = Request::get('friend_id');
     	$relation = Friend::where('user_id',$asking)->where('friend_id',$asked)->first();
-    	if(!is_null($relation))
-    	{
-    		$relation->active = 1;
-    		$relation->save();
-    	}
+		$relation->active = 1;
+    	$relation->save();
+
     }
     
     /**
@@ -59,7 +58,12 @@ class FriendGestion implements FriendGestionInterface {
     {
     	$asking =Request::get('user_id');
     	$asked = Request::get('friend_id');
-    	Friend::where('user_id',$asking)->where('friend_id',$asked)->delete();
+    	if(!is_null(Friend::where('user_id',$asking)->where('friend_id',$asked)->first()))
+    	{
+    		Friend::where('user_id',$asking)->where('friend_id',$asked)->first()->delete();
+    	}else{
+    		Friend::where('user_id',$asked)->where('friend_id',$asking)->first()->delete();
+    	}
     }
     
 }

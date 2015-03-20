@@ -24,7 +24,7 @@ class UserGestion implements UserGestionInterface {
 		$user->token = md5(time() . ' - ' . uniqid());
 		$user->save();
 		copy(public_path() . '/avatar/base.jpg', public_path() . '/avatar/' . $user->id.'.jpg');
-		Image::make('/avatar/' . $user->id.'.jpg')->resize(200, 200)->save(resizedName($path . '/' . $name, 200, 200));
+		Image::make(public_path() .'/avatar/' . $user->id.'.jpg')->resize(200, 200)->save(resizedName(public_path() .'/avatar/' . $user->id.'.jpg', 200, 200));
     }
     
     public function show($id)
@@ -44,6 +44,12 @@ class UserGestion implements UserGestionInterface {
     public function destroy($id)
     {
         User::find($id)->delete();
+        $name = $id . '.jpg';
+        $path = public_path() . '/avatar';
+        if(file_exists($path . '/' . $name)){
+            unlink($path . '/' . $name);
+            unlink(resizedName($path . '/' . $name, 200, 200));
+        }
     }
     
     public function login()

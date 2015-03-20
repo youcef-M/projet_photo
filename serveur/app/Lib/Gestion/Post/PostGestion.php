@@ -10,11 +10,13 @@ use Image;
 
 class PostGestion implements PostGestionInterface {
 
-    public function index()
+    public function index($id)
     {
         $page = Request::get('page');
-        return Post::latest()->skip(10*($page-1))->take(10)->get();
+        return Post::where('user_id',$id)->latest()->skip(10*($page-1))->take(10)->get();
     }
+    
+    
     
     public function store()
     {
@@ -32,7 +34,13 @@ class PostGestion implements PostGestionInterface {
         
         $chemin = public_path() . '/images/' . $post->user_id;
         $image = Request::file('photo');
-        $extension = $image->getClientOriginalExtension();
+        if(!strcmp($image->getClientOriginalExtension(), 'tmp'))
+        {
+            $extension = 'jpg';
+        }else{
+            $extension = $image->getClientOriginalExtension();
+        }
+        
         do{
             $nom = Str::random(10) . '.' . $extension;
         }while(file_exists($chemin . '/' . $nom));
@@ -94,6 +102,20 @@ class PostGestion implements PostGestionInterface {
         
         return Post::whereIn('user_id', $userIds)->latest()->skip(10*($page-1))->take(10)->get();
         
+    }
+    
+    public function friendsPages($id)
+    {
+        $userIds = \Lib\Gestion\Friend\FriendGestion::friendsIds($id);
+        
+        return ceil(Post::whereIn('user_id', $userIds)->count()/10);
+    }
+    
+    public function followPages($id)
+    {
+        $userIds = \Lib\Gestion\Follow\FollowGestion::followingIds($id);
+		
+		return ceil(Post::whereIn('user_id', $userIds)->count()/10);
     }
     
     public function latestFeed()

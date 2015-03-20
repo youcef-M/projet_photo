@@ -78,7 +78,12 @@ class VoteController extends \BaseController {
 		    }
     }
 		
-    
+    public function getNote(){
+        $user = Request::get('user_id');
+    	$post = Request::get('post_id');
+		$vote = Vote::where('user_id',$user)->where('post_id',$post)->first();
+		return $vote->note;
+    }
     
 	public function voted()
 	{

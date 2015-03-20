@@ -47,8 +47,7 @@ class VoteGestion implements VoteGestionInterface {
 	{
 		$user = Request::get('user_id');
     	$post = Request::get('post_id');
-		$vote = Vote::where('user_id',$user)->where('post_id',$post)->first();
-		$vote->delete();
+		Vote::where('user_id',$user)->where('post_id',$post)->delete();
 	}
 	
 }

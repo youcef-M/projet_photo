@@ -42,6 +42,6 @@ class FollowCheck implements FollowCheckInterface {
     
     public function noFollowers($id)
     {
-        return is_null($this->follow_gestion->follower($id));
+        return is_null($this->follow_gestion->followers($id));
     }
 }

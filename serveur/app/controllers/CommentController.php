@@ -41,6 +41,11 @@ class CommentController extends \BaseController {
 			}
 		}
 	}
+	
+	public function postPages($id)
+	{
+		return ceil(Comment::where('post_id',$id)->count()/10);
+	}
 
 
 	/**
@@ -63,6 +68,11 @@ class CommentController extends \BaseController {
 		}
 	}
 	
+	
+	public function userPages($id)
+	{
+		return ceil(Comment::where('user_id',$id)->count()/10);
+	}
 
 	/**
 	 * Store a newly created resource in storage.

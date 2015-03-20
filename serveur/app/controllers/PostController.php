@@ -44,6 +44,27 @@ class PostController extends \BaseController {
 	}
 
 
+	public function followPages($id)
+	{
+		return $this->post_gestion->followPages($id);
+	}
+	
+	public function friendsPages($id)
+	{
+		return $this->post_gestion->friendsPages($id);
+	}
+
+	public function userPages($id)
+	{
+		return ceil(Post::where('user_id',$id)->count()/10);
+	}
+	
+	
+	public function pages()
+    {
+        return ceil(Post::where('privacy',0)->count()/10);
+    }
+    
 	/**
 	 * Store a newly created resource in storage.
 	 *
