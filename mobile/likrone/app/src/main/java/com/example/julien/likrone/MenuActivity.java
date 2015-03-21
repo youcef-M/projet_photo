@@ -24,6 +24,7 @@ public class MenuActivity extends Activity {
      * AccueilActivity ==> numAct = 1 *
      * Photo           ==> numAct = 2 *
      * CompteActivity  ==> numAct = 3 *
+     * ImageAdapter    ==> numAct = 4 *
      * ExampleActivity ==> numAct = 5 *
      **********************************/
 
@@ -39,16 +40,20 @@ public class MenuActivity extends Activity {
         if(getActiviteFille()==2){
             MenuItem item1 = menu.findItem(R.id.publier);
             item1.setVisible(false);
-            MenuItem item2 = menu.findItem(R.id.compte);
-            item2.setVisible(false);
+//            MenuItem item2 = menu.findItem(R.id.compte);
+//            item2.setVisible(false);
         }
 
         if(getActiviteFille()==3){
             MenuItem item=menu.findItem(R.id.compte);
             item.setVisible(false);
         }
-
-        return true;
+/*
+        if(getActiviteFille()==4){
+            MenuItem item=menu.findItem(R.id.compte);
+            item.setVisible(false);
+        }
+*/       return true;
     }
 
     @Override
@@ -67,20 +72,20 @@ public class MenuActivity extends Activity {
             }
 
             case R.id.compte: {
-                if(getActiviteFille()==1){
+                //if(getActiviteFille()==1){
                     Intent intent2 = getIntent();
                     final String idUser = intent2.getStringExtra(EXTRA_INFO).toString();
                     Intent intent1 = new Intent(this, CompteActivity.class);
                     intent1.putExtra(EXTRA_User, idUser.toString());
                     startActivityForResult(intent1,1);
-                }
-
+               // }
+/*
                 else {
                     Intent intent = new Intent(this, CompteActivity.class);
                     startActivityForResult(intent, 1);
                     finish();
                 }
-
+*/
                 return true;
             }
 
@@ -91,9 +96,7 @@ public class MenuActivity extends Activity {
                     Intent intent1 = new Intent(this, Photo.class);
                     intent1.putExtra(EXTRA_User, idUser.toString());
                     startActivityForResult(intent1, 1);
-                }
-                if (getActiviteFille() != 0)
-                    finish();
+                }// !!! compte -> photo//image-> photo
                 else {
                     Intent intent = new Intent(this, Photo.class);
                     startActivityForResult(intent, 1);

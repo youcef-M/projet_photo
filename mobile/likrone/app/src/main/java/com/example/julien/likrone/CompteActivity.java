@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +28,6 @@ public class CompteActivity extends MenuActivity {
 
     final String EXTRA_User = "info login";
     String json = null;
-    final String EXTRA_PSEUDO = "Id User";
     ImageView avatar = null;
 
     @Override
@@ -39,6 +39,7 @@ public class CompteActivity extends MenuActivity {
         TextView idUser = (TextView) findViewById(R.id.viewId);
         TextView nomUser = (TextView) findViewById(R.id.viewName);
         TextView mailUser = (TextView) findViewById(R.id.viewMail);
+        TextView dateCreation = (TextView) findViewById(R.id.viewCreation);
         avatar = (ImageView) findViewById(R.id.avatar);
 
         // On transforme le String obtenu en Json pour pouvoir le parse
@@ -48,9 +49,11 @@ public class CompteActivity extends MenuActivity {
             JSONObject obj = new JSONObject(json);
             String id=obj.getString("id");
             idUser.setText(id);
+            idUser.setVisibility(View.INVISIBLE);
+
             nomUser.setText(obj.getString("username"));
-            intent.putExtra("pseudo", nomUser.getText().toString());
             mailUser.setText(obj.getString("email"));
+            dateCreation.setText(obj.getString("created_at"));
             avatar.setImageBitmap(new getAvatar().execute(id).get());
         } catch (JSONException e) {
             e.printStackTrace();

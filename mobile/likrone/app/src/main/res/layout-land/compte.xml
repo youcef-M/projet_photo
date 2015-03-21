@@ -25,18 +25,16 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:id="@+id/idUser"
-        android:text="Id :"
         android:layout_toRightOf="@+id/avatar"
         android:layout_toEndOf="@+id/avatar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
-        android:layout_marginLeft="150dp"/>
+        android:layout_marginLeft="200dp"/>
 
     <TextView
         android:id="@+id/viewId"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="ID"
         android:textSize="20sp"
         android:layout_alignTop="@+id/idUser"
         android:layout_toRightOf="@+id/idUser"
@@ -58,7 +56,6 @@
         android:id="@+id/viewName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Name"
         android:textSize="20sp"
         android:layout_alignTop="@+id/nom"
         android:layout_alignLeft="@+id/viewId"
@@ -79,11 +76,30 @@
         android:id="@+id/viewMail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Mail"
         android:textSize="20sp"
         android:layout_alignTop="@+id/email"
         android:layout_alignLeft="@+id/viewName"
         android:layout_alignStart="@+id/viewName" />
+
+    <TextView
+        android:id="@+id/creation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Date de création : "
+        android:layout_below="@+id/email"
+        android:layout_toLeftOf="@+id/viewId"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/viewCreation"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/creation"
+        android:layout_alignLeft="@+id/viewName"
+        android:layout_alignStart="@id/viewName" />
 
 
 

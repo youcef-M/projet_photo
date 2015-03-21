@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,14 +23,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class InscriptionActivity extends Activity {
-    Button confirm = null;
-    Button raz = null;
-    EditText pseudo = null;
-    EditText email = null;
-    EditText mp = null;
+    Button confirm,raz = null;
+    EditText pseudo,email,mp,mp2 = null;
+    String username,mail,password,password2 = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class InscriptionActivity extends Activity {
         pseudo = (EditText) findViewById(R.id.pseudo);
         email = (EditText) findViewById(R.id.email);
         mp = (EditText) findViewById(R.id.mp);
+        mp2= (EditText) findViewById(R.id.mp2);
 
         raz.setOnClickListener(razListener);
         confirm.setOnClickListener(apresConfirmation);
@@ -53,12 +56,40 @@ public class InscriptionActivity extends Activity {
             pseudo.getText().clear();
             email.getText().clear();
             mp.getText().clear();
+            mp2.getText().clear();
         }
     };
 
     private View.OnClickListener apresConfirmation = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
+            username = pseudo.getText().toString();
+            mail = email.getText().toString();
+            password = mp.getText().toString();
+            password2 = mp2.getText().toString();
+                if (username.equals("")) {
+                    Toast.makeText(InscriptionActivity.this, "Le champs pseudo n'est pas correct.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
+                Matcher m = p.matcher(mail);
+                if (mail.equals("") || !m.matches()) {
+                    Toast.makeText(InscriptionActivity.this, "Le champs email n'est pas correct.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (password.length() < 8) {
+                    Toast.makeText(InscriptionActivity.this, "Le mot de passe doit être composé d'au moins 8 caractères.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!password.equals(password2)) {
+                    Toast.makeText(InscriptionActivity.this, "Les mots de passe sont différents", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
             //  |     /user/new     |  POST  | *username,email,password* |                 Nouvel utilisateur
 
             try {
@@ -68,6 +99,7 @@ public class InscriptionActivity extends Activity {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
+            Toast.makeText(getApplicationContext(), "Vous êtes à présent inscrit !", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(InscriptionActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
@@ -78,9 +110,6 @@ public class InscriptionActivity extends Activity {
 
         @Override
         protected Void doInBackground(Void... params) {
-            String username = pseudo.getText().toString();
-            String mail = email.getText().toString();
-            String password = mp.getText().toString();
 
             ArrayList nameValuePairs = new ArrayList();
             nameValuePairs.add(new BasicNameValuePair("username", username));

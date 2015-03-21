@@ -40,6 +40,38 @@
         android:layout_below="@+id/dateP"
         android:text="Envoyer"/>
 
+    <ImageButton
+        android:id="@+id/like"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/postCom"
+        android:layout_below="@id/dateP"
+        android:src="@drawable/thumbs_up"/>
+
+    <TextView
+        android:id="@+id/nLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/like"
+        android:layout_toRightOf="@id/postCom"
+        android:text="0"/>
+
+    <ImageButton
+        android:id="@+id/dislike"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/like"
+        android:layout_below="@id/dateP"
+        android:src="@drawable/thumbs_down"/>
+
+    <TextView
+        android:id="@+id/nDisike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dislike"
+        android:layout_toRightOf="@id/like"
+        android:text="0"/>
+
     <ListView
         android:id="@+id/listView"
         android:layout_height="wrap_content"

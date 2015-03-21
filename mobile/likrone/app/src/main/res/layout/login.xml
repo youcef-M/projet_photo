@@ -30,6 +30,7 @@
         android:layout_toRightOf="@id/viewPseudo"
         android:layout_toEndOf="@id/viewMp"
         android:layout_centerVertical="true"
+        android:singleLine="true"
         android:hint="@string/pseudo" />
 
     <TextView

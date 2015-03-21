@@ -30,6 +30,7 @@
         android:layout_below="@id/viewInsc"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
+        android:singleLine="true"
         android:hint="@string/pseudo"/>
 
     <TextView

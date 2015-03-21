@@ -29,6 +29,7 @@
         android:layout_below="@id/viewInsc"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
+        android:singleLine="true"
         android:hint="@string/pseudo"/>
 
     <TextView

@@ -23,7 +23,6 @@
         </activity>
 
         <activity android:name=".InscriptionActivity" android:label="Inscription" />
-        <activity android:name=".ExampleActivity" android:label="Example" />
         <activity android:name=".Photo" android:label="Photo" />
         <activity android:name=".AccueilActivity" android:label="Accueil"/>
         <activity android:name=".CompteActivity" android:label="Compte"/>

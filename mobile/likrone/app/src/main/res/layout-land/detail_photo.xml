@@ -5,7 +5,7 @@
     <ImageView
         android:id="@+id/img"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/titreP"
@@ -33,10 +33,47 @@
         android:layout_marginLeft="75dp"
         android:layout_marginTop="15dp"/>
 
+    <ImageButton
+        android:id="@+id/like"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/img"
+        android:layout_below="@id/dateP"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/thumbs_up"/>
+
+    <TextView
+        android:id="@+id/nLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/like"
+        android:layout_toRightOf="@id/img"
+        android:layout_marginLeft="100dp"/>
+
+    <ImageButton
+        android:id="@+id/dislike"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/like"
+        android:layout_below="@id/dateP"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/thumbs_down"/>
+
+    <TextView
+        android:id="@+id/nDisike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dislike"
+        android:layout_toRightOf="@id/like"
+        android:layout_marginLeft="35dp" />
+
     <EditText
         android:id="@+id/newCom"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/listView"/>
 
     <Button
@@ -53,4 +90,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/img"/>
+
 </RelativeLayout>
