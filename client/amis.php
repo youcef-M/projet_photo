@@ -19,7 +19,7 @@
 
 
 <section id="liste">
-	<br/><h1>Liste des amis</h1><br/>
+	<br/><h2>Liste des amis</h2><br/>
 	<ul id="listerelation">
 		<?php if ($pages > 0): ?>
 			<?php foreach ($content as $k => $v): ?>

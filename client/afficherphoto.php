@@ -50,6 +50,7 @@
 	<!-- Contenu de la page -->
 	<div class="contenu">
 		<div class="contenu_static">	
+		    <hr>
 			<?php if ($user === $author['id']): ?>
 				<button class="btn btn-primary">
 					<a href="modifierphoto.php?id=<?=$post;?>">Modifier cette publication</a>
@@ -57,7 +58,7 @@
 				<button class="btn btn-danger">
 					<a  href="supprimerphoto.php?id=<?=$post;?>" >Supprimer cette publication</a>
 				</button>
-				<hr>
+				
 			<?php endif ?>
 			<h2><?= ucfirst($infopost->titre); ?></h2>
 			<section id="photo">
@@ -169,11 +170,11 @@
 						<td>
 							<i><?=$v->created_at;?></i>
 						</td>
-						<td>
+						<!--<td>
 							<?php if ($v->user_id == $user): ?>
 								<button class="btn btn-danger"><a href="">Supprimer mon commentaire</a></button>
 							<?php endif ?>
-						</td>
+						</td>-->
 
 					</tr>	
 					<?php endforeach ?>	
@@ -189,7 +190,6 @@
 				    </li>
 				  </ul>
 				</nav>
-				<hr>
 				<?php endif ?>
 
 			

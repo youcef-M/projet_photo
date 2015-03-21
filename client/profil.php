@@ -35,6 +35,7 @@
 	<!-- Contenu de la page -->
 	<div class="contenu">
 		<div class="contenu_static">
+			<hr>
 			<?php if ($user['id'] !== $_SESSION['profil']['id']): ?>
 				<?php if ($follow === 404): ?>
 					<button class="btn btn-primary">
@@ -57,13 +58,14 @@
 				<?php endif ?>
 
 			<?php endif ?>
-			<hr>
+			
 			<section id="profil">	
-				<img src="http://api-rest-youcef-m.c9.io/avatar/<?= $user['id']; ?>_200x200.jpg" alt="" />
+				<br/><img src="http://api-rest-youcef-m.c9.io/avatar/<?= $user['id']; ?>_200x200.jpg" alt="" />
 				<h1><?= $user['username']; ?></h1>
-				<p> <a href="amis.php">Amis</a>, <a href="abonnes.php">Abonn&eacute;s</a>, <a href="abonnements.php">Abonnements</a></p>
-				<a href="importerphoto.php">Importer une photo</a><br/>
-				<a href="modifierprofil.php">Modifier mes informations</a><br/>
+				<?php if ($user['id'] == $_SESSION['profil']['id']): ?>
+					<p> <a href="amis.php">Amis</a>, <a href="abonnes.php">Abonn&eacute;s</a>, <a href="abonnements.php">Abonnements</a></p>
+					<a href="importerphoto.php">Importer une photo</a><br/>
+				<?php endif ?>
 				<hr>
 			</section>
 			<section id="photos">
