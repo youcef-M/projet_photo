@@ -30,9 +30,6 @@
             android:name="com.example.julien.likrone.InscriptionActivity"
             android:label="Inscription" />
         <activity
-            android:name="com.example.julien.likrone.ExampleActivity"
-            android:label="Example" />
-        <activity
             android:name="com.example.julien.likrone.Photo"
             android:label="Photo" />
         <activity

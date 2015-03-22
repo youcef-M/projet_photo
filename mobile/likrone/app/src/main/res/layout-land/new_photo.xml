@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/bg">
 
     <TextView
         android:id="@+id/newphoto"
@@ -11,7 +12,8 @@
         android:textStyle="bold"
         android:textSize="50sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/bleu"/>
 
     <ImageButton
         android:layout_width="100dp"
@@ -33,7 +35,8 @@
         android:layout_marginTop="50dp"
         android:layout_below="@+id/camera"
         android:layout_alignLeft="@+id/camera"
-        android:layout_alignStart="@+id/camera" />
+        android:layout_alignStart="@+id/camera"
+        android:background="@drawable/custom_button_green"/>
 
     <Button
         android:layout_width="100dp"
@@ -43,7 +46,8 @@
         android:layout_below="@+id/save"
         android:layout_alignLeft="@+id/save"
         android:layout_alignStart="@+id/save"
-        android:layout_marginTop="70dp" />
+        android:layout_marginTop="70dp"
+        android:background="@drawable/custom_button_red"/>
 
     <ImageView
         android:layout_width="300dp"

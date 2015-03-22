@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
 
     <ImageView
         android:id="@+id/imageView"
@@ -75,7 +76,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:onClick="loginPost"
-        android:text="@string/connect"/>
+        android:text="@string/connect"
+        android:background="@drawable/custom_button_green"/>
 
     <Button
         android:id="@+id/creation"
@@ -83,6 +85,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/connect"
         android:layout_centerHorizontal="true"
-        android:text="@string/inscription"/>
+        android:layout_marginTop="15dp"
+        android:text="@string/inscription"
+        android:background="@drawable/custom_button_blue"/>
 
 </RelativeLayout>

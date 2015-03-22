@@ -57,36 +57,30 @@ ADDED from AndroidManifest.xml:25:9
 		ADDED from AndroidManifest.xml:25:55
 	android:name
 		ADDED from AndroidManifest.xml:25:19
-activity#com.example.julien.likrone.ExampleActivity
+activity#com.example.julien.likrone.Photo
 ADDED from AndroidManifest.xml:26:9
 	android:label
-		ADDED from AndroidManifest.xml:26:51
+		ADDED from AndroidManifest.xml:26:41
 	android:name
 		ADDED from AndroidManifest.xml:26:19
-activity#com.example.julien.likrone.Photo
+activity#com.example.julien.likrone.AccueilActivity
 ADDED from AndroidManifest.xml:27:9
 	android:label
-		ADDED from AndroidManifest.xml:27:41
+		ADDED from AndroidManifest.xml:27:51
 	android:name
 		ADDED from AndroidManifest.xml:27:19
-activity#com.example.julien.likrone.AccueilActivity
+activity#com.example.julien.likrone.CompteActivity
 ADDED from AndroidManifest.xml:28:9
 	android:label
-		ADDED from AndroidManifest.xml:28:51
+		ADDED from AndroidManifest.xml:28:50
 	android:name
 		ADDED from AndroidManifest.xml:28:19
-activity#com.example.julien.likrone.CompteActivity
+activity#com.example.julien.likrone.ImageAdapter
 ADDED from AndroidManifest.xml:29:9
 	android:label
-		ADDED from AndroidManifest.xml:29:50
+		ADDED from AndroidManifest.xml:29:48
 	android:name
 		ADDED from AndroidManifest.xml:29:19
-activity#com.example.julien.likrone.ImageAdapter
-ADDED from AndroidManifest.xml:30:9
-	android:label
-		ADDED from AndroidManifest.xml:30:48
-	android:name
-		ADDED from AndroidManifest.xml:30:19
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 	android:targetSdkVersion

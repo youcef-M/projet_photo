@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/bg">
 
     <TextView
         android:id="@+id/newphoto"
@@ -11,7 +12,8 @@
         android:textStyle="bold"
         android:textSize="50sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/bleu"/>
 
     <ImageButton
         android:id="@+id/camera"
@@ -29,7 +31,8 @@
         android:layout_below="@+id/description"
         android:layout_alignLeft="@+id/description"
         android:layout_marginTop="50dp"
-        android:text="Valider" />
+        android:text="Valider"
+        android:background="@drawable/custom_button_green"/>
 
     <Button
         android:id="@+id/cancel"
@@ -38,7 +41,8 @@
         android:layout_below="@+id/description"
         android:layout_alignRight="@+id/description"
         android:layout_marginTop="50dp"
-        android:text="Annuler" />
+        android:text="Annuler"
+        android:background="@drawable/custom_button_red"/>
 
     <ImageView
         android:id="@+id/photo"

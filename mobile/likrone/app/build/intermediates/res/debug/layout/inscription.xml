@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
 
     <TextView
         android:id="@+id/viewInsc"
@@ -11,7 +12,8 @@
         android:layout_centerHorizontal="true"
         android:text="@string/viewInsc"
         android:textStyle="bold"
-        android:textSize="50sp"/>
+        android:textSize="50sp"
+        android:textColor="@color/bleu"/>
 
     <TextView
         android:id="@+id/viewPseudo"
@@ -29,6 +31,7 @@
         android:layout_below="@id/viewInsc"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
+        android:singleLine="true"
         android:hint="@string/pseudo"/>
 
     <TextView
@@ -98,7 +101,8 @@
         android:layout_centerVertical="true"
         android:layout_below="@id/mp2"
         android:layout_alignLeft="@+id/mp2"
-        android:text="@string/effacer" />
+        android:text="@string/effacer"
+        android:background="@drawable/custom_button_red"/>
 
     <Button
         android:id="@+id/confirm"
@@ -106,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/raz"
         android:layout_alignRight="@+id/mp2"
-        android:text="@string/confirmation"/>
+        android:text="@string/confirmation"
+        android:background="@drawable/custom_button_green"/>
 
 </RelativeLayout><!-- From: file:/C:/Users/Pierre/Desktop/Fac/projet-photo/mobile/likrone/app/src/main/res/layout/inscription.xml -->
