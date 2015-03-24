@@ -20,7 +20,7 @@
 <?php if ($pages > 0): ?>
 
 	<section id="liste">
-		<br/><h1>Liste des amis</h1><br/>
+		<br/><h1>Mes invitations</h1><br/>
 		<ul id="listerelation">
 			<?php if ($pages > 0): ?>
 				<?php foreach ($content as $k => $v): ?>

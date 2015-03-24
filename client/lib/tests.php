@@ -20,7 +20,7 @@
 	{
 		if(!isLogged()){
 			setFlash("Veuillez vous connecter pour pouvoir effectuer cette action.","danger");
-			redirect('connexion.php');
+			redirect('index.php');
 		}
 	}
 

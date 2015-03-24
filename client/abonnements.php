@@ -20,9 +20,7 @@
 <article>
 	<!-- Contenu de la page -->
 	<div class="contenu">
-		<div class="contenu_static">
-			<section id="liste">
-				<br/><h1>Liste des abonnements</h1><br/>
+				<br/><h2>Liste des abonnements</h2><br/>
 				<ul id="listerelation">
 					<?php if ($pages > 0): ?>
 						<?php foreach ($content as $k => $v): ?>
@@ -36,8 +34,6 @@
 					<?php endif ?>		
 				</ul>
 			</section>
-		</div>
-	</div>
 </article>
 
 

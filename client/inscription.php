@@ -25,7 +25,7 @@
 	}else{
 		$_SESSION['errors'] = [];
 		setFlash('Votre inscription a bien été éffectuée.');
-		redirect('register.php');
+		redirect('index.php');
 	}
 	
 
