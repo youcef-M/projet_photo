@@ -36,7 +36,7 @@
         android:layout_below="@+id/camera"
         android:layout_alignLeft="@+id/camera"
         android:layout_alignStart="@+id/camera"
-        android:background="@drawable/custom_button_green"/>
+        android:background="@drawable/button_green"/>
 
     <Button
         android:layout_width="100dp"
@@ -47,7 +47,7 @@
         android:layout_alignLeft="@+id/save"
         android:layout_alignStart="@+id/save"
         android:layout_marginTop="70dp"
-        android:background="@drawable/custom_button_red"/>
+        android:background="@drawable/button_red"/>
 
     <ImageView
         android:layout_width="300dp"
@@ -83,8 +83,7 @@
         <RadioButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/monde"
-            android:checked="true" />
+            android:text="@string/monde" />
         <RadioButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"

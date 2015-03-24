@@ -32,7 +32,7 @@
         android:layout_alignLeft="@+id/description"
         android:layout_marginTop="50dp"
         android:text="Valider"
-        android:background="@drawable/custom_button_green"/>
+        android:background="@drawable/button_green"/>
 
     <Button
         android:id="@+id/cancel"
@@ -42,7 +42,7 @@
         android:layout_alignRight="@+id/description"
         android:layout_marginTop="50dp"
         android:text="Annuler"
-        android:background="@drawable/custom_button_red"/>
+        android:background="@drawable/button_red"/>
 
     <ImageView
         android:id="@+id/photo"
@@ -83,8 +83,7 @@
             android:id="@+id/monde"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/monde"
-            android:checked="true" />
+            android:text="@string/monde" />
         <RadioButton
             android:id="@+id/privé"
             android:layout_width="150dp"

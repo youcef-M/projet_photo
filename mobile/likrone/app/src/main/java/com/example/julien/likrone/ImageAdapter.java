@@ -25,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -55,6 +56,7 @@ public class ImageAdapter extends MenuActivity {
     //Variables pour vote
     ImageButton like,dislike = null;
     TextView nLike,nDislike = null;
+    String nbLike,nbDislike = null;
 
     //Variables pour info image
     TextView titreP,auteurP,dateP=null;
@@ -74,6 +76,7 @@ public class ImageAdapter extends MenuActivity {
         newCom = (EditText)findViewById(R.id.newCom);
         postCom = (Button)findViewById(R.id.postCom);
         postCom.setOnClickListener(postComm);
+        lview = (ListView) findViewById(R.id.listView);
 
         like = (ImageButton)findViewById(R.id.like);
         like.setOnClickListener(postLike);
@@ -91,9 +94,9 @@ public class ImageAdapter extends MenuActivity {
 
             JSONObject obj2 = new JSONObject(json2);
             post_id =obj2.getString("id");
-            auteurP.setText(new Image.getAuteur().execute(obj2.getString("user_id")).get());
-            titreP.setText((obj2.getString("titre")).replaceAll("\\+", " "));
-            dateP.setText(obj2.getString("created_at"));
+            auteurP.setText(java.net.URLDecoder.decode(new Image.getAuteur().execute(obj2.getString("user_id")).get(),"UTF-8"));
+            titreP.setText(java.net.URLDecoder.decode(obj2.getString("titre"),"UTF-8"));
+            dateP.setText(java.net.URLDecoder.decode(obj2.getString("created_at"),"UTF-8"));
             chemin = obj2.getString("chemin");
         } catch (InterruptedException e) {
            e.printStackTrace();
@@ -101,20 +104,22 @@ public class ImageAdapter extends MenuActivity {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
         }
-
         try {
-           img.setImageBitmap(new Image.getImage().execute(chemin).get());
+            img.setImageBitmap(new Image.getImage().execute(chemin).get());
             new getComm().execute(post_id).get();
             for(int i=0;i<auteursCId.size();i++)
                 auteursC.add(new Image.getAuteur().execute(auteursCId.get(i).toString()).get());
-            new getVote().execute().get();
+            new getVote().execute(post_id).get();
+            nLike.setText(nbLike);
+            nDislike.setText(nbDislike);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        lview = (ListView) findViewById(R.id.listView);
         lviewAdapter = new ListViewAdapter(this, auteursC, commentaires);
         lview.setAdapter(lviewAdapter);
     }
@@ -123,13 +128,22 @@ public class ImageAdapter extends MenuActivity {
         @Override
         public void onClick(View v) {
             try {
-                new postCommentaire().execute().get();
-                newCom.getText().clear();
+                if(newCom.getText().length()>0) {
+                    new postCommentaire().execute().get();
+                    newCom.getText().clear();
+                    new getComm().execute(post_id).get();
+                    for(int i=0;i<auteursCId.size();i++)
+                        auteursC.add(new Image.getAuteur().execute(auteursCId.get(i).toString()).get());
+                }
+            else
+               Toast.makeText(getApplicationContext(), "Votre commentaire est vide.", Toast.LENGTH_LONG).show();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
+            lviewAdapter = new ListViewAdapter(ImageAdapter.this, auteursC, commentaires);
+            lview.setAdapter(lviewAdapter);
         }
     };
 
@@ -138,7 +152,9 @@ public class ImageAdapter extends MenuActivity {
         public void onClick(View v) {
             try {
                 if(new postVote().execute(0).get()==0){
-                    Toast.makeText(getApplicationContext(), "Votre vote a été pris en compte.", Toast.LENGTH_LONG).show();
+                    new getVote().execute(post_id).get();
+                    nLike.setText(nbLike);
+                    nDislike.setText(nbDislike);
                 }
                 else
                     Toast.makeText(getApplicationContext(), "Vous avez déjà voté pour cette photo.", Toast.LENGTH_LONG).show();
@@ -154,7 +170,13 @@ public class ImageAdapter extends MenuActivity {
         @Override
         public void onClick(View v) {
             try {
-                new postVote().execute(1).get();
+                if(new postVote().execute(1).get()==0){
+                    new getVote().execute(post_id).get();
+                    nLike.setText(nbLike);
+                    nDislike.setText(nbDislike);
+                }
+            else
+                Toast.makeText(getApplicationContext(), "Vous avez déjà voté pour cette photo.", Toast.LENGTH_LONG).show();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -181,8 +203,8 @@ public class ImageAdapter extends MenuActivity {
                 for(int i=0;i<arr.length();i++) {
                     String result2 = arr.getString(i);
                     JSONObject obj3 = new JSONObject(result2);
-                    auteursCId.add(obj3.getString("user_id"));
-                    commentaires.add(obj3.getString("content"));
+                    auteursCId.add(java.net.URLDecoder.decode(obj3.getString("user_id"), "UTF-8"));
+                    commentaires.add(java.net.URLDecoder.decode(obj3.getString("content"),"UTF-8"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -228,31 +250,31 @@ public class ImageAdapter extends MenuActivity {
         }
     }
 
-    private class getVote extends AsyncTask<Void, Void, Void> {
+    private class getVote extends AsyncTask<String, Void, Void> {
 
          //|/vote/likes/{id}   	|  GET   	|                none               |   Nombre de like pour le post {id}         	 						|
          //|/vote/dislikes/{id} |  GET   	|                none               |    Nombre de dislike pour le post {id}
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected Void doInBackground(String... params) {
             try {
                 //LIKE
-                URL url = new URL("https://api-rest-youcef-m.c9.io/vote/likes/"+post_id);
+                URL url = new URL("https://api-rest-youcef-m.c9.io/vote/likes/"+params[0]);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 InputStream inputStream = connection.getInputStream();
                 String result = InputStreamOperations.InputStreamToString(inputStream);
                 JSONObject obj = new JSONObject(result);
-                nLike.setText(obj.getString("likes"));
+                nbLike=obj.getString("likes");
 
                 //DISLIKE
-                URL url2 = new URL("https://api-rest-youcef-m.c9.io/vote/dislikes/"+post_id);
+                URL url2 = new URL("https://api-rest-youcef-m.c9.io/vote/dislikes/"+params[0]);
                 HttpURLConnection connection2 = (HttpURLConnection) url2.openConnection();
                 connection2.connect();
                 InputStream inputStream2 = connection2.getInputStream();
                 String result2 = InputStreamOperations.InputStreamToString(inputStream2);
                 JSONObject obj2 = new JSONObject(result2);
-                nDislike.setText(obj2.getString("dislikes"));
+                nbDislike=obj2.getString("dislikes");
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (MalformedURLException e) {
@@ -278,17 +300,18 @@ public class ImageAdapter extends MenuActivity {
             nameValuePairs.add(new BasicNameValuePair("post_id", post_id));
 
             try {
-                URL url = new URL("https://api-rest-youcef-m.c9.io/vote/voted?user_id="+user_id+"&post_id="+post_id);
+                URL url = new URL("https://api-rest-youcef-m.c9.io/vote/voted?user_id=" + user_id + "&post_id=" + post_id);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 InputStream inputStream = connection.getInputStream();
                 String result = InputStreamOperations.InputStreamToString(inputStream);
 
                 //On vérifie que l'utilisateur n'a pas déjà voté
-                if(result.equals("Ok"))
+                if (result.equals("Ok"))
                     return 1;
 
-                else {
+            } catch (FileNotFoundException e){
+                try {
                     HttpClient client = new DefaultHttpClient();
                     HttpPost post = null;
                     if (params[0] == 0) {
@@ -307,11 +330,14 @@ public class ImageAdapter extends MenuActivity {
                     String line = reader.readLine();
                     sb.append(line + "\n");
                     is.close();
+                    return 0;
+                } catch (IOException e2){
+                    e2.printStackTrace();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return 0;
+            return 1;
         }
     }
 }

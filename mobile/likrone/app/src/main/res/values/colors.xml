@@ -3,6 +3,8 @@
 
     <color name="background">#FFFFFF</color>
     <color name="blanc">#FFFFFF</color>
+    <color name="bleuF">#0000FF</color>
+    <color name="vertF">#00FF00</color>
     <color name="rouge">#FF0000</color>
     <color name="bleu">#6495ED</color>
     <color name="vert">#7FFF00</color>

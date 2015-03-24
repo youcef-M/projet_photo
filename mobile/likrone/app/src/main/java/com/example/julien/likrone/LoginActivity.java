@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -49,17 +50,18 @@ public class LoginActivity extends Activity{
         String password = mp.getText().toString();
         role.setVisibility(view.INVISIBLE);
         login valide =(login) new login().execute(username,password);
-        mp.getText().clear();
         role.setText(valide.get());
         if(!("Mauvais identifiants".equals(role.getText()))) {
             Intent intent = new Intent(LoginActivity.this, AccueilActivity.class);
             intent.putExtra(EXTRA_INFO,role.getText().toString());
             role.setText(intent.getStringExtra(EXTRA_INFO));
             startActivity(intent);
-        }else
-            role.setVisibility(view.VISIBLE);
-
         }
+        else{
+            mp.getText().clear();
+            Toast.makeText(getApplicationContext(), "Les identifiants indiqués ne sont pas corrects", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public class login extends AsyncTask<String,Void,String>{
 

@@ -33,16 +33,13 @@ import java.util.concurrent.ExecutionException;
 public class Photo extends MenuActivity {
     final String EXTRA_User = "info login";
     ImageView img = null;
-    Button raz = null;
-    Button valider = null;
-    EditText titre = null;
-    EditText desc = null;
+    Button raz,valider = null;
+    EditText titre,desc = null;
     ImageButton camera = null;
     RadioGroup priv = null;
     File image = null;
     Intent intent2=null;
-    String json = null;
-    String user_id=null;
+    String json,user_id,title,description,privacy = null;
 
     public Photo(){
         super(2);
@@ -64,6 +61,10 @@ public class Photo extends MenuActivity {
         camera = (ImageButton) findViewById(R.id.camera);
         img = (ImageView) findViewById(R.id.photo);
         json = intent2.getStringExtra(EXTRA_User).toString();
+
+        title = titre.getText().toString();
+        description = desc.getText().toString();
+        privacy = "0";
 
         try {
             JSONObject obj = new JSONObject(json);
@@ -94,69 +95,51 @@ public class Photo extends MenuActivity {
         valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    new postPhoto().execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
+                if((title.length()>0)&&(description.length()>0)) {
+                    try {
+                        new postPhoto().execute().get();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getApplicationContext(), "La photo a bien été envoyée.", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(Photo.this, AccueilActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
-                Toast.makeText(getApplicationContext(), "La photo a bien été envoyée.", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Photo.this,AccueilActivity.class);
-                startActivity(intent);
-                finish();
+                else
+                    Toast.makeText(getApplicationContext(), "Le titre et la description sont obligatoires", Toast.LENGTH_LONG).show();
+
             }
         });
     }
 
-        public class postPhoto extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... params) {
+    public class postPhoto extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
 
-                //    /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)**
+            //    /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)**
 
-                String title = titre.getText().toString();
-                String description = desc.getText().toString();
-                String privacy = "0";
-
-                HttpClient client = new DefaultHttpClient();
-                HttpPost post = new HttpPost("http://api-rest-youcef-m.c9.io/post/new");
-                try {
-                    MultipartEntity entity = new MultipartEntity();
-                    entity.addPart("titre", new StringBody(title));
-                    entity.addPart("description", new StringBody(description));
-                    entity.addPart("privacy", new StringBody(privacy));
-                    entity.addPart("user_id", new StringBody(user_id));
-                    entity.addPart("photo", new FileBody(image));
-                    post.setEntity(entity);
-                    HttpResponse response = client.execute(post);
-                } catch (ClientProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
+            HttpClient client = new DefaultHttpClient();
+            HttpPost post = new HttpPost("http://api-rest-youcef-m.c9.io/post/new");
+            try {
+                MultipartEntity entity = new MultipartEntity();
+                entity.addPart("titre", new StringBody(title));
+                entity.addPart("description", new StringBody(description));
+                entity.addPart("privacy", new StringBody(privacy));
+                entity.addPart("user_id", new StringBody(user_id));
+                entity.addPart("photo", new FileBody(image));
+                post.setEntity(entity);
+                HttpResponse response = client.execute(post);
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            return null;
         }
-
- /*   @Override
-    public  void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK){
-            if (requestCode == 1) {
-                Uri selectedImageUri = data.getData();
-                filestring = selectedImageUri.getPath();
-
-                Bitmap thumbnail = BitmapFactory.decodeFile(filestring, options2);
-
-                System.out.println("Bitmap(CAMERA_IMAGES_REQUEST):"+thumbnail);
-                System.out.println("cap_image(CAMERA_IMAGES_REQUEST):"+cap_image);
-                cap_image.setImageBitmap(thumbnail);
-
-                Bitmap photo = (Bitmap) data.getExtras().get(data);
-                img.setImageBitmap(photo);
-            }
-        }
-    }*/
+    }
 
     private View.OnClickListener razListener = new View.OnClickListener() {
         @Override

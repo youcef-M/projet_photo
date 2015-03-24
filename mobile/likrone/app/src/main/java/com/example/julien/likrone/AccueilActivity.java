@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -98,19 +99,22 @@ public class AccueilActivity extends MenuActivity {
         try {
             String infoImage = new Image.getJson().execute(mode).get();
             arr = new JSONArray(infoImage);
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 6; i++) {
                 String result3 = arr.getString(i);
                 JSONObject obj2 = new JSONObject(result3);
                 idPhoto.add(obj2.getString("id"));
-                auteur.add(new Image.getAuteur().execute(obj2.getString("user_id")).get());
-                titrePhoto.add((obj2.getString("titre")).replaceAll("\\+", " "));
-                chemins.add(obj2.getString("chemin"));
+                auteur.add(java.net.URLDecoder.decode(new Image.getAuteur().execute(obj2.getString("user_id")).get(),"UTF-8"));
+                titrePhoto.add(java.net.URLDecoder.decode(obj2.getString("titre"),"UTF-8"));
+                String[] tab = obj2.getString("chemin").split("\\.");
+                chemins.add(tab[0]+"_200x200."+tab[1]);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e){
             e.printStackTrace();
         }
 

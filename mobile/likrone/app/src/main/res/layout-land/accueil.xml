@@ -11,7 +11,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="@string/recente"
-            android:background="@drawable/custom_button_blue">
+            android:background="@drawable/button_blue">
         </Button>
 
         <Button
@@ -22,7 +22,7 @@
             android:layout_above="@+id/gridView"
             android:layout_alignRight="@+id/gridView"
             android:layout_alignEnd="@+id/gridView"
-            android:background="@drawable/custom_button_blue">
+            android:background="@drawable/button_blue">
         </Button>
 
         <GridView
