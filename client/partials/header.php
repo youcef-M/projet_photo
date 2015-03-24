@@ -13,7 +13,7 @@
 						<div class="topmenu">
 							<ul>
 								<li>&nbsp;</li>
-								<li><a href="accueil.php">Acceuil</a></li>
+								<li><a href="accueil.php">Accueil</a></li>
 								<li><a href="profil.php">Mon profil</a></li>
 								<li><a href="deconnexion.php">Deconnexion</a></li>
 								<li>&nbsp;</li>
