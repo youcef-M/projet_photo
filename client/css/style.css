@@ -36,19 +36,15 @@ ul, li {
 }
 h1, h2, h3, h4, h5, h6 {
 	color:#0086b2!important;
-	
 }
 h1 {
-	font-size:20px;
+	font-size:25px;
 	font-weight:normal;
-	font-family: Cursive, Tahoma, Geneva, sans-serif;
 	text-transform:uppercase;
 }
 h2 {
 	font-size:20px;
 	font-weight:normal;
-	font-family: Cursive, Tahoma, Geneva, sans-serif;
-	text-transform:uppercase;
 }
 h3 {
 	font-size:18px;
@@ -110,7 +106,7 @@ input {
 
 #header {
 	width:960px;
-	height:auto;
+	height:139px;
 	float:left;
 	padding-bottom:10px;
 }
@@ -147,8 +143,6 @@ input {
 	height:30px;
 	float:left;
 }
-
-
 .topmenu ul li.first {
 	background-image:url(../images/toplinksbg_01.png);
 	background-repeat:no-repeat;
@@ -162,8 +156,8 @@ input {
 	height:30px;
 }
 .topmenu ul li a {
-	/*background-image:url(../images/toplinks_sep.jpg);
-	background-repeat:no-repeat;*/
+	background-image:url(../images/toplinks_sep.jpg);
+	background-repeat:no-repeat;
 	background-position:right;
 	color:#717171;
 	line-height:30px;
@@ -270,26 +264,26 @@ input.search {
 	float:left;
 }
 .topnavigation ul li {
-	/*background-image:url(../images/toplinksbg_02.png);
-	background-repeat:repeat-x;*/
+	background-image:url(../images/toplinksbg_02.png);
+	background-repeat:repeat-x;
 	height:30px;
 	float:left;
 }
 .topnavigation ul li.first {
-	/*background-image:url(../images/toplinksbg_01.png);
-	background-repeat:no-repeat;*/
+	background-image:url(../images/toplinksbg_01.png);
+	background-repeat:no-repeat;
 	width:5px;
 	height:30px;
 }
 .topnavigation ul li.last {
-	/*background-image:url(../images/toplinksbg_03.png);
-	background-repeat:no-repeat;*/
+	background-image:url(../images/toplinksbg_03.png);
+	background-repeat:no-repeat;
 	width:5px;
 	height:30px;
 }
 .topnavigation ul li a {
-	/*background-image:url(../images/toplinks_sep.jpg);
-	background-repeat:no-repeat;*/
+	background-image:url(../images/toplinks_sep.jpg);
+	background-repeat:no-repeat;
 	background-position:right;
 	color:#717171;
 	line-height:30px;
@@ -314,6 +308,7 @@ input.search {
 	float:left;
 	width:960px;
 	padding-bottom:10px;
+	margin-top: 21px;
 }
 
 .contenu_static {

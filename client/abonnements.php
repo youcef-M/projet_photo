@@ -3,7 +3,6 @@
 	isAllowed();
 
 	$id = $_SESSION['profil']['id'];
-	$id=1;
 	$pages = followingPages($id);
 	if($pages > 0)
 	{
@@ -20,8 +19,10 @@
 
 <article>
 	<!-- Contenu de la page -->
+	<div class="contenu">
+		<div class="contenu_static">
 			<section id="liste">
-				<br/><h2>Liste des abonnements</h2><br/>
+				<br/><h1>Liste des abonnements</h1><br/>
 				<ul id="listerelation">
 					<?php if ($pages > 0): ?>
 						<?php foreach ($content as $k => $v): ?>
@@ -35,6 +36,8 @@
 					<?php endif ?>		
 				</ul>
 			</section>
+		</div>
+	</div>
 </article>
 
 

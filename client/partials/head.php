@@ -3,11 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <title>Bienvenue sur Pascagram</title>
-		<link rel="stylesheet" type="text/css" href="css/reset-design.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/reset-design.css" />-->
 		<link rel="stylesheet" type="text/css" href="css/main.css" media="all"> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" />
+
+
 
 		<script src="js/jquery.min.js" type="text/javascript"></script>
 		<script src="js/ddsmoothmenu.js" type="text/javascript"></script>

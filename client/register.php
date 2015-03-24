@@ -15,7 +15,7 @@
 						<?php error('username'); ?>	
 					</li>	
 					<li>
-						<input id="email" name="email" type="text" maxlength="255" value="" placeholder="E-mail"/>
+						<input id="email" name="email" type="text" maxlength="255" value="" placeholder="email"/>
 						<?php error('email'); ?>
 					</li>
 					<li>

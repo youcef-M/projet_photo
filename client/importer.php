@@ -16,7 +16,6 @@
 
 	$url = 'http://api-rest-youcef-m.c9.io/post/new';
 	$result = httpPost($fields,$url);
-
 	if($result['code'] == 400)
 	{
 		$error = json_decode($result['content']);

@@ -32,11 +32,11 @@
 				<form id="form_978276" class="appnitro" enctype="multipart/form-data" method="post" action="modifier_photo.php?id=<?=$post;?>">
 					<ul class="formulaire">
 						<li>
-							<input id="titre" name="titre" type="text" value="<?= $infopost->titre;?>" /> 
+							<input id="titre" name="titre" type="text" value="<?= urldecode($infopost->titre);?>" /> 
 							<?php error('titre'); ?>	
 						</li>
 						<li>
-							<textarea id="description" name="description" rows=2 cols=40 ><?= $infopost->description; ?></textarea>
+							<textarea id="description" name="description" rows=2 cols=40 ><?= urldecode($infopost->description); ?></textarea>
 							<?php error('description'); ?>	
 						</li>
 						<li>
