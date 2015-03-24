@@ -60,7 +60,7 @@
 				</button>
 				
 			<?php endif ?>
-			<h2><?= ucfirst($infopost->titre); ?></h2>
+			<h2><?= ucfirst(urldecode($infopost->titre)); ?></h2>
 			<section id="photo">
 				<img src="http://api-rest-youcef-m.c9.io<?=$infopost->chemin?>" style="max-width: 1024px;max-height: 700px;">
 				<p>
