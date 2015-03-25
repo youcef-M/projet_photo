@@ -2,6 +2,7 @@ package com.example.julien.likrone;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -54,8 +55,8 @@ public class LoginActivity extends Activity{
         if(!("Mauvais identifiants".equals(role.getText()))) {
             Intent intent = new Intent(LoginActivity.this, AccueilActivity.class);
             intent.putExtra(EXTRA_INFO,role.getText().toString());
-            role.setText(intent.getStringExtra(EXTRA_INFO));
             startActivity(intent);
+            mp.getText().clear();
         }
         else{
             mp.getText().clear();

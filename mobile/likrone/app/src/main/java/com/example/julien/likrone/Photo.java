@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -38,20 +37,18 @@ public class Photo extends MenuActivity {
     ImageButton camera = null;
     RadioGroup priv = null;
     File image = null;
-    Intent intent2=null;
+    Intent intent3=null;
     String json,user_id,title,description,privacy = null;
 
     public Photo(){
         super(2);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_photo);
 
-        intent2 = getIntent();
         valider = (Button) findViewById(R.id.save);
         raz = (Button) findViewById(R.id.cancel);
         raz.setOnClickListener(razListener);
@@ -60,11 +57,8 @@ public class Photo extends MenuActivity {
         priv = (RadioGroup) findViewById(R.id.priv);
         camera = (ImageButton) findViewById(R.id.camera);
         img = (ImageView) findViewById(R.id.photo);
-        json = intent2.getStringExtra(EXTRA_User).toString();
-
-        title = titre.getText().toString();
-        description = desc.getText().toString();
-        privacy = "0";
+        intent3=getIntent();
+        json = intent3.getStringExtra(EXTRA_User).toString();
 
         try {
             JSONObject obj = new JSONObject(json);
@@ -83,11 +77,8 @@ public class Photo extends MenuActivity {
                     image = new File(imagesFolder, "image_001.jpg");
                     Uri uriSavedImage = Uri.fromFile(image);
                     imageIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
-                    startActivity(imageIntent);
 
-                    //String filestring = uriSavedImage.getPath();
-                    //Bitmap thumbnail = BitmapFactory.decodeFile(filestring);
-                    //img.setImageBitmap(thumbnail);
+                    startActivity(imageIntent);
                 }
             }
         });
@@ -95,31 +86,26 @@ public class Photo extends MenuActivity {
         valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((title.length()>0)&&(description.length()>0)) {
-                    try {
-                        new postPhoto().execute().get();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-                    Toast.makeText(getApplicationContext(), "La photo a bien été envoyée.", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Photo.this, AccueilActivity.class);
-                    startActivity(intent);
-                    finish();
+                try {
+                    title = titre.getText().toString();
+                    description = desc.getText().toString();
+                    privacy = "0";
+                    new postPhoto().execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
                 }
-                else
-                    Toast.makeText(getApplicationContext(), "Le titre et la description sont obligatoires", Toast.LENGTH_LONG).show();
-
             }
         });
     }
+
+    //    /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)**
 
     public class postPhoto extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
 
-            //    /post/new     |  POST  | **titre**, *description*, **privacy**, **user_id**, **photo(le fichier)**
 
             HttpClient client = new DefaultHttpClient();
             HttpPost post = new HttpPost("http://api-rest-youcef-m.c9.io/post/new");
@@ -138,8 +124,8 @@ public class Photo extends MenuActivity {
                 e.printStackTrace();
             }
             return null;
-        }
     }
+}
 
     private View.OnClickListener razListener = new View.OnClickListener() {
         @Override

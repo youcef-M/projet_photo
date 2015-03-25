@@ -1,10 +1,8 @@
 package com.example.julien.likrone;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -29,6 +27,7 @@ public class AccueilActivity extends MenuActivity {
     final String EXTRA_INFO_IMAGE = "info_image";
     final String EXTRA_ID_USER = "id_user";
     final String EXTRA_INFO = "info_user";
+    String idUser;
     ArrayList idPhoto = new ArrayList();
     ArrayList auteur = new ArrayList();
     ArrayList titrePhoto = new ArrayList();
@@ -37,8 +36,6 @@ public class AccueilActivity extends MenuActivity {
     Button latest = null;
     Button vote = null;
     JSONArray arr = null;
-    private static Parcelable stateViewFragment;
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +45,9 @@ public class AccueilActivity extends MenuActivity {
         latest = (Button) findViewById(R.id.rec);
         vote = (Button) findViewById(R.id.meilleures);
         gridView = (GridView) findViewById(R.id.gridView);
-        Intent intent2 = getIntent();
-        final String idUser = intent2.getStringExtra(EXTRA_INFO).toString();
+            Intent intent2 = getIntent();
+            idUser = intent2.getStringExtra(EXTRA_INFO).toString();
+
 
         latest.setOnClickListener(new View.OnClickListener() {
             @Override

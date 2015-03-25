@@ -2,6 +2,7 @@ package com.example.julien.likrone;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -109,6 +110,12 @@ public class ImageAdapter extends MenuActivity {
         }
         try {
             img.setImageBitmap(new Image.getImage().execute(chemin).get());
+            if((super.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)) {
+                img.getLayoutParams().width = 650;
+            }
+            else if((super.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)){
+                img.getLayoutParams().height=550;
+            }
             new getComm().execute(post_id).get();
             for(int i=0;i<auteursCId.size();i++)
                 auteursC.add(new Image.getAuteur().execute(auteursCId.get(i).toString()).get());

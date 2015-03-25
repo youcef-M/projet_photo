@@ -6,15 +6,21 @@
     <ImageView
         android:id="@+id/img"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titreP"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:adjustViewBounds="true"
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:id="@+id/titreP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/img"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:textColor="@color/bleu"/>
 
     <TextView
         android:id="@+id/auteurP"
@@ -22,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img"
         android:layout_below="@id/titreP"
-        android:layout_marginLeft="75dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"/>
 
     <TextView
@@ -31,17 +37,17 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img"
         android:layout_below="@id/auteurP"
-        android:layout_marginLeft="75dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"/>
 
     <ImageButton
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/postCom"
-        android:layout_below="@id/img"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="15dp"
+        android:layout_alignBottom="@id/img"
+        android:layout_toRightOf="@id/img"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/thumbs_up"/>
 
     <TextView
@@ -49,16 +55,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/like"
-        android:layout_toRightOf="@+id/postCom"
-        android:layout_marginLeft="95dp"/>
+        android:layout_toRightOf="@+id/img"
+        android:layout_marginLeft="30dp"/>
 
     <ImageButton
         android:id="@+id/dislike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/like"
-        android:layout_below="@id/img"
-        android:layout_marginTop="15dp"
+        android:layout_alignBottom="@id/img"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="10dp"
         android:src="@drawable/thumbs_down"/>
 
@@ -75,7 +81,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/listView"/>
+        android:layout_below="@+id/listView"
+        android:layout_marginLeft="10dp"/>
 
     <Button
         android:id="@+id/postCom"

@@ -1,6 +1,5 @@
 package com.example.julien.likrone;
 
-import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -14,22 +13,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by Julien on 21/03/2015.
- */
+
 public class Image {
 
     //Context context = this;
     public static class getJson extends AsyncTask<Integer, Void, String> {
-
-        private ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute(){
-            super.onPreExecute();
-            //progressDialog = ProgressDialog.show(Image.this, "", "LOADING!!!", true, false);
-        }
-
         @Override
         protected String doInBackground(Integer... params) {
             String infoImage=null;

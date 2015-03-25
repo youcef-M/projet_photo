@@ -66,7 +66,8 @@
         android:layout_below="@+id/pseudo"
         android:layout_toRightOf="@+id/mp"
         android:visibility="invisible"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:text="Mauvais identifiants"/>
 
     <Button
         android:id="@+id/connect"

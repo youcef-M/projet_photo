@@ -11,7 +11,6 @@ public class MenuActivity extends Activity {
     int numAct = 0;
     final String  EXTRA_INFO ="info_user";
     final String EXTRA_User = "info login";
-    final String EXTRA_ID_POST="id_post";
 
     public MenuActivity(int pNumAct){
         numAct = pNumAct;

@@ -22,7 +22,8 @@
         android:layout_below="@id/viewInsc"
         android:layout_toLeftOf="@+id/pseudo"
         android:layout_marginTop="15dp"
-        android:text="@string/viewPseudo" />
+        android:text="@string/viewPseudo"
+        android:textColor="@color/blanc" />
 
     <EditText
         android:id="@+id/pseudo"
@@ -42,7 +43,8 @@
         android:layout_below="@id/pseudo"
         android:layout_toLeftOf="@+id/email"
         android:layout_marginTop="15dp"
-        android:text="@string/viewEmail" />
+        android:text="@string/viewEmail"
+        android:textColor="@color/blanc"/>
 
     <EditText
         android:id="@+id/email"
@@ -63,7 +65,8 @@
         android:layout_below="@id/email"
         android:layout_toLeftOf="@+id/mp"
         android:layout_marginTop="15dp"
-        android:text="@string/viewMp" />
+        android:text="@string/viewMp"
+        android:textColor="@color/blanc"/>
 
     <EditText
         android:id="@+id/mp"
@@ -84,7 +87,8 @@
         android:layout_below="@id/mp"
         android:layout_toLeftOf="@+id/mp2"
         android:layout_marginTop="15dp"
-        android:text="@string/viewMp2" />
+        android:text="@string/viewMp2"
+        android:textColor="@color/blanc"/>
 
     <EditText
         android:id="@+id/mp2"

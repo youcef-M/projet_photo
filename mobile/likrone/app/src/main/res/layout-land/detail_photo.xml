@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
 
     <ImageView
         android:id="@+id/img"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:id="@+id/titreP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/bleu"
+        />
 
     <TextView
         android:id="@+id/auteurP"
@@ -22,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img"
         android:layout_below="@id/titreP"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/dateP"
@@ -31,8 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img"
         android:layout_below="@id/auteurP"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"/>
 
     <ImageButton
         android:id="@+id/like"
@@ -40,8 +47,8 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@id/img"
         android:layout_below="@id/dateP"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/thumbs_up"/>
 
     <TextView
@@ -50,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/like"
         android:layout_toRightOf="@id/img"
-        android:layout_marginLeft="100dp"/>
+        android:layout_marginLeft="43dp"/>
 
     <ImageButton
         android:id="@+id/dislike"
@@ -58,7 +65,7 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@id/like"
         android:layout_below="@id/dateP"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:src="@drawable/thumbs_down"/>
 
@@ -68,14 +75,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/dislike"
         android:layout_toRightOf="@id/like"
-        android:layout_marginLeft="35dp" />
+        android:layout_marginLeft="33dp" />
 
     <EditText
         android:id="@+id/newCom"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/listView"/>
+        android:layout_below="@id/img"
+        android:layout_toRightOf="@id/listView"
+        android:layout_marginLeft="30dp"/>
 
     <Button
         android:id="@+id/postCom"
